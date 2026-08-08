@@ -1,3 +1,57 @@
-from django.shortcuts import render
+from rest_framework import permissions, status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework_simplejwt.exceptions import TokenError
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.views import TokenObtainPairView
 
-# Create your views here.
+from accounts.serializers import ( CurrentUserSerializer,CustomTokenObtainPairSerializer, LogoutSerializer,)
+
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    """
+    POST email + password để nhận access và refresh token.
+    """
+
+    serializer_class = CustomTokenObtainPairSerializer
+    permission_classes = [permissions.AllowAny]
+
+
+class CurrentUserView(APIView):
+    """
+    Trả về thông tin của user đang đăng nhập.
+    """
+
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        serializer = CurrentUserSerializer(request.user)
+        return Response(serializer.data)
+
+
+class LogoutView(APIView):
+    """
+    Blacklist refresh token để không thể dùng lại sau khi logout.
+    """
+
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        serializer = LogoutSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        try:
+            refresh_token = RefreshToken(
+                serializer.validated_data["refresh"]
+            )
+            refresh_token.blacklist()
+        except TokenError:
+            return Response(
+                {"detail": "Refresh token không hợp lệ hoặc đã hết hạn."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        return Response(
+            {"detail": "Đăng xuất thành công."},
+            status=status.HTTP_200_OK,
+        )
