@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local Codex/project instructions
+AGENTS.md
+
+.venv312/
+.venv312/Scripts/
