@@ -1,9 +1,12 @@
 import re
 from dataclasses import dataclass
 
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-
 from documents.services.extractors import ExtractedPage
+from rag.services.embeddings import (
+    DOCUMENT_CHUNK_TOKEN_LIMIT,
+    DOCUMENT_CHUNK_TOKEN_OVERLAP,
+    embedding_token_count,
+)
 
 
 @dataclass
@@ -16,28 +19,28 @@ class TextChunk:
     metadata: dict
 
 
-SECTION_PATTERN = re.compile(r"^(CHƯƠNG\s+[IVXLCDM]+|Điều\s+\d+[\.:]?)", re.IGNORECASE,)
+SECTION_PATTERN = re.compile(
+    r"^(CHƯƠNG\s+[IVXLCDM]+|Điều\s+\d+[\.:]?)",
+    re.IGNORECASE,
+)
 
 
 def estimate_token_count(text: str) -> int:
-    # Sau này thay bằng tokenizer của embedding model.
-    return max(1, len(text.split()))
+    return max(1, embedding_token_count(text))
 
 
-def split_long_text( text: str, max_words: int = 350, overlap_words: int = 50,) -> list[str]:
+def split_long_text(
+    text: str,
+    max_tokens: int = DOCUMENT_CHUNK_TOKEN_LIMIT,
+    overlap_tokens: int = DOCUMENT_CHUNK_TOKEN_OVERLAP,
+) -> list[str]:
+    from langchain_text_splitters import RecursiveCharacterTextSplitter
+
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=max_words,
-        chunk_overlap=overlap_words,
-        length_function=lambda value: len(value.split()),
-        separators=[
-            "\n\n",
-            "\n",
-            ". ",
-            "; ",
-            ", ",
-            " ",
-            "",
-        ],
+        chunk_size=max_tokens,
+        chunk_overlap=overlap_tokens,
+        length_function=embedding_token_count,
+        separators=["\n\n", "\n", ". ", "; ", ", ", " ", ""],
     )
 
     return [
@@ -47,66 +50,70 @@ def split_long_text( text: str, max_words: int = 350, overlap_words: int = 50,) 
     ]
 
 
-def chunk_pages( pages: list[ExtractedPage], max_words: int = 350, overlap_words: int = 50,) -> list[TextChunk]:
-    result = []
-    chunk_index = 0
+def section_blocks(
+    content: str,
+    current_section: str,
+) -> tuple[list[tuple[str, str]], str]:
+    """Nhóm đoạn theo heading để section metadata không bị gán lệch."""
+    blocks: list[tuple[str, str]] = []
+    buffer: list[str] = []
+
+    for raw_paragraph in content.splitlines():
+        paragraph = raw_paragraph.strip()
+
+        if not paragraph:
+            continue
+
+        if SECTION_PATTERN.match(paragraph):
+            if buffer:
+                blocks.append((current_section, "\n".join(buffer)))
+                buffer = []
+
+            current_section = paragraph[:500]
+
+        buffer.append(paragraph)
+
+    if buffer:
+        blocks.append((current_section, "\n".join(buffer)))
+
+    return blocks, current_section
+
+
+def chunk_pages(
+    pages: list[ExtractedPage],
+    max_tokens: int = DOCUMENT_CHUNK_TOKEN_LIMIT,
+    overlap_tokens: int = DOCUMENT_CHUNK_TOKEN_OVERLAP,
+) -> list[TextChunk]:
+    chunks: list[TextChunk] = []
     current_section = ""
 
     for page in pages:
         if not page.content:
             continue
 
-        paragraphs = [ paragraph.strip() for paragraph in page.content.split("\n") if paragraph.strip()]
+        blocks, current_section = section_blocks(
+            page.content,
+            current_section,
+        )
 
-        buffer = []
-
-        for paragraph in paragraphs:
-            if SECTION_PATTERN.match(paragraph):
-                current_section = paragraph[:500]
-
-            buffer.append(paragraph)
-
-            combined = "\n".join(buffer)
-            word_count = len(combined.split())
-
-            if word_count >= max_words:
-                parts = split_long_text( combined, max_words=max_words, overlap_words=overlap_words,)
-
-                for part in parts:
-                    result.append(
-                        TextChunk(
-                            chunk_index=chunk_index,
-                            content=part,
-                            page_number=page.page_number,
-                            section_title=current_section,
-                            token_count=estimate_token_count(part),
-                            metadata={
-                                "page_number": page.page_number,
-                                **(page.metadata or {}),
-                            },
-                        )
-                    )
-                    chunk_index += 1
-
-                buffer = []
-
-        if buffer:
-            combined = "\n".join(buffer)
-
-            for part in split_long_text( combined, max_words=max_words, overlap_words=overlap_words,):
-                result.append(
+        for section_title, block in blocks:
+            for part in split_long_text(
+                block,
+                max_tokens=max_tokens,
+                overlap_tokens=overlap_tokens,
+            ):
+                chunks.append(
                     TextChunk(
-                        chunk_index=chunk_index,
+                        chunk_index=len(chunks),
                         content=part,
                         page_number=page.page_number,
-                        section_title=current_section,
+                        section_title=section_title,
                         token_count=estimate_token_count(part),
-                            metadata={
-                                "page_number": page.page_number,
-                                **(page.metadata or {}),
-                            },
-                        )
+                        metadata={
+                            "page_number": page.page_number,
+                            **(page.metadata or {}),
+                        },
                     )
-                chunk_index += 1
+                )
 
-    return result
+    return chunks

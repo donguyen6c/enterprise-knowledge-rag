@@ -1,3 +1,1 @@
-from django.db import models
-
-# Create your models here.
+"""RAG state is stored in documents and chats; no separate model is needed."""

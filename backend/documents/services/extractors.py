@@ -1,10 +1,11 @@
 import re
-import pymupdf
-
 from dataclasses import dataclass
 from pathlib import Path
+
+import pymupdf
 from docx import Document as DocxDocument
 from pypdf import PdfReader
+
 from documents.services.ocr import ocr_pdf
 
 
@@ -186,16 +187,31 @@ def has_broken_font_patterns(text: str) -> bool:
     return suspicious_ratio >= 0.01
 
 def extract_pdf(file_path: Path) -> list[ExtractedPage]:
-    pypdf_pages = extract_pdf_with_pypdf(file_path)
-    pypdf_text = join_page_text(pypdf_pages)
+    candidates: list[tuple[float, list[ExtractedPage], str]] = []
+    errors: list[str] = []
+
+    for extractor in (extract_pdf_with_pypdf, extract_pdf_with_pymupdf):
+        try:
+            pages = extractor(file_path)
+        except DocumentExtractionError as exc:
+            errors.append(str(exc))
+            continue
+
+        text = join_page_text(pages)
+        candidates.append((calculate_text_quality(text), pages, text))
+
+    if not candidates:
+        raise DocumentExtractionError("; ".join(errors))
+
+    _, best_pages, best_text = max(candidates, key=lambda item: item[0])
 
     requires_ocr = (
-        not pypdf_text.strip()
-        or has_broken_font_patterns(pypdf_text)
+        not best_text.strip()
+        or has_broken_font_patterns(best_text)
     )
 
     if not requires_ocr:
-        return pypdf_pages
+        return best_pages
 
     return extract_pdf_with_paddle_ocr(file_path)
 

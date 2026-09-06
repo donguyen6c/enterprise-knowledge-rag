@@ -13,7 +13,7 @@ class Organization(models.Model):
 
 
 class Department(models.Model):
-    organization = models.ForeignKey( Organization, on_delete=models.CASCADE, related_name="departments",)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="departments",)
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     is_active = models.BooleanField(default=True)

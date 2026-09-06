@@ -1,7 +1,8 @@
 from rest_framework import serializers
+from rest_framework_simplejwt.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
-from accounts.models import User
+from accounts.models import User, UserRole
 
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -21,6 +22,13 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
         user = self.user
+
+        if (
+            user.role != UserRole.SYSTEM_ADMIN
+            and user.organization_id
+            and not user.organization.is_active
+        ):
+            raise AuthenticationFailed("Tổ chức của tài khoản đã bị khóa.")
 
         data["user"] = {
             "id": user.id,

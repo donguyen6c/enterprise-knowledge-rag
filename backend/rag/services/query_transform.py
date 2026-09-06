@@ -13,6 +13,9 @@ ACRONYM_PATTERNS = (
     (re.compile(r"\bsv\b", flags=re.IGNORECASE), "sinh viên"),
     (re.compile(r"\bhb\b", flags=re.IGNORECASE), "học bổng"),
     (re.compile(r"\bctdt\b", flags=re.IGNORECASE), "chương trình đào tạo"),
+    (re.compile(r"\bgdqp(?:an)?\b", flags=re.IGNORECASE), "giáo dục quốc phòng an ninh"),
+    (re.compile(r"\bgdtc\b", flags=re.IGNORECASE), "giáo dục thể chất"),
+    (re.compile(r"\bqldt\b", flags=re.IGNORECASE), "quản lý đào tạo"),
 )
 
 CONTEXT_REFERENCE_TERMS = (
@@ -71,10 +74,7 @@ def message_metadata(message: Any) -> dict:
     return metadata if isinstance(metadata, dict) else {}
 
 
-def recent_context_from_history(
-    conversation_history: Sequence[Any] | None,
-    max_messages: int = 4,
-) -> str:
+def recent_context_from_history(conversation_history: Sequence[Any] | None, max_messages: int = 4,) -> str:
     if not conversation_history:
         return ""
 
@@ -109,10 +109,7 @@ def recent_context_from_history(
     return context[:800]
 
 
-def rewrite_question_with_history(
-    question: str,
-    conversation_history: Sequence[Any] | None,
-) -> str:
+def rewrite_question_with_history( question: str, conversation_history: Sequence[Any] | None,) -> str:
     cleaned_question = normalize_spacing(question)
 
     if not has_context_reference(cleaned_question):
@@ -126,11 +123,7 @@ def rewrite_question_with_history(
     return f"{cleaned_question}. Ngữ cảnh hội thoại trước: {context}"
 
 
-def build_query_variants(
-    question: str,
-    conversation_history: Sequence[Any] | None = None,
-    max_variants: int = 4,
-) -> list[str]:
+def build_query_variants(question: str, conversation_history: Sequence[Any] | None = None, max_variants: int = 4,) -> list[str]:
     variants: list[str] = []
     seen: set[str] = set()
 

@@ -9,25 +9,55 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-import os
-from dotenv import load_dotenv
-from pathlib import Path
 from datetime import timedelta
+import os
+from pathlib import Path
+
+from django.core.exceptions import ImproperlyConfigured
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
 
+
+def env_flag(name: str, default: bool = False) -> bool:
+    value = os.getenv(name)
+
+    if value is None:
+        return default
+
+    return value.strip().lower() in {"1", "true", "yes", "on"}
+
+
+def env_list(name: str, default: str = "") -> list[str]:
+    value = os.getenv(name, default)
+    return [item.strip() for item in value.split(",") if item.strip()]
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+DEBUG = env_flag("DJANGO_DEBUG", default=True)
+
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = "True"
+if not SECRET_KEY and DEBUG:
+    SECRET_KEY = "django-insecure-local-development-only"
 
-ALLOWED_HOSTS = ['*']
+if not SECRET_KEY:
+    raise ImproperlyConfigured(
+        "DJANGO_SECRET_KEY is required when DJANGO_DEBUG is disabled."
+    )
+
+# SECURITY WARNING: don't run with debug turned on in production!
+ALLOWED_HOSTS = env_list(
+    "DJANGO_ALLOWED_HOSTS",
+    default="127.0.0.1,localhost,testserver",
+)
+
+# API clients must still use canonical URLs ending in a slash for POST requests.
+APPEND_SLASH = True
 
 
 # Application definition
@@ -131,7 +161,7 @@ REST_FRAMEWORK = {
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "vi"
 
 TIME_ZONE = "Asia/Ho_Chi_Minh"
 

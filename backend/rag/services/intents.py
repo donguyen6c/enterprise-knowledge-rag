@@ -154,7 +154,7 @@ TOPIC_GROUPS = (
         ),
     },
     {
-        "aliases": ("lich thi", "thi", "lich kiem tra"),
+        "aliases": ("lich thi", "lich kiem tra"),
         "content_terms": (
             "lịch thi",
             "kỳ thi",
@@ -360,6 +360,13 @@ def chunk_condition_for_intent(intent: QueryIntent) -> Q | None:
 def topic_condition_for_query(query: str) -> Q | None:
     normalized = normalize_for_match(query)
     condition = None
+    exam_schedule_lookup = (
+        "lich thi" in normalized
+        and any(
+            phrase in normalized
+            for phrase in ("xem", "o dau", "tra cuu", "tim")
+        )
+    )
 
     def add(part: Q) -> None:
         nonlocal condition
@@ -404,6 +411,17 @@ def topic_condition_for_query(query: str) -> Q | None:
                 | Q(content__icontains="Phòng Thanh tra")
                 | Q(content__icontains="Phòng Khảo thí")
                 | Q(content__icontains="giảng viên")
+            )
+        )
+
+    if exam_schedule_lookup:
+        add(
+            Q(content__icontains="lịch thi")
+            & (
+                Q(content__icontains="http")
+                | Q(content__icontains="website")
+                | Q(content__icontains="hệ thống")
+                | Q(content__icontains="tra cứu")
             )
         )
 
@@ -470,6 +488,9 @@ def topic_condition_for_query(query: str) -> Q | None:
                 or "khieu nai diem" in normalized
             )
         ):
+            continue
+
+        if "lich thi" in alias_set and exam_schedule_lookup:
             continue
 
         if (

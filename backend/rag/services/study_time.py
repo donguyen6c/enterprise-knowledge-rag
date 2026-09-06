@@ -29,6 +29,12 @@ def is_study_time_query(query: str) -> bool:
     if "hoc phi" in normalized:
         return False
 
+    if (
+        any(term in normalized for term in ("lich hoc", "thoi khoa bieu"))
+        and any(term in normalized for term in ("xem", "tra cuu", "o dau"))
+    ):
+        return False
+
     explicit_phrases = (
         "thoi gian hoc tap",
         "khung thoi gian",
@@ -40,6 +46,15 @@ def is_study_time_query(query: str) -> bool:
     )
 
     if any(phrase in normalized for phrase in explicit_phrases):
+        return True
+
+    if (
+        any(term in normalized for term in ("bao lau", "may tuan"))
+        and any(
+            term in normalized
+            for term in ("gdqp", "giao duc quoc phong", "quoc phong")
+        )
+    ):
         return True
 
     return (

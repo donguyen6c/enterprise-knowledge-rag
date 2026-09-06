@@ -3,11 +3,7 @@ from django.db import models
 
 
 class ChatSession(models.Model):
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name="chat_sessions",
-    )
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="chat_sessions",)
     title = models.CharField(max_length=255, blank=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -31,11 +27,7 @@ class ChatMessage(models.Model):
         USER = "USER", "User"
         ASSISTANT = "ASSISTANT", "Assistant"
 
-    session = models.ForeignKey(
-        ChatSession,
-        on_delete=models.CASCADE,
-        related_name="messages",
-    )
+    session = models.ForeignKey( ChatSession, on_delete=models.CASCADE, related_name="messages",)
     role = models.CharField(max_length=20, choices=Role.choices)
     content = models.TextField()
     metadata = models.JSONField(default=dict, blank=True)

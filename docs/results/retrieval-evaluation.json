@@ -1,0 +1,2651 @@
+{
+  "generated_at": "2026-08-11T09:41:45.802771+00:00",
+  "top_k_values": [
+    1,
+    3,
+    5
+  ],
+  "summary": {
+    "case_count": 23,
+    "passed_count": 23,
+    "failed_count": 0,
+    "skipped_count": 0,
+    "page_case_count": 17,
+    "metrics": {
+      "mrr": 0.9565217391304348,
+      "page_mrr": 0.6833333333333333,
+      "hit_at": {
+        "1": 0.9130434782608695,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "recall_at": {
+        "1": 0.8695652173913043,
+        "3": 0.9782608695652174,
+        "5": 0.9782608695652174
+      },
+      "page_hit_at": {
+        "1": 0.47058823529411764,
+        "3": 0.8823529411764706,
+        "5": 1.0
+      }
+    }
+  },
+  "by_corpus": {
+    "kfc_demo": {
+      "case_count": 7,
+      "passed_count": 7,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "page_case_count": 2,
+      "metrics": {
+        "mrr": 1.0,
+        "page_mrr": 0.225,
+        "hit_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "recall_at": {
+          "1": 0.9285714285714286,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 1.0
+        }
+      }
+    },
+    "ou": {
+      "case_count": 16,
+      "passed_count": 16,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "page_case_count": 15,
+      "metrics": {
+        "mrr": 0.9375,
+        "page_mrr": 0.7444444444444444,
+        "hit_at": {
+          "1": 0.875,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "recall_at": {
+          "1": 0.84375,
+          "3": 0.96875,
+          "5": 0.96875
+        },
+        "page_hit_at": {
+          "1": 0.5333333333333333,
+          "3": 1.0,
+          "5": 1.0
+        }
+      }
+    }
+  },
+  "by_category": {
+    "fees": {
+      "case_count": 3,
+      "passed_count": 3,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "page_case_count": 3,
+      "metrics": {
+        "mrr": 1.0,
+        "page_mrr": 0.8333333333333334,
+        "hit_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 0.6666666666666666,
+          "3": 1.0,
+          "5": 1.0
+        }
+      }
+    },
+    "policy": {
+      "case_count": 1,
+      "passed_count": 1,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "page_case_count": 1,
+      "metrics": {
+        "mrr": 1.0,
+        "page_mrr": 1.0,
+        "hit_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        }
+      }
+    },
+    "private": {
+      "case_count": 1,
+      "passed_count": 1,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "page_case_count": 0,
+      "metrics": {
+        "mrr": 1.0,
+        "page_mrr": null,
+        "hit_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": null,
+          "3": null,
+          "5": null
+        }
+      }
+    },
+    "procedure": {
+      "case_count": 7,
+      "passed_count": 7,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "page_case_count": 5,
+      "metrics": {
+        "mrr": 0.8571428571428571,
+        "page_mrr": 0.42333333333333334,
+        "hit_at": {
+          "1": 0.7142857142857143,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "recall_at": {
+          "1": 0.7142857142857143,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 0.2,
+          "3": 0.6,
+          "5": 1.0
+        }
+      }
+    },
+    "tuition": {
+      "case_count": 3,
+      "passed_count": 3,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "page_case_count": 3,
+      "metrics": {
+        "mrr": 1.0,
+        "page_mrr": 1.0,
+        "hit_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        }
+      }
+    },
+    "utility": {
+      "case_count": 8,
+      "passed_count": 8,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "page_case_count": 5,
+      "metrics": {
+        "mrr": 1.0,
+        "page_mrr": 0.6,
+        "hit_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "recall_at": {
+          "1": 0.875,
+          "3": 0.9375,
+          "5": 0.9375
+        },
+        "page_hit_at": {
+          "1": 0.2,
+          "3": 1.0,
+          "5": 1.0
+        }
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "tuition_it_k2025",
+      "corpus": "ou",
+      "category": "tuition",
+      "email": "admin@ou.edu.vn",
+      "question": "Học phí ngành Công nghệ thông tin khóa 2025 bao nhiêu?",
+      "expected_document_ids": [
+        1
+      ],
+      "expected_document_titles": [],
+      "expected_pages_any": [
+        2
+      ],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": 1,
+        "page_reciprocal_rank": 1.0,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        }
+      },
+      "retrieval_queries": [
+        "Học phí ngành Công nghệ thông tin khóa 2025 bao nhiêu?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 324,
+          "document_id": 1,
+          "document_title": "Mức thu học phí ĐHCQ khóa 2025 – năm học 2025–2026",
+          "page_number": 2,
+          "chunk_index": 3,
+          "semantic_score": 0.714236,
+          "final_score": 1.264236,
+          "retrieval_score": 1.263236,
+          "retrieval_query": "Học phí ngành Công nghệ thông tin khóa 2025 bao nhiêu?",
+          "snippet": "Ngôn ngữ Trung Quốc, Ngôn ngữ Nhật, Ngôn ng 735.000đ/tín chỉ Hàn Quốc. Ngôn ngữ Anh. 845.000đ/tín chỉ Các môn Ngoại ngữ không chuyên. 580.000đ/tín chỉ Ngành Công nghệ kỹ thuật công trình xây dựng, Quản lý 920.000đ/tín chỉ xây dựng. Ngành Công nghệ sinh học, Công nghệ thực phẩm. 855.000đ/tín chỉ Ngàn"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 323,
+          "document_id": 1,
+          "document_title": "Mức thu học phí ĐHCQ khóa 2025 – năm học 2025–2026",
+          "page_number": 1,
+          "chunk_index": 2,
+          "semantic_score": 0.666898,
+          "final_score": 1.216898,
+          "retrieval_score": 1.214898,
+          "retrieval_query": "Học phí ngành Công nghệ thông tin khóa 2025 bao nhiêu?",
+          "snippet": "825.000đ/tín chỉ Toán, Luật, Luật Kinh tế. Ngành Quản trị kinh doanh, Kinh doanh Quốc tế, Quản trị nhân Logistics và Quản lý chuỗi cung ứng 825.000đ/tín chỉ úng, Du lịch."
+        },
+        {
+          "rank": 3,
+          "chunk_id": 322,
+          "document_id": 1,
+          "document_title": "Mức thu học phí ĐHCQ khóa 2025 – năm học 2025–2026",
+          "page_number": 1,
+          "chunk_index": 1,
+          "semantic_score": 0.661438,
+          "final_score": 1.211438,
+          "retrieval_score": 1.208438,
+          "retrieval_query": "Học phí ngành Công nghệ thông tin khóa 2025 bao nhiêu?",
+          "snippet": "Giáo dục quốc phòng - An ninh. 465.000đ/tín chỉ Giáo dục thể chất. 585.000đ/tín chỉ Các môn Toán, Lý luận chính trị. 735.000đ/tín chỉ Ngành Xã hội học, Công tác xã hội, Đông Nam Á học, 665.000đ/tín chỉ Tâm lý học. Ngành Kinh tế, Quản lý công. 620.000đ/tín chỉ Ngành Tài chính - Ngân hàng, Bảo hiểm, K"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 321,
+          "document_id": 1,
+          "document_title": "Mức thu học phí ĐHCQ khóa 2025 – năm học 2025–2026",
+          "page_number": 1,
+          "chunk_index": 0,
+          "semantic_score": 0.680062,
+          "final_score": 1.080062,
+          "retrieval_score": 1.076062,
+          "retrieval_query": "Học phí ngành Công nghệ thông tin khóa 2025 bao nhiêu?",
+          "snippet": "Bộ Giáo dục và Đào tạo Cộng hòa Xã hội Chủ nghĩa Việt Nam Trường Đại học Mở Độc lập - Tự do - Hạnh phúc Thành phố Hồ Chí Minh S: 1572 /TB-ĐHM Thành phố Hồ Chí Minh, ngày 17 tháng 07 năm 2025 Thông báo V mức thu học phí đại học chính quy và liên thông đại học chính quy khóa 2025năm hc 2025-2026 Căn c"
+        }
+      ]
+    },
+    {
+      "id": "tuition_psychology_k2025",
+      "corpus": "ou",
+      "category": "tuition",
+      "email": "admin@ou.edu.vn",
+      "question": "học phí ngành tâm lý học k25",
+      "expected_document_ids": [
+        1
+      ],
+      "expected_document_titles": [],
+      "expected_pages_any": [
+        1
+      ],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": 1,
+        "page_reciprocal_rank": 1.0,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        }
+      },
+      "retrieval_queries": [
+        "học phí ngành tâm lý học k25"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 321,
+          "document_id": 1,
+          "document_title": "Mức thu học phí ĐHCQ khóa 2025 – năm học 2025–2026",
+          "page_number": 1,
+          "chunk_index": 0,
+          "semantic_score": 0.528666,
+          "final_score": 0.878666,
+          "retrieval_score": 0.877666,
+          "retrieval_query": "học phí ngành tâm lý học k25",
+          "snippet": "Bộ Giáo dục và Đào tạo Cộng hòa Xã hội Chủ nghĩa Việt Nam Trường Đại học Mở Độc lập - Tự do - Hạnh phúc Thành phố Hồ Chí Minh S: 1572 /TB-ĐHM Thành phố Hồ Chí Minh, ngày 17 tháng 07 năm 2025 Thông báo V mức thu học phí đại học chính quy và liên thông đại học chính quy khóa 2025năm hc 2025-2026 Căn c"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 322,
+          "document_id": 1,
+          "document_title": "Mức thu học phí ĐHCQ khóa 2025 – năm học 2025–2026",
+          "page_number": 1,
+          "chunk_index": 1,
+          "semantic_score": 0.527257,
+          "final_score": 0.877257,
+          "retrieval_score": 0.875257,
+          "retrieval_query": "học phí ngành tâm lý học k25",
+          "snippet": "Giáo dục quốc phòng - An ninh. 465.000đ/tín chỉ Giáo dục thể chất. 585.000đ/tín chỉ Các môn Toán, Lý luận chính trị. 735.000đ/tín chỉ Ngành Xã hội học, Công tác xã hội, Đông Nam Á học, 665.000đ/tín chỉ Tâm lý học. Ngành Kinh tế, Quản lý công. 620.000đ/tín chỉ Ngành Tài chính - Ngân hàng, Bảo hiểm, K"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 323,
+          "document_id": 1,
+          "document_title": "Mức thu học phí ĐHCQ khóa 2025 – năm học 2025–2026",
+          "page_number": 1,
+          "chunk_index": 2,
+          "semantic_score": 0.445925,
+          "final_score": 0.795925,
+          "retrieval_score": 0.792925,
+          "retrieval_query": "học phí ngành tâm lý học k25",
+          "snippet": "825.000đ/tín chỉ Toán, Luật, Luật Kinh tế. Ngành Quản trị kinh doanh, Kinh doanh Quốc tế, Quản trị nhân Logistics và Quản lý chuỗi cung ứng 825.000đ/tín chỉ úng, Du lịch."
+        },
+        {
+          "rank": 4,
+          "chunk_id": 324,
+          "document_id": 1,
+          "document_title": "Mức thu học phí ĐHCQ khóa 2025 – năm học 2025–2026",
+          "page_number": 2,
+          "chunk_index": 3,
+          "semantic_score": 0.437529,
+          "final_score": 0.787529,
+          "retrieval_score": 0.783529,
+          "retrieval_query": "học phí ngành tâm lý học k25",
+          "snippet": "Ngôn ngữ Trung Quốc, Ngôn ngữ Nhật, Ngôn ng 735.000đ/tín chỉ Hàn Quốc. Ngôn ngữ Anh. 845.000đ/tín chỉ Các môn Ngoại ngữ không chuyên. 580.000đ/tín chỉ Ngành Công nghệ kỹ thuật công trình xây dựng, Quản lý 920.000đ/tín chỉ xây dựng. Ngành Công nghệ sinh học, Công nghệ thực phẩm. 855.000đ/tín chỉ Ngàn"
+        }
+      ]
+    },
+    {
+      "id": "tuition_psychology_k2023",
+      "corpus": "ou",
+      "category": "tuition",
+      "email": "admin@ou.edu.vn",
+      "question": "học phí ngành tâm lý học k23",
+      "expected_document_ids": [
+        2
+      ],
+      "expected_document_titles": [],
+      "expected_pages_any": [
+        1
+      ],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": 1,
+        "page_reciprocal_rank": 1.0,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        }
+      },
+      "retrieval_queries": [
+        "học phí ngành tâm lý học k23"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 561,
+          "document_id": 2,
+          "document_title": "Mức thu học phí ĐHCQ khóa 2022–2023 – năm học 2025–2026",
+          "page_number": 1,
+          "chunk_index": 1,
+          "semantic_score": 0.557088,
+          "final_score": 0.907088,
+          "retrieval_score": 0.906088,
+          "retrieval_query": "học phí ngành tâm lý học k23",
+          "snippet": "Giáo dục quốc phòng - An ninh. 356.000đ/tín chỉ Giáo dục thể chất. 453.000đ/tín chỉ Các môn Toán, Lý luận chính trị. 601.000đ/tín chỉ Ngành Xã hội học, Công tác xã hội, Đông Nam Á học, 532.500đ/tín chỉ Tâm lý học. Ngành Kinh tế, Quản lý công. 561.000đ/tín chỉ Ngành Tài chính - Ngân hàng, Kế toán, Ki"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 560,
+          "document_id": 2,
+          "document_title": "Mức thu học phí ĐHCQ khóa 2022–2023 – năm học 2025–2026",
+          "page_number": 1,
+          "chunk_index": 0,
+          "semantic_score": 0.53813,
+          "final_score": 0.88813,
+          "retrieval_score": 0.88613,
+          "retrieval_query": "học phí ngành tâm lý học k23",
+          "snippet": "Bộ Giáo dục và Đào tạo Cộng hòa Xã hội Chủ nghĩa Việt Nam Trường Đại học Mở Độc lập - Tự do - Hạnh phúc Thành phố Hồ Chí Minh Só: 1663 /TB-DHM Thành phố Hồ Chí Minh, ngày 05 tháng 08 năm 2025 Thông báo V mức thu học phí đại học chính quy và liên thông đại học chính quy khóa 2022, 2023 Năm học 2025-2"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 563,
+          "document_id": 2,
+          "document_title": "Mức thu học phí ĐHCQ khóa 2022–2023 – năm học 2025–2026",
+          "page_number": 2,
+          "chunk_index": 3,
+          "semantic_score": 0.498165,
+          "final_score": 0.848165,
+          "retrieval_score": 0.845165,
+          "retrieval_query": "học phí ngành tâm lý học k23",
+          "snippet": "mức thu học phí Khi-Ngành theo tín chỉ Các môn Ngoại ngữ không chuyên. 580.000đ/tín chỉ Ngành Công nghệ kỹ thuật công trình xây dựng, Quản lý 748.000đ/tín chỉ xây dựng. Ngành Công nghệ sinh học, Công nghệ thực phẩm. 748.000đ/tín chỉ Ngành Công nghệ thông tin, Hệ thống thông tin quản lý, Khoa học máy"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 562,
+          "document_id": 2,
+          "document_title": "Mức thu học phí ĐHCQ khóa 2022–2023 – năm học 2025–2026",
+          "page_number": 1,
+          "chunk_index": 2,
+          "semantic_score": 0.399719,
+          "final_score": 0.749719,
+          "retrieval_score": 0.745719,
+          "retrieval_query": "học phí ngành tâm lý học k23",
+          "snippet": "691.000đ/tín chỉ Luật kinh tế. Ngành Quản trị kinh doanh, Kinh doanh Quốc tế, Qun tr nhân lực, Marketing, Logistics và Quản lý chuỗi cung ứng 691.000đ/tín chỉ ng, Du lịch. Ngành Ngôn ngữ Trung Quốc, Ngôn ngữ Nhật, Ngôn ng 601.000đ/tín chỉ Hàn Quốc. Ngành Ngôn ngữ Anh. 669.000đ/tín chỉ"
+        }
+      ]
+    },
+    {
+      "id": "fee_english_basic",
+      "corpus": "ou",
+      "category": "fees",
+      "email": "admin@ou.edu.vn",
+      "question": "học phí tiếng Anh căn bản năm học 2025-2026 bao nhiêu?",
+      "expected_document_ids": [
+        9
+      ],
+      "expected_document_titles": [],
+      "expected_pages_any": [
+        1
+      ],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": 1,
+        "page_reciprocal_rank": 1.0,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        }
+      },
+      "retrieval_queries": [
+        "học phí tiếng Anh căn bản năm học 2025-2026 bao nhiêu?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 326,
+          "document_id": 9,
+          "document_title": "Mức thu tiếng Anh căn bản và các chương trình chuẩn đầu ra – năm học 2025–2026",
+          "page_number": 1,
+          "chunk_index": 1,
+          "semantic_score": 0.590565,
+          "final_score": 0.790565,
+          "retrieval_score": 0.789565,
+          "retrieval_query": "học phí tiếng Anh căn bản năm học 2025-2026 bao nhiêu?",
+          "snippet": "580.000đ/tín chỉ Ting Anh căn bn 2 580.000đ/tín chỉ Ting Anh căn bn 3 580.000đ/tín chỉ Sinh viên chương trình chun Ting Anh căn bn 4 580.000đ/tín chỉ Ting Anh căn bàn 5 580.000đ/tín chỉ Chun đu ra ting Anh B1 300.000d/làn thi Sinh viên chương trình chun. Sinh viên chưong trình cht lưng"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 325,
+          "document_id": 9,
+          "document_title": "Mức thu tiếng Anh căn bản và các chương trình chuẩn đầu ra – năm học 2025–2026",
+          "page_number": 1,
+          "chunk_index": 0,
+          "semantic_score": 0.629877,
+          "final_score": 0.679877,
+          "retrieval_score": 0.677877,
+          "retrieval_query": "học phí tiếng Anh căn bản năm học 2025-2026 bao nhiêu?",
+          "snippet": "B GIÁO DC VÀ ĐÀO TO CNG HOÀ XĂ HI CH NGHA VIT NAM TRUÒNG ĐI HC M Đc lp - T do - Hnh phúc THÀNH PH H CHÍ MINH S: 992 /TB-ĐHM Thành ph H Chí Minh, ngày 04 tháng 5 năm 2026 THÔNG BÁO V mc thu chưrơng trình ting Anh căn bn và các chưrơng trình đu ra Năm học 2025-2026 Căn cú Ngh đnh s 238/2025/NĐ-CP ngày"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 327,
+          "document_id": 9,
+          "document_title": "Mức thu tiếng Anh căn bản và các chương trình chuẩn đầu ra – năm học 2025–2026",
+          "page_number": 1,
+          "chunk_index": 2,
+          "semantic_score": 0.59095,
+          "final_score": 0.59095,
+          "retrieval_score": 0.58795,
+          "retrieval_query": "học phí tiếng Anh căn bản năm học 2025-2026 bao nhiêu?",
+          "snippet": "Chun đu ra ting Anh B2 300.000đ/ln thi cao/tiên tin. H"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 328,
+          "document_id": 9,
+          "document_title": "Mức thu tiếng Anh căn bản và các chương trình chuẩn đầu ra – năm học 2025–2026",
+          "page_number": 2,
+          "chunk_index": 3,
+          "semantic_score": 0.515266,
+          "final_score": 0.515266,
+          "retrieval_score": 0.511266,
+          "retrieval_query": "học phí tiếng Anh căn bản năm học 2025-2026 bao nhiêu?",
+          "snippet": "Tên chưong trình Só tièn Ghi chú Sinh viên chương trình chun và Chun đu ra ting Anh C1 300.000d/làn thi chương trình cht lưng cao/tiên tin. Ôn thi Chun đu ra ting Anh B1 580.000đ Sinh viên chương trình chun. Sinh viên chương trình cht lưng Ôn thi Chun đu ra ting Anh B2 580.000d cao/tiên tin. Sinh vi"
+        }
+      ]
+    },
+    {
+      "id": "fee_gdqp_gdtc_long_hung",
+      "corpus": "ou",
+      "category": "fees",
+      "email": "admin@ou.edu.vn",
+      "question": "chi phí GDQP-AN và GDTC tại Long Hưng là bao nhiêu?",
+      "expected_document_ids": [
+        10
+      ],
+      "expected_document_titles": [],
+      "expected_pages_any": [
+        1
+      ],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": 2,
+        "page_reciprocal_rank": 0.5,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 0,
+          "3": 1,
+          "5": 1
+        }
+      },
+      "retrieval_queries": [
+        "chi phí GDQP-AN và GDTC tại Long Hưng là bao nhiêu?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 288,
+          "document_id": 10,
+          "document_title": "Chi phí GDQP-AN và GDTC tại cơ sở Long Hưng – năm học 2025–2026",
+          "page_number": 7,
+          "chunk_index": 11,
+          "semantic_score": 0.782453,
+          "final_score": 0.982453,
+          "retrieval_score": 0.981453,
+          "retrieval_query": "chi phí GDQP-AN và GDTC tại Long Hưng là bao nhiêu?",
+          "snippet": "250.000d/sinh vien 666.000d/sinh vier' 2.160.000d/sinh vien 3.076.000d/sinh vien No'i nhin: - Cac Pho H*1 TnrOng (de trien khai); - Cac don vi lion quan thuOc Tremg; - Sinh vien he dai hpc chinh quy; - Luu: VT; P.TCKT, LOC (5)"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 278,
+          "document_id": 10,
+          "document_title": "Chi phí GDQP-AN và GDTC tại cơ sở Long Hưng – năm học 2025–2026",
+          "page_number": 1,
+          "chunk_index": 1,
+          "semantic_score": 0.691727,
+          "final_score": 0.891727,
+          "retrieval_score": 0.889727,
+          "retrieval_query": "chi phí GDQP-AN và GDTC tại Long Hưng là bao nhiêu?",
+          "snippet": "+ 01 man/dot hoc) - Tien dien, ntrac, ky tirc xa, dich vu ve sinh: 760.000d/sinh vien - Tien an: 2.160.000d/sinh vien Tang Ong: 3.170.000d/sinh vien 2. Thai gian ap dung va doi tuning ap dpng: - Thai gian ap (king: Tir h9c kST 1/2025-2026 - D6i tuang ap dung: Sinh vien h9c mon Giao duc qu6c phong va"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 284,
+          "document_id": 10,
+          "document_title": "Chi phí GDQP-AN và GDTC tại cơ sở Long Hưng – năm học 2025–2026",
+          "page_number": 5,
+          "chunk_index": 7,
+          "semantic_score": 0.776349,
+          "final_score": 0.776349,
+          "retrieval_score": 0.773349,
+          "retrieval_query": "chi phí GDQP-AN và GDTC tại Long Hưng là bao nhiêu?",
+          "snippet": "- Lint: VT (CSLH), BTTH (1)."
+        },
+        {
+          "rank": 4,
+          "chunk_id": 323,
+          "document_id": 1,
+          "document_title": "Mức thu học phí ĐHCQ khóa 2025 – năm học 2025–2026",
+          "page_number": 1,
+          "chunk_index": 2,
+          "semantic_score": 0.520946,
+          "final_score": 0.720946,
+          "retrieval_score": 0.716946,
+          "retrieval_query": "chi phí GDQP-AN và GDTC tại Long Hưng là bao nhiêu?",
+          "snippet": "825.000đ/tín chỉ Toán, Luật, Luật Kinh tế. Ngành Quản trị kinh doanh, Kinh doanh Quốc tế, Quản trị nhân Logistics và Quản lý chuỗi cung ứng 825.000đ/tín chỉ úng, Du lịch."
+        },
+        {
+          "rank": 5,
+          "chunk_id": 294,
+          "document_id": 7,
+          "document_title": "Học phí chương trình tiên tiến khóa 2025 – năm học 2025–2026",
+          "page_number": 2,
+          "chunk_index": 1,
+          "semantic_score": 0.500007,
+          "final_score": 0.700007,
+          "retrieval_score": 0.695007,
+          "retrieval_query": "chi phí GDQP-AN và GDTC tại Long Hưng là bao nhiêu?",
+          "snippet": "Khoa h9c may tinh 49.500.000d/sinh vien (16.500.000d/sinh vien/hQc kk) C6ng ngh0 ky thuat cong trinh xay dung C6ng nghe' thong tin C8ng ngh0 sinh hoc (bao gtim xe dua don di thuc tap) 46.500.000d/sinh vial (15.500.000d/sinh vien/h9c kS,) — Thai gian ap dung: Nam hoc 2025-2026. Tran tr9ng./. Noi nhi)"
+        }
+      ]
+    },
+    {
+      "id": "fee_advanced_program_k2025",
+      "corpus": "ou",
+      "category": "fees",
+      "email": "admin@ou.edu.vn",
+      "question": "Học phí chương trình tiên tiến khóa 2025 tính thế nào?",
+      "expected_document_ids": [
+        7
+      ],
+      "expected_document_titles": [],
+      "expected_pages_any": [
+        2
+      ],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": 1,
+        "page_reciprocal_rank": 1.0,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        }
+      },
+      "retrieval_queries": [
+        "Học phí chương trình tiên tiến khóa 2025 tính thế nào?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 294,
+          "document_id": 7,
+          "document_title": "Học phí chương trình tiên tiến khóa 2025 – năm học 2025–2026",
+          "page_number": 2,
+          "chunk_index": 1,
+          "semantic_score": 0.458051,
+          "final_score": 0.808051,
+          "retrieval_score": 0.807051,
+          "retrieval_query": "Học phí chương trình tiên tiến khóa 2025 tính thế nào?",
+          "snippet": "Khoa h9c may tinh 49.500.000d/sinh vien (16.500.000d/sinh vien/hQc kk) C6ng ngh0 ky thuat cong trinh xay dung C6ng nghe' thong tin C8ng ngh0 sinh hoc (bao gtim xe dua don di thuc tap) 46.500.000d/sinh vial (15.500.000d/sinh vien/h9c kS,) — Thai gian ap dung: Nam hoc 2025-2026. Tran tr9ng./. Noi nhi)"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 293,
+          "document_id": 7,
+          "document_title": "Học phí chương trình tiên tiến khóa 2025 – năm học 2025–2026",
+          "page_number": 1,
+          "chunk_index": 0,
+          "semantic_score": 0.334397,
+          "final_score": 0.684397,
+          "retrieval_score": 0.682397,
+          "retrieval_query": "Học phí chương trình tiên tiến khóa 2025 tính thế nào?",
+          "snippet": "BO GIAO DVC VA DAO TAO TRIfONG DAI HOC MO THANH PHO HO CHI MINH LONG HOA XA HOI CHU NGHIA VIVI' NAM DOc lap — Tyr do —Hanh phtic S6: 1573 /TB-OHM Thanh phd Hd Chi Minh, ngay 17 thong 07 nom 2025 THONG BAO vt mire thu h9c phi chtrang trinh tien tien dai h9c chinh quy khoa 2025 tai khoa Dao tao dac bi"
+        }
+      ]
+    },
+    {
+      "id": "study_time_nha_be",
+      "corpus": "ou",
+      "category": "utility",
+      "email": "admin@ou.edu.vn",
+      "question": "thời gian học tập của cơ sở Nhà Bè",
+      "expected_document_ids": [
+        30
+      ],
+      "expected_document_titles": [],
+      "expected_pages_any": [
+        21
+      ],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": 2,
+        "page_reciprocal_rank": 0.5,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 0,
+          "3": 1,
+          "5": 1
+        }
+      },
+      "retrieval_queries": [
+        "thời gian học tập của cơ sở Nhà Bè"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 589,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 19,
+          "chunk_index": 25,
+          "semantic_score": 0.408438,
+          "final_score": 2.978438,
+          "retrieval_score": 2.977438,
+          "retrieval_query": "thời gian học tập của cơ sở Nhà Bè",
+          "snippet": "Sổ tay sinh viên 2024 25 liệu ebook 4 năm học (400.000 đồng) + Bán lẻ: giá ưu đãi theo từng tựa sách dành cho đối tượng là sinh viên, giảng viên, CBVC của Trường - Thông tin thư quán của Trường: ➢ Thư quán tại cơ sở 97, Võ Văn T ần, Phường Võ Thị Sáu, quận 3, Tp.HCM, Phòng 002, điện thoại hành chính"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 591,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 21,
+          "chunk_index": 27,
+          "semantic_score": 0.385247,
+          "final_score": 2.955247,
+          "retrieval_score": 2.953247,
+          "retrieval_query": "thời gian học tập của cơ sở Nhà Bè",
+          "snippet": "Sổ tay sinh viên 2024 27 Chuyển nhóm học 9:05 9:20 2 Tiết 1 9:20 10:10 Tiết 2 10:10 11:00 Bố trí 2,5 tiết 11:25 Chiều 1 Tiết 1 12:45 13:35 Tiết 2 13:35 14:25 Bố trí 2,5 tiết 14:50 Chuyển nhóm học 14:50 15:05 2 Tiết 1 15:05 15:55 Tiết 2 15:55 16:45 Bố trí 2,5 tiết 17:10 Tối Bố trí 2,5 tiết 17:30 19:3"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 590,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 20,
+          "chunk_index": 26,
+          "semantic_score": 0.427547,
+          "final_score": 2.097547,
+          "retrieval_score": 2.094547,
+          "retrieval_query": "thời gian học tập của cơ sở Nhà Bè",
+          "snippet": "26 Sổ tay sinh viên 2024 8. KHUNG THỜI GIAN RA – VÀO LỚP KHUNG THỜI GIAN RA – VÀO LỚP Thời gian áp dụng: Từ năm học 2024 - 2025 1. Tại địa điểm học 97 Võ Văn Tần và số 02 Mai Thị Lựu: a) Khung thời gian theo buổi: Buổi học Tiết học Giờ bắt đầu Giờ kết thúc Sáng Tiết 1 7:00 7:50 Tiết 2 7:50 8:40 Tiết"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 580,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 14,
+          "chunk_index": 16,
+          "semantic_score": 0.426105,
+          "final_score": 2.096105,
+          "retrieval_score": 2.092105,
+          "retrieval_query": "thời gian học tập của cơ sở Nhà Bè",
+          "snippet": "20 Sổ tay sinh viên 2024 6.7. Phòng Khảo thí Liên hệ: Phòng 501 – 35,37 Hồ Hảo Hớn, Phường Cô Giang, Quận 1 Điện thoại: (028) 39207629 Website: http://www.ou.edu.vn/ttkt E-mail: pkt@ou.edu.vn - Tổ chức thi kết thúc học kỳ, công bố điểm thi; - Quản lý điểm thi giữa kỳ, thi kết thúc học kỳ, thi/bảo vệ"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 846,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 134,
+          "chunk_index": 282,
+          "semantic_score": 0.216887,
+          "final_score": 1.886887,
+          "retrieval_score": 1.881887,
+          "retrieval_query": "thời gian học tập của cơ sở Nhà Bè",
+          "snippet": "140 Sổ tay sinh viên 2024 ĐIỆN THOẠI LIÊN LẠC CẦN THIẾT KHÁC STT ĐƠN VỊ ĐIỆN THOẠI 1 CƠ SỞ - LONG BÌNH 0251 8826399 0251 8826480 0251 8826481 0251 8826482 0251 8826483 0251 8826484 2 CƠ CỞ - BÌNH DƯƠNG 0274 3822 456 0274 3840 080 0274 3828 631 Fax: 0274 3824 708 3 CƠ SỞ – NINH HÒA 02583 634 540 0258"
+        }
+      ]
+    },
+    {
+      "id": "study_time_vo_van_tan",
+      "corpus": "ou",
+      "category": "utility",
+      "email": "admin@ou.edu.vn",
+      "question": "thời gian học tập của cơ sở Võ Văn Tần",
+      "expected_document_ids": [
+        30
+      ],
+      "expected_document_titles": [],
+      "expected_pages_any": [
+        20
+      ],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": 2,
+        "page_reciprocal_rank": 0.5,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 0,
+          "3": 1,
+          "5": 1
+        }
+      },
+      "retrieval_queries": [
+        "thời gian học tập của cơ sở Võ Văn Tần"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 589,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 19,
+          "chunk_index": 25,
+          "semantic_score": 0.320946,
+          "final_score": 2.890946,
+          "retrieval_score": 2.889946,
+          "retrieval_query": "thời gian học tập của cơ sở Võ Văn Tần",
+          "snippet": "Sổ tay sinh viên 2024 25 liệu ebook 4 năm học (400.000 đồng) + Bán lẻ: giá ưu đãi theo từng tựa sách dành cho đối tượng là sinh viên, giảng viên, CBVC của Trường - Thông tin thư quán của Trường: ➢ Thư quán tại cơ sở 97, Võ Văn T ần, Phường Võ Thị Sáu, quận 3, Tp.HCM, Phòng 002, điện thoại hành chính"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 590,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 20,
+          "chunk_index": 26,
+          "semantic_score": 0.564917,
+          "final_score": 2.374917,
+          "retrieval_score": 2.372917,
+          "retrieval_query": "thời gian học tập của cơ sở Võ Văn Tần",
+          "snippet": "26 Sổ tay sinh viên 2024 8. KHUNG THỜI GIAN RA – VÀO LỚP KHUNG THỜI GIAN RA – VÀO LỚP Thời gian áp dụng: Từ năm học 2024 - 2025 1. Tại địa điểm học 97 Võ Văn Tần và số 02 Mai Thị Lựu: a) Khung thời gian theo buổi: Buổi học Tiết học Giờ bắt đầu Giờ kết thúc Sáng Tiết 1 7:00 7:50 Tiết 2 7:50 8:40 Tiết"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 568,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 5,
+          "chunk_index": 4,
+          "semantic_score": 0.521058,
+          "final_score": 2.191058,
+          "retrieval_score": 2.188058,
+          "retrieval_query": "thời gian học tập của cơ sở Võ Văn Tần",
+          "snippet": "Sổ tay sinh viên 2024 11 6. NƠI SINH VIÊN LIÊN HỆ Khi cần giải quyết công việc, sinh viên liên hệ trực tiếp với các đơn vị sau đây: 6.1. Văn phòng các khoa - Kế hoạch học tập học kỳ, năm học (học lý thuyết, thực hành, thực tập tốt nghiệp, thi học kỳ…) và hướng dẫn thực hiện kế hoạch; - Cấp giấy giới"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 585,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 17,
+          "chunk_index": 21,
+          "semantic_score": 0.493871,
+          "final_score": 2.163871,
+          "retrieval_score": 2.159871,
+          "retrieval_query": "thời gian học tập của cơ sở Võ Văn Tần",
+          "snippet": "Sổ tay sinh viên 2024 23 Pháp, tiếng Trung,…); tin học (chứng chỉ tin học A, B và các khóa học tin học ngắn hạn khác); - Các chương trình liên k ết đào tạo cho đối tượng học viên và sinh viên, học viên cao học, đào tạo từ xa, các công ty, cơ quan,… 6.14. Trung tâm Đào tạo Từ xa Liên hệ: Phòng 004 – "
+        },
+        {
+          "rank": 5,
+          "chunk_id": 584,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 16,
+          "chunk_index": 20,
+          "semantic_score": 0.471086,
+          "final_score": 2.141086,
+          "retrieval_score": 2.136086,
+          "retrieval_query": "thời gian học tập của cơ sở Võ Văn Tần",
+          "snippet": "22 Sổ tay sinh viên 2024 6.11. Phòng Thanh tra – Pháp chế Liên hệ: Phòng 701 – 35,37 Hồ Hảo Hớn, Phường Cô Giang, Quận 1 Điện thoại: (028) 39207634 Website: www.ou.edu.vn/thanhtra E-mail: ttdt@ou.edu.vn - Thanh tra việc thực hiện các chế độ chính sách cho sinh viên và các công tác quản lý sinh viên;"
+        }
+      ]
+    },
+    {
+      "id": "study_time_long_hung_gdqp",
+      "corpus": "ou",
+      "category": "utility",
+      "email": "admin@ou.edu.vn",
+      "question": "thời gian học tập của cơ sở Long Hưng GDQP",
+      "expected_document_ids": [
+        10,
+        30
+      ],
+      "expected_document_titles": [],
+      "expected_pages_any": [],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": null,
+        "page_reciprocal_rank": null,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 0.5,
+          "3": 0.5,
+          "5": 0.5
+        },
+        "page_hit_at": {
+          "1": null,
+          "3": null,
+          "5": null
+        }
+      },
+      "retrieval_queries": [
+        "thời gian học tập của cơ sở Long Hưng GDQP"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 591,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 21,
+          "chunk_index": 27,
+          "semantic_score": 0.341881,
+          "final_score": 2.911881,
+          "retrieval_score": 2.910881,
+          "retrieval_query": "thời gian học tập của cơ sở Long Hưng GDQP",
+          "snippet": "Sổ tay sinh viên 2024 27 Chuyển nhóm học 9:05 9:20 2 Tiết 1 9:20 10:10 Tiết 2 10:10 11:00 Bố trí 2,5 tiết 11:25 Chiều 1 Tiết 1 12:45 13:35 Tiết 2 13:35 14:25 Bố trí 2,5 tiết 14:50 Chuyển nhóm học 14:50 15:05 2 Tiết 1 15:05 15:55 Tiết 2 15:55 16:45 Bố trí 2,5 tiết 17:10 Tối Bố trí 2,5 tiết 17:30 19:3"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 589,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 19,
+          "chunk_index": 25,
+          "semantic_score": 0.334332,
+          "final_score": 2.904332,
+          "retrieval_score": 2.902332,
+          "retrieval_query": "thời gian học tập của cơ sở Long Hưng GDQP",
+          "snippet": "Sổ tay sinh viên 2024 25 liệu ebook 4 năm học (400.000 đồng) + Bán lẻ: giá ưu đãi theo từng tựa sách dành cho đối tượng là sinh viên, giảng viên, CBVC của Trường - Thông tin thư quán của Trường: ➢ Thư quán tại cơ sở 97, Võ Văn T ần, Phường Võ Thị Sáu, quận 3, Tp.HCM, Phòng 002, điện thoại hành chính"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 568,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 5,
+          "chunk_index": 4,
+          "semantic_score": 0.422963,
+          "final_score": 2.092963,
+          "retrieval_score": 2.089963,
+          "retrieval_query": "thời gian học tập của cơ sở Long Hưng GDQP",
+          "snippet": "Sổ tay sinh viên 2024 11 6. NƠI SINH VIÊN LIÊN HỆ Khi cần giải quyết công việc, sinh viên liên hệ trực tiếp với các đơn vị sau đây: 6.1. Văn phòng các khoa - Kế hoạch học tập học kỳ, năm học (học lý thuyết, thực hành, thực tập tốt nghiệp, thi học kỳ…) và hướng dẫn thực hiện kế hoạch; - Cấp giấy giới"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 590,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 20,
+          "chunk_index": 26,
+          "semantic_score": 0.38596,
+          "final_score": 2.05596,
+          "retrieval_score": 2.05196,
+          "retrieval_query": "thời gian học tập của cơ sở Long Hưng GDQP",
+          "snippet": "26 Sổ tay sinh viên 2024 8. KHUNG THỜI GIAN RA – VÀO LỚP KHUNG THỜI GIAN RA – VÀO LỚP Thời gian áp dụng: Từ năm học 2024 - 2025 1. Tại địa điểm học 97 Võ Văn Tần và số 02 Mai Thị Lựu: a) Khung thời gian theo buổi: Buổi học Tiết học Giờ bắt đầu Giờ kết thúc Sáng Tiết 1 7:00 7:50 Tiết 2 7:50 8:40 Tiết"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 580,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 14,
+          "chunk_index": 16,
+          "semantic_score": 0.343576,
+          "final_score": 2.013576,
+          "retrieval_score": 2.008576,
+          "retrieval_query": "thời gian học tập của cơ sở Long Hưng GDQP",
+          "snippet": "20 Sổ tay sinh viên 2024 6.7. Phòng Khảo thí Liên hệ: Phòng 501 – 35,37 Hồ Hảo Hớn, Phường Cô Giang, Quận 1 Điện thoại: (028) 39207629 Website: http://www.ou.edu.vn/ttkt E-mail: pkt@ou.edu.vn - Tổ chức thi kết thúc học kỳ, công bố điểm thi; - Quản lý điểm thi giữa kỳ, thi kết thúc học kỳ, thi/bảo vệ"
+        }
+      ]
+    },
+    {
+      "id": "procedure_course_registration",
+      "corpus": "ou",
+      "category": "procedure",
+      "email": "admin@ou.edu.vn",
+      "question": "quy trình đăng ký môn học như thế nào?",
+      "expected_document_ids": [
+        30
+      ],
+      "expected_document_titles": [],
+      "expected_pages_any": [
+        91
+      ],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 2,
+        "reciprocal_rank": 0.5,
+        "first_relevant_page_rank": 3,
+        "page_reciprocal_rank": 0.3333333333333333,
+        "hit_at": {
+          "1": 0,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 0.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 0,
+          "3": 1,
+          "5": 1
+        }
+      },
+      "retrieval_queries": [
+        "quy trình đăng ký môn học như thế nào?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 50,
+          "document_id": 27,
+          "document_title": "Quy chế đào tạo đại học hệ chính quy theo hệ thống tín chỉ – áp dụng từ khóa 2016",
+          "page_number": 6,
+          "chunk_index": 15,
+          "semantic_score": 0.772313,
+          "final_score": 1.912313,
+          "retrieval_score": 1.911313,
+          "retrieval_query": "quy trình đăng ký môn học như thế nào?",
+          "snippet": "6 Trường. 4. Sinh viên được cấp: a) Mã số sinh viên; b) Thẻ sinh viên; c) Địa chỉ thư điện tử cá nhân; d) Sổ tay sinh viên. 5. Mọi thủ tục đăng ký nhập học phải được hoàn thành trong thời hạn theo quy định tại Quy chế tuyển sinh đại học, cao đẳng hệ chính quy hiện hành. 6. Sinh viên nhập học được Tr"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 633,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 42,
+          "chunk_index": 69,
+          "semantic_score": 0.739106,
+          "final_score": 1.879106,
+          "retrieval_score": 1.877106,
+          "retrieval_query": "quy trình đăng ký môn học như thế nào?",
+          "snippet": "48 Sổ tay sinh viên 2024 (trực tiếp hoặc trực tuyến), lịch học, lịch thi c ủa các môn h ọc được tổ chức trong học kỳ cho các khoá học, chương trình đào tạo. Kế hoạch học kỳ được Phòng Quản lý đào tạo xây dựng và công bố kịp thời với đầy đủ thông tin cần thiết, bảo đảm thuận tiện cho sinh viên xây dự"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 743,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 91,
+          "chunk_index": 179,
+          "semantic_score": 0.730913,
+          "final_score": 1.870913,
+          "retrieval_score": 1.867913,
+          "retrieval_query": "quy trình đăng ký môn học như thế nào?",
+          "snippet": "tháng. b) Đăng ký môn h ọc trễ hạn là hình thức đăng ký tr ực tiếp tại Phòng Quản lý đào tạo, được tổ chức thực hiện trong 02 tuần đầu của học kỳ, dành cho những sinh viên cần điều chỉnh khối lượng học tập đã đăng ký sau khi kết"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 742,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 91,
+          "chunk_index": 178,
+          "semantic_score": 0.729125,
+          "final_score": 1.869125,
+          "retrieval_score": 1.865125,
+          "retrieval_query": "quy trình đăng ký môn học như thế nào?",
+          "snippet": "Sổ tay sinh viên 2024 97 6. QUY ĐỊNH Đăng ký môn học (Kèm theo Quyết định số 1644/QĐ-ĐHM ngày 16 tháng 6 năm 2023 của Hiệu trưởng Trường Đại học Mở Thành phố Hồ Chí Minh) Điều 1. Phạm vi điều chỉnh và đối tượng áp dụng 1. Văn bản này quy đ ịnh về việc đăng ký môn h ọc tại Trường Đại học Mở Thành phố"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 745,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 92,
+          "chunk_index": 181,
+          "semantic_score": 0.70769,
+          "final_score": 1.84769,
+          "retrieval_score": 1.84269,
+          "retrieval_query": "quy trình đăng ký môn học như thế nào?",
+          "snippet": "98 Sổ tay sinh viên 2024 Điều 4. Kế hoạch đăng ký môn học trực tuyến Đầu mỗi học kỳ, Phòng Quản lý đào tạo công bố công khai kế hoạch tổ chức đăng ký môn h ọc trực tuyến trên trang thông tin đi ện tử của Trường và của Phòng Quản lý đào tạo. Kế hoạch có các mốc thời gian đăng ký môn học cụ thể cho từ"
+        }
+      ]
+    },
+    {
+      "id": "procedure_course_withdrawal",
+      "corpus": "ou",
+      "category": "procedure",
+      "email": "admin@ou.edu.vn",
+      "question": "muốn rút môn học thì làm sao?",
+      "expected_document_ids": [
+        30
+      ],
+      "expected_document_titles": [],
+      "expected_pages_any": [
+        43,
+        91,
+        93,
+        94
+      ],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 2,
+        "reciprocal_rank": 0.5,
+        "first_relevant_page_rank": 3,
+        "page_reciprocal_rank": 0.3333333333333333,
+        "hit_at": {
+          "1": 0,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 0.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 0,
+          "3": 1,
+          "5": 1
+        }
+      },
+      "retrieval_queries": [
+        "muốn rút môn học thì làm sao?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 56,
+          "document_id": 27,
+          "document_title": "Quy chế đào tạo đại học hệ chính quy theo hệ thống tín chỉ – áp dụng từ khóa 2016",
+          "page_number": 8,
+          "chunk_index": 21,
+          "semantic_score": 0.511424,
+          "final_score": 1.651424,
+          "retrieval_score": 1.650424,
+          "retrieval_query": "muốn rút môn học thì làm sao?",
+          "snippet": "8  Bị bệnh hoặc tai nạn phải điều trị thời gian dài hơn 1 học kỳ. Trường hợp này sinh viên phải có giấy xác nhận do cơ quan y tế cấp quận, huyện trở lên cấp;  Vì nhu cầu cá nhân. Trường hợp này sinh viên phải học í t nhất một học kỳ ở Trường và không rơi vào trường hợp bị buộc thôi học quy định tạ"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 568,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 5,
+          "chunk_index": 4,
+          "semantic_score": 0.507717,
+          "final_score": 1.647717,
+          "retrieval_score": 1.645717,
+          "retrieval_query": "muốn rút môn học thì làm sao?",
+          "snippet": "Sổ tay sinh viên 2024 11 6. NƠI SINH VIÊN LIÊN HỆ Khi cần giải quyết công việc, sinh viên liên hệ trực tiếp với các đơn vị sau đây: 6.1. Văn phòng các khoa - Kế hoạch học tập học kỳ, năm học (học lý thuyết, thực hành, thực tập tốt nghiệp, thi học kỳ…) và hướng dẫn thực hiện kế hoạch; - Cấp giấy giới"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 748,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 93,
+          "chunk_index": 184,
+          "semantic_score": 0.49211,
+          "final_score": 1.63211,
+          "retrieval_score": 1.62911,
+          "retrieval_query": "muốn rút môn học thì làm sao?",
+          "snippet": "Sổ tay sinh viên 2024 99 b) Sinh viên chính khóa mu ốn học vượt môn học cơ sở ngành, ngành, chuyên ngành phải làm đơn đề nghị được học vượt và được Cố vấn học tập phê duyệt. Sinh viên nộp đơn đăng ký học vượt đã được Cố vấn học tập cho phép cho Phòng Quản lý đào tạo để được hỗ trợ đăng ký môn học nế"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 666,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 54,
+          "chunk_index": 102,
+          "semantic_score": 0.48638,
+          "final_score": 1.62638,
+          "retrieval_score": 1.62238,
+          "retrieval_query": "muốn rút môn học thì làm sao?",
+          "snippet": "60 Sổ tay sinh viên 2024 quả chấm thi kết thúc môn học nộp tại Phòng Thanh tra – Pháp chế để được giải quyết theo quy định của Trường. Điều 24. Xử lý kết quả học tập theo tín chỉ 1. Trường thực hiện cảnh báo học tập sau mỗi học kỳ trong thời gian đào tạo chuẩn để sinh viên có kết quả học tập kém biế"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 53,
+          "document_id": 27,
+          "document_title": "Quy chế đào tạo đại học hệ chính quy theo hệ thống tín chỉ – áp dụng từ khóa 2016",
+          "page_number": 7,
+          "chunk_index": 18,
+          "semantic_score": 0.483089,
+          "final_score": 1.623089,
+          "retrieval_score": 1.618089,
+          "retrieval_query": "muốn rút môn học thì làm sao?",
+          "snippet": "7 Điều 10. Điều chỉnh khối lượng học tập 1. Việc điều chỉnh khối lượng học tập đã đăng ký được thực hiện trong 2 tuần đầu của học kỳ. Ngoài thời hạn trên, môn học sẽ được giữ nguyên trên phiếu đăng ký môn học. Sinh viên không đi học bất cứ môn học nào trên phiếu đăng ký môn học sẽ được xem như tự ý "
+        }
+      ]
+    },
+    {
+      "id": "procedure_grade_review",
+      "corpus": "ou",
+      "category": "procedure",
+      "email": "admin@ou.edu.vn",
+      "question": "muốn phúc khảo điểm thi thì làm sao?",
+      "expected_document_ids": [
+        30
+      ],
+      "expected_document_titles": [],
+      "expected_pages_any": [
+        16,
+        53
+      ],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": 1,
+        "page_reciprocal_rank": 1.0,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        }
+      },
+      "retrieval_queries": [
+        "muốn phúc khảo điểm thi thì làm sao?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 584,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 16,
+          "chunk_index": 20,
+          "semantic_score": 0.479517,
+          "final_score": 1.619517,
+          "retrieval_score": 1.618517,
+          "retrieval_query": "muốn phúc khảo điểm thi thì làm sao?",
+          "snippet": "22 Sổ tay sinh viên 2024 6.11. Phòng Thanh tra – Pháp chế Liên hệ: Phòng 701 – 35,37 Hồ Hảo Hớn, Phường Cô Giang, Quận 1 Điện thoại: (028) 39207634 Website: www.ou.edu.vn/thanhtra E-mail: ttdt@ou.edu.vn - Thanh tra việc thực hiện các chế độ chính sách cho sinh viên và các công tác quản lý sinh viên;"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 73,
+          "document_id": 27,
+          "document_title": "Quy chế đào tạo đại học hệ chính quy theo hệ thống tín chỉ – áp dụng từ khóa 2016",
+          "page_number": 14,
+          "chunk_index": 38,
+          "semantic_score": 0.408938,
+          "final_score": 1.548938,
+          "retrieval_score": 1.546938,
+          "retrieval_query": "muốn phúc khảo điểm thi thì làm sao?",
+          "snippet": "14 như: giáo dục quốc phòng-an ninh, giáo dục thể chất. Điều 23. Phúc tra và khiếu nại điểm 1. Đối với điểm thi giữa kỳ hay các điểm thi thành phần, sinh viên được khiếu nại trực tiếp với giảng viên khi công bố điểm trên lớp. Sinh viên sẽ không còn quyền khiếu nại sau khi bảng ghi điểm đã nộp về Phò"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 665,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 53,
+          "chunk_index": 101,
+          "semantic_score": 0.390718,
+          "final_score": 1.530718,
+          "retrieval_score": 1.527718,
+          "retrieval_query": "muốn phúc khảo điểm thi thì làm sao?",
+          "snippet": "Điều 23. Phúc tra và khiếu nại điểm 1. Đối với điểm quá trình, sinh viên khi ếu nại trực tiếp với giảng viên khi công bố điểm trên lớp hoặc trên LMS. Sinh viên sẽ không còn quyền khiếu nại sau khi bảng ghi điểm đã nộp về Phòng Khảo thí trừ trường hợp quy định tại khoản 2 Điều này. 2. Khi phát hiện c"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 603,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 27,
+          "chunk_index": 39,
+          "semantic_score": 0.616937,
+          "final_score": 0.996937,
+          "retrieval_score": 0.992937,
+          "retrieval_query": "muốn phúc khảo điểm thi thì làm sao?",
+          "snippet": "thuật chuyên sâu, nghiên c ứu khoa học. - Rèn luy ện th ể thao, nâng cao sức khỏe. 4. Trải nghiệm, tích lũy kỹ năng: - Tham gia Ngày H ội Ngh ề nghiệp, ngày h ội tuy ển d ụng, phỏng v ấn th ử của các đơn v ị bên trong và ngoài Trường. - Tham gia th ực tập dài ngày t ại doanh nghiệp. - Tìm ki ếm vi ệ"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 605,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 29,
+          "chunk_index": 41,
+          "semantic_score": 0.582913,
+          "final_score": 0.962913,
+          "retrieval_score": 0.957913,
+          "retrieval_query": "muốn phúc khảo điểm thi thì làm sao?",
+          "snippet": "Sổ tay sinh viên 2024 35 b. Quy trình tuyển dụng phổ biến hiện nay và những lời khuyên cho sinh viên: Bước Công việc Lời khuyên cho ứng viên 1 Thông báo tuyển dụng - Nên thường xuyên theo dõi các thông tin tuy ển dụng; - Đọc kỹ mô tả và yêu cầu để xem có phù hợp; - Có thể xem tại: http://vieclam.ou."
+        }
+      ]
+    },
+    {
+      "id": "utility_exam_schedule",
+      "corpus": "ou",
+      "category": "utility",
+      "email": "admin@ou.edu.vn",
+      "question": "xem lịch thi ở đâu?",
+      "expected_document_ids": [
+        30
+      ],
+      "expected_document_titles": [],
+      "expected_pages_any": [
+        23,
+        96
+      ],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": 1,
+        "page_reciprocal_rank": 1.0,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        }
+      },
+      "retrieval_queries": [
+        "xem lịch thi ở đâu?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 754,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 96,
+          "chunk_index": 190,
+          "semantic_score": 0.468177,
+          "final_score": 1.608177,
+          "retrieval_score": 1.607177,
+          "retrieval_query": "xem lịch thi ở đâu?",
+          "snippet": "102 Sổ tay sinh viên 2024 thuộc phòng Qu ản lý đào t ạo ho ặc t ải v ề tại trang https://quanlydaotao.ou.edu.vn/cac-mau-bieu-cua-phong-qldt. (Đính kèm Phụ lục 1) 2. Các giấy tờ liên quan: được quy định tại Điều 3 của quy định này. Điều 5. Trình tự, thủ tục xin điều chỉnh lịch thi 1. Sinh viên nộp hồ"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 568,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 5,
+          "chunk_index": 4,
+          "semantic_score": 0.343255,
+          "final_score": 1.483255,
+          "retrieval_score": 1.481255,
+          "retrieval_query": "xem lịch thi ở đâu?",
+          "snippet": "Sổ tay sinh viên 2024 11 6. NƠI SINH VIÊN LIÊN HỆ Khi cần giải quyết công việc, sinh viên liên hệ trực tiếp với các đơn vị sau đây: 6.1. Văn phòng các khoa - Kế hoạch học tập học kỳ, năm học (học lý thuyết, thực hành, thực tập tốt nghiệp, thi học kỳ…) và hướng dẫn thực hiện kế hoạch; - Cấp giấy giới"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 593,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 23,
+          "chunk_index": 29,
+          "semantic_score": 0.278104,
+          "final_score": 1.418104,
+          "retrieval_score": 1.415104,
+          "retrieval_query": "xem lịch thi ở đâu?",
+          "snippet": "Sổ tay sinh viên 2024 29 Hệ thống thông tin Trường Đại học Mở Thành phố Hồ Chí Minh trên mạng Internet cung cấp cho sinh viên các dịch vụ sau: Website chính của Trường tại địa chỉ: https://ou.edu.vn Đây là nơi cung cấp các thông tin giới thiệu về Trường. Giới thiệu thông tin về các khoa, phòng ban t"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 564,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 1,
+          "chunk_index": 0,
+          "semantic_score": 0.277083,
+          "final_score": 1.417083,
+          "retrieval_score": 1.413083,
+          "retrieval_query": "xem lịch thi ở đâu?",
+          "snippet": "2 Sổ tay sinh viên 2024 MỤC LỤC SỔ TAY SINH VIÊN 1 Phần I: GIỚI THIỆU KHÁI QUÁT 3 1. Sơ đồ tổ chức bộ máy 8 2. Hội đồng trường 9 3. Ban giám hiệu 9 4. Đơn vị quản lý đào tạo 9 5. Khoa và các ngành đào tạo 9 6. Nơi sinh viên liên hệ 11 7. Lịch tiếp công dân 25 8. Khung thời gian ra - vào lớp 25 9. Gi"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 753,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 95,
+          "chunk_index": 189,
+          "semantic_score": 0.498564,
+          "final_score": 0.878564,
+          "retrieval_score": 0.873564,
+          "retrieval_query": "xem lịch thi ở đâu?",
+          "snippet": "trường hợp trên (công chứng theo quy định hoặc bản chính để đối chiếu). 5. Sinh viên bị xếp trùng lịch thi. Điều 4. Hồ sơ xin điều chỉnh lịch thi Hồ sơ xin điều chỉnh lịch thi gồm có: 1. Phiếu đề nghị điều chỉnh lịch thi (phát t ại Bộ phận tiếp sinh viên"
+        }
+      ]
+    },
+    {
+      "id": "utility_academic_office_contact",
+      "corpus": "ou",
+      "category": "utility",
+      "email": "admin@ou.edu.vn",
+      "question": "số điện thoại phòng quản lý đào tạo là gì?",
+      "expected_document_ids": [
+        30
+      ],
+      "expected_document_titles": [],
+      "expected_pages_any": [
+        5
+      ],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": 2,
+        "page_reciprocal_rank": 0.5,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 0,
+          "3": 1,
+          "5": 1
+        }
+      },
+      "retrieval_queries": [
+        "số điện thoại phòng quản lý đào tạo là gì?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 579,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 13,
+          "chunk_index": 15,
+          "semantic_score": 0.458658,
+          "final_score": 1.598658,
+          "retrieval_score": 1.597658,
+          "retrieval_query": "số điện thoại phòng quản lý đào tạo là gì?",
+          "snippet": "Sổ tay sinh viên 2024 19 6.5. Phòng Tài chính Kế toán Liên hệ: Phòng 601 - 35,37 Hồ Hảo Hớn, Phường Cô Giang, Quận 1 Điện thoại: (028) 39207632 Quầy giao dịch: phòng 009 - 97 Võ Văn Tần, Phường Võ Thị Sáu, Quận 3 Website: www.ou.edu.vn/Pages/Phong-tai-chinh-ke-toan E-mail: ptckt@ou.edu.vn - Thu học "
+        },
+        {
+          "rank": 2,
+          "chunk_id": 568,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 5,
+          "chunk_index": 4,
+          "semantic_score": 0.445292,
+          "final_score": 1.585292,
+          "retrieval_score": 1.583292,
+          "retrieval_query": "số điện thoại phòng quản lý đào tạo là gì?",
+          "snippet": "Sổ tay sinh viên 2024 11 6. NƠI SINH VIÊN LIÊN HỆ Khi cần giải quyết công việc, sinh viên liên hệ trực tiếp với các đơn vị sau đây: 6.1. Văn phòng các khoa - Kế hoạch học tập học kỳ, năm học (học lý thuyết, thực hành, thực tập tốt nghiệp, thi học kỳ…) và hướng dẫn thực hiện kế hoạch; - Cấp giấy giới"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 566,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 3,
+          "chunk_index": 2,
+          "semantic_score": 0.414463,
+          "final_score": 1.554463,
+          "retrieval_score": 1.551463,
+          "retrieval_query": "số điện thoại phòng quản lý đào tạo là gì?",
+          "snippet": "Sổ tay sinh viên 2024 9 2. HỘI ĐỒNG TRƯỜNG Chủ tịch Hội đồng trường: TS. Đỗ Sa Kỳ 3. BAN GIÁM HIỆU - Hiệu trưởng: GS.TS. Nguyễn Minh Hà - Phó hiệu trưởng: TS.GVCC. Lê Xuân Trường - Phó hiệu trưởng: TS. Lê Nguyễn Quốc Khang 4. ĐƠN VỊ QUẢN LÝ ĐÀO TẠO - Khoa Đào tạo Sau đại học: Quản lý đào tạo học viê"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 754,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 96,
+          "chunk_index": 190,
+          "semantic_score": 0.356067,
+          "final_score": 1.496067,
+          "retrieval_score": 1.492067,
+          "retrieval_query": "số điện thoại phòng quản lý đào tạo là gì?",
+          "snippet": "102 Sổ tay sinh viên 2024 thuộc phòng Qu ản lý đào t ạo ho ặc t ải v ề tại trang https://quanlydaotao.ou.edu.vn/cac-mau-bieu-cua-phong-qldt. (Đính kèm Phụ lục 1) 2. Các giấy tờ liên quan: được quy định tại Điều 3 của quy định này. Điều 5. Trình tự, thủ tục xin điều chỉnh lịch thi 1. Sinh viên nộp hồ"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 755,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 97,
+          "chunk_index": 191,
+          "semantic_score": 0.265436,
+          "final_score": 1.405436,
+          "retrieval_score": 1.400436,
+          "retrieval_query": "số điện thoại phòng quản lý đào tạo là gì?",
+          "snippet": "Sổ tay sinh viên 2024 103 TRƯỜNG ĐẠI HỌC MỞ THÀNH PHỐ HỒ CHÍ MINH PHÒNG QUẢN LÝ ĐÀO TẠO CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM Độc lập – Tự do – Hạnh phúc PHIẾU ĐỀ NGHỊ ĐIỀU CHỈNH LỊCH THI Học kỳ…….Năm học 20…....-20……. Kính gửi: Phòng Quản lý đào tạo. Tôi tên: ......................................... "
+        }
+      ]
+    },
+    {
+      "id": "utility_campus_nha_be",
+      "corpus": "ou",
+      "category": "utility",
+      "email": "admin@ou.edu.vn",
+      "question": "địa chỉ cơ sở Nhà Bè ở đâu?",
+      "expected_document_ids": [
+        30
+      ],
+      "expected_document_titles": [],
+      "expected_pages_any": [
+        19
+      ],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": 2,
+        "page_reciprocal_rank": 0.5,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 0,
+          "3": 1,
+          "5": 1
+        }
+      },
+      "retrieval_queries": [
+        "địa chỉ cơ sở Nhà Bè ở đâu?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 567,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 4,
+          "chunk_index": 3,
+          "semantic_score": 0.463194,
+          "final_score": 1.603194,
+          "retrieval_score": 1.602194,
+          "retrieval_query": "địa chỉ cơ sở Nhà Bè ở đâu?",
+          "snippet": "10 Sổ tay sinh viên 2024 Khoa Các ngành đào tạo Website/email Điện thoại Địa chỉ liên hệ tin - Khoa học máy tính - Trí tuệ nhân tạo (AI) Hớn, Quận 1 Kế toán – Kiểm toán - Kế toán - Kiểm toán www.ou.edu.vn/ktkt ktkt@ou.edu.vn (028) 3838.6608 Phòng 105 35-37 Hồ Hảo Hớn, Quận 1 Kinh tế và Quản lý công "
+        },
+        {
+          "rank": 2,
+          "chunk_id": 589,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 19,
+          "chunk_index": 25,
+          "semantic_score": 0.399296,
+          "final_score": 1.539296,
+          "retrieval_score": 1.537296,
+          "retrieval_query": "địa chỉ cơ sở Nhà Bè ở đâu?",
+          "snippet": "Sổ tay sinh viên 2024 25 liệu ebook 4 năm học (400.000 đồng) + Bán lẻ: giá ưu đãi theo từng tựa sách dành cho đối tượng là sinh viên, giảng viên, CBVC của Trường - Thông tin thư quán của Trường: ➢ Thư quán tại cơ sở 97, Võ Văn T ần, Phường Võ Thị Sáu, quận 3, Tp.HCM, Phòng 002, điện thoại hành chính"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 846,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 134,
+          "chunk_index": 282,
+          "semantic_score": 0.337937,
+          "final_score": 1.477937,
+          "retrieval_score": 1.474937,
+          "retrieval_query": "địa chỉ cơ sở Nhà Bè ở đâu?",
+          "snippet": "140 Sổ tay sinh viên 2024 ĐIỆN THOẠI LIÊN LẠC CẦN THIẾT KHÁC STT ĐƠN VỊ ĐIỆN THOẠI 1 CƠ SỞ - LONG BÌNH 0251 8826399 0251 8826480 0251 8826481 0251 8826482 0251 8826483 0251 8826484 2 CƠ CỞ - BÌNH DƯƠNG 0274 3822 456 0274 3840 080 0274 3828 631 Fax: 0274 3824 708 3 CƠ SỞ – NINH HÒA 02583 634 540 0258"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 580,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 14,
+          "chunk_index": 16,
+          "semantic_score": 0.292653,
+          "final_score": 1.432653,
+          "retrieval_score": 1.428653,
+          "retrieval_query": "địa chỉ cơ sở Nhà Bè ở đâu?",
+          "snippet": "20 Sổ tay sinh viên 2024 6.7. Phòng Khảo thí Liên hệ: Phòng 501 – 35,37 Hồ Hảo Hớn, Phường Cô Giang, Quận 1 Điện thoại: (028) 39207629 Website: http://www.ou.edu.vn/ttkt E-mail: pkt@ou.edu.vn - Tổ chức thi kết thúc học kỳ, công bố điểm thi; - Quản lý điểm thi giữa kỳ, thi kết thúc học kỳ, thi/bảo vệ"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 566,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 3,
+          "chunk_index": 2,
+          "semantic_score": 0.2678,
+          "final_score": 1.4078,
+          "retrieval_score": 1.4028,
+          "retrieval_query": "địa chỉ cơ sở Nhà Bè ở đâu?",
+          "snippet": "Sổ tay sinh viên 2024 9 2. HỘI ĐỒNG TRƯỜNG Chủ tịch Hội đồng trường: TS. Đỗ Sa Kỳ 3. BAN GIÁM HIỆU - Hiệu trưởng: GS.TS. Nguyễn Minh Hà - Phó hiệu trưởng: TS.GVCC. Lê Xuân Trường - Phó hiệu trưởng: TS. Lê Nguyễn Quốc Khang 4. ĐƠN VỊ QUẢN LÝ ĐÀO TẠO - Khoa Đào tạo Sau đại học: Quản lý đào tạo học viê"
+        }
+      ]
+    },
+    {
+      "id": "policy_graduation_conditions",
+      "corpus": "ou",
+      "category": "policy",
+      "email": "admin@ou.edu.vn",
+      "question": "điều kiện xét tốt nghiệp là gì?",
+      "expected_document_ids": [
+        27
+      ],
+      "expected_document_titles": [],
+      "expected_pages_any": [
+        15
+      ],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": 1,
+        "page_reciprocal_rank": 1.0,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        }
+      },
+      "retrieval_queries": [
+        "điều kiện xét tốt nghiệp là gì?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 76,
+          "document_id": 27,
+          "document_title": "Quy chế đào tạo đại học hệ chính quy theo hệ thống tín chỉ – áp dụng từ khóa 2016",
+          "page_number": 15,
+          "chunk_index": 41,
+          "semantic_score": 0.795903,
+          "final_score": 1.935903,
+          "retrieval_score": 1.934903,
+          "retrieval_query": "điều kiện xét tốt nghiệp là gì?",
+          "snippet": "15 c) Nhiệm vụ của giảng viên hướng dẫn; trách nhiệm của bộ môn và khoa đối với sinh viên trong thời gian làm đồ án/khóa luận tốt nghiệp. Điều 26. Chấm đồ án/khóa luận tốt nghiệp 1. Hiệu trưởng quyết định danh sách các Hội đồng chấm đồ án /khóa luận tốt nghiệp. Hội đồng chấm đồ án/khóa luận tốt nghi"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 669,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 55,
+          "chunk_index": 105,
+          "semantic_score": 0.756663,
+          "final_score": 1.136663,
+          "retrieval_score": 1.134663,
+          "retrieval_query": "điều kiện xét tốt nghiệp là gì?",
+          "snippet": "Sổ tay sinh viên 2024 61 hoạch học tập chuẩn toàn khóa. 2. Hạng tốt nghiệp được xác định căn cứ vào điểm trung bình tích lũy toàn khoá được quy định tại khoản 4 Điều 21 của Quy chế này, trong đó, hạng tốt nghiệp của sinh viên có điểm trung bình tích lũy lo ại xuất sắc và giỏi sẽ bị giảm đi một mức n"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 651,
+          "document_id": 30,
+          "document_title": "Sổ Tay Sinh Viên 2024",
+          "page_number": 49,
+          "chunk_index": 87,
+          "semantic_score": 0.738784,
+          "final_score": 1.118784,
+          "retrieval_score": 1.115784,
+          "retrieval_query": "điều kiện xét tốt nghiệp là gì?",
+          "snippet": "Sổ tay sinh viên 2024 55 với số tín chỉ của môn học (ít nhất là 2/3 ngày cho một tín chỉ). 6. Đề thi đánh giá cu ối kỳ phù hợp với hình th ức đánh giá quy đ ịnh trong đề cương môn học và được lấy từ ngân hàng đề thi hoặc do Khoa cung cấp. 7. Điểm thi đánh giá cuối kỳ được ghi vào bảng điểm theo mẫu "
+        },
+        {
+          "rank": 4,
+          "chunk_id": 75,
+          "document_id": 27,
+          "document_title": "Quy chế đào tạo đại học hệ chính quy theo hệ thống tín chỉ – áp dụng từ khóa 2016",
+          "page_number": 14,
+          "chunk_index": 40,
+          "semantic_score": 0.735855,
+          "final_score": 1.115855,
+          "retrieval_score": 1.111855,
+          "retrieval_query": "điều kiện xét tốt nghiệp là gì?",
+          "snippet": "Hiệu trưởng quy định cụ thể số tín chỉ thực tập tốt nghiệp, nội dung, hình thức thực tập, hướng dẫn sinh viên thực tập, chấm báo cáo thực tập và các điều kiện khác. 2. Đầu học kỳ cuối khoá, các sinh viên được đăng ký làm đồ án /khóa luận tốt nghiệp hoặc học thêm một số môn học thay thế đồ án/khóa lu"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 79,
+          "document_id": 27,
+          "document_title": "Quy chế đào tạo đại học hệ chính quy theo hệ thống tín chỉ – áp dụng từ khóa 2016",
+          "page_number": 16,
+          "chunk_index": 44,
+          "semantic_score": 0.735547,
+          "final_score": 1.115547,
+          "retrieval_score": 1.110547,
+          "retrieval_query": "điều kiện xét tốt nghiệp là gì?",
+          "snippet": "16 song ngành). 2. Hạng tốt nghiệp được xác đị nh theo điểm trung bình chung tích lũy của toàn khoá học được quy định tại Khoản 5, Điều 20 của Quy chế này. 3. Hạng tốt nghiệp của những sinh viên có kết quả học tập toàn khoá loại xuất sắc và giỏi sẽ bị giảm đi một mức, nếu rơi vào một trong các trườn"
+        }
+      ]
+    },
+    {
+      "id": "kfc_invoice_bill_fields",
+      "corpus": "kfc_demo",
+      "category": "procedure",
+      "email": "people.kfc.demo@example.com",
+      "question": "Muốn tìm hóa đơn KFC bằng bill cần nhập những thông tin gì?",
+      "expected_document_ids": [
+        31
+      ],
+      "expected_document_titles": [
+        "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử"
+      ],
+      "expected_pages_any": [
+        1
+      ],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": 5,
+        "page_reciprocal_rank": 0.2,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 0,
+          "3": 0,
+          "5": 1
+        }
+      },
+      "retrieval_queries": [
+        "Muốn tìm hóa đơn KFC bằng bill cần nhập những thông tin gì?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 899,
+          "document_id": 31,
+          "document_title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+          "page_number": 3,
+          "chunk_index": 5,
+          "semantic_score": 0.650302,
+          "final_score": 0.650302,
+          "retrieval_score": 0.649302,
+          "retrieval_query": "Muốn tìm hóa đơn KFC bằng bill cần nhập những thông tin gì?",
+          "snippet": "3 II. XUẤT HÓA ĐƠN TRÊN PC Sau khi nhập đầy đủ và chính xác các thông tin bill cần xuất hóa đơn, người dùng nhấn “Tìm kiếm”. Hệ thống tự động chuyển sang màn hình xuất hóa đơn. Tại màn hình này, người dùng nhập thông tin của hóa đơn như: Tên người mua hàng,"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 903,
+          "document_id": 31,
+          "document_title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+          "page_number": 5,
+          "chunk_index": 9,
+          "semantic_score": 0.635957,
+          "final_score": 0.635957,
+          "retrieval_score": 0.633957,
+          "retrieval_query": "Muốn tìm hóa đơn KFC bằng bill cần nhập những thông tin gì?",
+          "snippet": "5 III. XUẤT HÓA ĐƠN TRÊN TRÌNH DUYỆT DI ĐỘNG Sau khi nhập “Tìm kiếm” thành công trên link tìm hóa đơn hoặc quét QR-CODE. Người dùng kiểm tra thông tin hàng hóa đã khớp với bill thanh toán được cung cấp. Người dùng nhập thông tin để thực hiện xuất hóa đơn"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 902,
+          "document_id": 31,
+          "document_title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+          "page_number": 4,
+          "chunk_index": 8,
+          "semantic_score": 0.624179,
+          "final_score": 0.624179,
+          "retrieval_score": 0.621179,
+          "retrieval_query": "Muốn tìm hóa đơn KFC bằng bill cần nhập những thông tin gì?",
+          "snippet": "lại hóa đơn đã xuất."
+        },
+        {
+          "rank": 4,
+          "chunk_id": 907,
+          "document_id": 31,
+          "document_title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+          "page_number": 7,
+          "chunk_index": 13,
+          "semantic_score": 0.604799,
+          "final_score": 0.604799,
+          "retrieval_score": 0.600799,
+          "retrieval_query": "Muốn tìm hóa đơn KFC bằng bill cần nhập những thông tin gì?",
+          "snippet": "7 Khách hàng nhấn “Tải hóa đơn” để lưu về máy sau khi thực hiện bước 5 thành công. Hỗ trợ khách hàng lưu các thông tin hóa đơn phục vụ cho đối chiếu hoặc tra cứu hóa đơn sau khi hệ thống đã ký số và đồng bộ lên hệ thống Tổng cục thuế. Lưu ý: Thông tin biên lại thanh toán của khách hàng sẽ được đồng "
+        },
+        {
+          "rank": 5,
+          "chunk_id": 895,
+          "document_id": 31,
+          "document_title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+          "page_number": 1,
+          "chunk_index": 1,
+          "semantic_score": 0.592902,
+          "final_score": 0.592902,
+          "retrieval_score": 0.587902,
+          "retrieval_query": "Muốn tìm hóa đơn KFC bằng bill cần nhập những thông tin gì?",
+          "snippet": "Cách 1: Truy cập vào hệ thống xuất hóa đơn Người dùng truy cập vào link xuất hóa đơn và nhập đầy đủ thông tin có trên bill thanh toán  Mã store: Nhập mã cửa hàng (Store ID)  Số bill: Nhập thông tin số bill (REPRINT)  Ngày mua hàng: Chọn ngày mua hàng"
+        }
+      ]
+    },
+    {
+      "id": "kfc_invoice_qr_code",
+      "corpus": "kfc_demo",
+      "category": "procedure",
+      "email": "people.kfc.demo@example.com",
+      "question": "Có thể xuất hóa đơn KFC bằng mã QR trên bill không?",
+      "expected_document_ids": [
+        31
+      ],
+      "expected_document_titles": [
+        "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử"
+      ],
+      "expected_pages_any": [
+        2
+      ],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": 4,
+        "page_reciprocal_rank": 0.25,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": 0,
+          "3": 0,
+          "5": 1
+        }
+      },
+      "retrieval_queries": [
+        "Có thể xuất hóa đơn KFC bằng mã QR trên bill không?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 903,
+          "document_id": 31,
+          "document_title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+          "page_number": 5,
+          "chunk_index": 9,
+          "semantic_score": 0.557395,
+          "final_score": 0.557395,
+          "retrieval_score": 0.556395,
+          "retrieval_query": "Có thể xuất hóa đơn KFC bằng mã QR trên bill không?",
+          "snippet": "5 III. XUẤT HÓA ĐƠN TRÊN TRÌNH DUYỆT DI ĐỘNG Sau khi nhập “Tìm kiếm” thành công trên link tìm hóa đơn hoặc quét QR-CODE. Người dùng kiểm tra thông tin hàng hóa đã khớp với bill thanh toán được cung cấp. Người dùng nhập thông tin để thực hiện xuất hóa đơn"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 902,
+          "document_id": 31,
+          "document_title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+          "page_number": 4,
+          "chunk_index": 8,
+          "semantic_score": 0.548998,
+          "final_score": 0.548998,
+          "retrieval_score": 0.546998,
+          "retrieval_query": "Có thể xuất hóa đơn KFC bằng mã QR trên bill không?",
+          "snippet": "lại hóa đơn đã xuất."
+        },
+        {
+          "rank": 3,
+          "chunk_id": 901,
+          "document_id": 31,
+          "document_title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+          "page_number": 4,
+          "chunk_index": 7,
+          "semantic_score": 0.54029,
+          "final_score": 0.54029,
+          "retrieval_score": 0.53729,
+          "retrieval_query": "Có thể xuất hóa đơn KFC bằng mã QR trên bill không?",
+          "snippet": "4 Người dùng chọn nút “Đồng ý” để tiếp tục xuất hóa đơn hoặc nhấn “Đóng” để quay lại màn hình lập hóa đơn. Sau khi xác nhận xuất hóa đơn, hệ thống thực hiện tự động thực hiện xuất hóa đơn, trạng thái của hóa đơn chuyển thành “Hóa đơn đã xuất” và người dùng có thể xem"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 898,
+          "document_id": 31,
+          "document_title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+          "page_number": 2,
+          "chunk_index": 4,
+          "semantic_score": 0.540039,
+          "final_score": 0.540039,
+          "retrieval_score": 0.536039,
+          "retrieval_query": "Có thể xuất hóa đơn KFC bằng mã QR trên bill không?",
+          "snippet": "quét thành công để truy cập màn hình thông tin đơn hàng. Thông tin QR-CODE trên bill thanh toán"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 905,
+          "document_id": 31,
+          "document_title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+          "page_number": 6,
+          "chunk_index": 11,
+          "semantic_score": 0.509523,
+          "final_score": 0.509523,
+          "retrieval_score": 0.504523,
+          "retrieval_query": "Có thể xuất hóa đơn KFC bằng mã QR trên bill không?",
+          "snippet": "6 Ở màn hình xem hóa đơn nháp khách hàng thực hiện nhấn Xuất hóa đơn, hệ thống yêu cầu xác nhận trước khi thực hiện “Hủy bỏ” để quay về màn hình xem hóa đơn nháp “Đồng ý” để thực hiện cấp số hóa đơn. Hệ thống sẽ hiển thị thông tin hóa đơn bản"
+        }
+      ]
+    },
+    {
+      "id": "kfc_customer_hotline",
+      "corpus": "kfc_demo",
+      "category": "utility",
+      "email": "people.kfc.demo@example.com",
+      "question": "Hotline chăm sóc khách hàng KFC là số nào?",
+      "expected_document_ids": [
+        31,
+        32
+      ],
+      "expected_document_titles": [
+        "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+        "KFC Việt Nam - Thông tin liên hệ và đặt hàng"
+      ],
+      "expected_pages_any": [],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": null,
+        "page_reciprocal_rank": null,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": null,
+          "3": null,
+          "5": null
+        }
+      },
+      "retrieval_queries": [
+        "Hotline chăm sóc khách hàng KFC là số nào?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 909,
+          "document_id": 31,
+          "document_title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+          "page_number": 7,
+          "chunk_index": 15,
+          "semantic_score": 0.618881,
+          "final_score": 1.598881,
+          "retrieval_score": 1.597881,
+          "retrieval_query": "Hotline chăm sóc khách hàng KFC là số nào?",
+          "snippet": "tư vấn hỗ trợ quý khách vui lòng liên hệ cửa hàng hoặc bộ phận CSKH của KFC hotline 19006886 ."
+        },
+        {
+          "rank": 2,
+          "chunk_id": 917,
+          "document_id": 33,
+          "document_title": "KFC Demo - Tóm tắt tiếp nhận ứng viên nhà hàng",
+          "page_number": null,
+          "chunk_index": 2,
+          "semantic_score": 0.612207,
+          "final_score": 1.592207,
+          "retrieval_score": 1.590207,
+          "retrieval_query": "Hotline chăm sóc khách hàng KFC là số nào?",
+          "snippet": "Số điện thoại được công bố trên website tuyển dụng: (028) 38489828. Nguồn tham khảo Hướng dẫn ứng tuyển vị trí Nhân viên Nhà hàng KFC https://tuyendung.kfcvietnam.com.vn/huong-dan-ung-tuyen-1 Ngày truy cập: 2026-08-11"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 911,
+          "document_id": 32,
+          "document_title": "KFC Việt Nam - Thông tin liên hệ và đặt hàng",
+          "page_number": null,
+          "chunk_index": 1,
+          "semantic_score": 0.543751,
+          "final_score": 1.523751,
+          "retrieval_score": 1.520751,
+          "retrieval_query": "Hotline chăm sóc khách hàng KFC là số nào?",
+          "snippet": "Địa chỉ công bố: Số 292 Bà Triệu, phường Lê Đại Hành, quận Hai Bà Trưng, Hà Nội. Điện thoại liên hệ: (028) 38489828. Email liên hệ: lienhe@kfcvietnam.com.vn. Hotline chăm sóc khách hàng và hỗ trợ đặt hàng: 1900 6886. Đặt hàng và thanh toán"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 910,
+          "document_id": 32,
+          "document_title": "KFC Việt Nam - Thông tin liên hệ và đặt hàng",
+          "page_number": null,
+          "chunk_index": 0,
+          "semantic_score": 0.380134,
+          "final_score": 1.360134,
+          "retrieval_score": 1.356134,
+          "retrieval_query": "Hotline chăm sóc khách hàng KFC là số nào?",
+          "snippet": "KFC Việt Nam - Thông tin liên hệ và đặt hàng Nội dung được tóm tắt từ nguồn công khai, đối chiếu ngày 11/08/2026. Thông tin vận hành có thể thay đổi; người dùng cần kiểm tra lại website chính thức trước khi giao dịch. Thông tin doanh nghiệp và liên hệ Tên đơn vị được công bố: Công ty Liên doanh TNHH"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 922,
+          "document_id": 35,
+          "document_title": "KFC Demo - Cẩm nang hỗ trợ nhân viên",
+          "page_number": null,
+          "chunk_index": 1,
+          "semantic_score": 0.315751,
+          "final_score": 1.295751,
+          "retrieval_score": 1.290751,
+          "retrieval_query": "Hotline chăm sóc khách hàng KFC là số nào?",
+          "snippet": "Mã nhóm hỗ trợ dùng để kiểm thử chatbot là EMP-SUPPORT-DEMO. Yêu cầu cần ghi rõ nội dung, đơn vị demo và thông tin liên hệ để được phản hồi."
+        }
+      ]
+    },
+    {
+      "id": "kfc_recruitment_steps",
+      "corpus": "kfc_demo",
+      "category": "procedure",
+      "email": "people.kfc.demo@example.com",
+      "question": "Ứng tuyển nhân viên nhà hàng KFC gồm những bước nào?",
+      "expected_document_ids": [
+        33
+      ],
+      "expected_document_titles": [
+        "KFC Demo - Tóm tắt tiếp nhận ứng viên nhà hàng"
+      ],
+      "expected_pages_any": [],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": null,
+        "page_reciprocal_rank": null,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": null,
+          "3": null,
+          "5": null
+        }
+      },
+      "retrieval_queries": [
+        "Ứng tuyển nhân viên nhà hàng KFC gồm những bước nào?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 915,
+          "document_id": 33,
+          "document_title": "KFC Demo - Tóm tắt tiếp nhận ứng viên nhà hàng",
+          "page_number": null,
+          "chunk_index": 0,
+          "semantic_score": 0.494437,
+          "final_score": 0.494437,
+          "retrieval_score": 0.493437,
+          "retrieval_query": "Ứng tuyển nhân viên nhà hàng KFC gồm những bước nào?",
+          "snippet": "KFC Demo - Tóm tắt tiếp nhận ứng viên nhà hàng DỮ LIỆU MÔ PHỎNG CHO ĐỒ ÁN. Đây không phải quy trình nội bộ chính thức của KFC Việt Nam. Luồng ứng tuyển được công bố Bước 1: ứng viên mở website tuyển dụng, chọn đăng nhập và tạo tài khoản nếu chưa đăng ký."
+        },
+        {
+          "rank": 2,
+          "chunk_id": 916,
+          "document_id": 33,
+          "document_title": "KFC Demo - Tóm tắt tiếp nhận ứng viên nhà hàng",
+          "page_number": null,
+          "chunk_index": 1,
+          "semantic_score": 0.474496,
+          "final_score": 0.474496,
+          "retrieval_score": 0.472496,
+          "retrieval_query": "Ứng tuyển nhân viên nhà hàng KFC gồm những bước nào?",
+          "snippet": "Bước 2: ứng viên điền thông tin ứng tuyển, gửi hồ sơ, thực hiện bài test và hoàn tất. Tài khoản dùng trên website tuyển dụng không phải là tài khoản email của ứng viên. Thông tin hỗ trợ tuyển dụng Email tuyển dụng được công bố: job@kfcvietnam.com.vn."
+        },
+        {
+          "rank": 3,
+          "chunk_id": 917,
+          "document_id": 33,
+          "document_title": "KFC Demo - Tóm tắt tiếp nhận ứng viên nhà hàng",
+          "page_number": null,
+          "chunk_index": 2,
+          "semantic_score": 0.43748,
+          "final_score": 0.43748,
+          "retrieval_score": 0.43448,
+          "retrieval_query": "Ứng tuyển nhân viên nhà hàng KFC gồm những bước nào?",
+          "snippet": "Số điện thoại được công bố trên website tuyển dụng: (028) 38489828. Nguồn tham khảo Hướng dẫn ứng tuyển vị trí Nhân viên Nhà hàng KFC https://tuyendung.kfcvietnam.com.vn/huong-dan-ung-tuyen-1 Ngày truy cập: 2026-08-11"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 921,
+          "document_id": 35,
+          "document_title": "KFC Demo - Cẩm nang hỗ trợ nhân viên",
+          "page_number": null,
+          "chunk_index": 0,
+          "semantic_score": 0.435949,
+          "final_score": 0.435949,
+          "retrieval_score": 0.431949,
+          "retrieval_query": "Ứng tuyển nhân viên nhà hàng KFC gồm những bước nào?",
+          "snippet": "KFC Demo - Cẩm nang hỗ trợ nhân viên DỮ LIỆU MÔ PHỎNG CHO ĐỒ ÁN. Nội dung không mô tả chính sách nhân sự thật của KFC Việt Nam. Kênh hỗ trợ trong hệ thống demo Nhân viên demo gửi yêu cầu tại cổng People Hub Demo, mục Hỗ trợ nhân viên."
+        },
+        {
+          "rank": 5,
+          "chunk_id": 909,
+          "document_id": 31,
+          "document_title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+          "page_number": 7,
+          "chunk_index": 15,
+          "semantic_score": 0.429923,
+          "final_score": 0.429923,
+          "retrieval_score": 0.424923,
+          "retrieval_query": "Ứng tuyển nhân viên nhà hàng KFC gồm những bước nào?",
+          "snippet": "tư vấn hỗ trợ quý khách vui lòng liên hệ cửa hàng hoặc bộ phận CSKH của KFC hotline 19006886 ."
+        }
+      ]
+    },
+    {
+      "id": "kfc_opening_checklist_code",
+      "corpus": "kfc_demo",
+      "category": "procedure",
+      "email": "operations.kfc.demo@example.com",
+      "question": "Mã biểu mẫu checklist mở ca là gì?",
+      "expected_document_ids": [
+        34
+      ],
+      "expected_document_titles": [
+        "KFC Demo - Checklist mở ca nhà hàng"
+      ],
+      "expected_pages_any": [],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": null,
+        "page_reciprocal_rank": null,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": null,
+          "3": null,
+          "5": null
+        }
+      },
+      "retrieval_queries": [
+        "Mã biểu mẫu checklist mở ca là gì?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 920,
+          "document_id": 34,
+          "document_title": "KFC Demo - Checklist mở ca nhà hàng",
+          "page_number": null,
+          "chunk_index": 2,
+          "semantic_score": 0.533935,
+          "final_score": 0.753935,
+          "retrieval_score": 0.752935,
+          "retrieval_query": "Mã biểu mẫu checklist mở ca là gì?",
+          "snippet": "Mã biểu mẫu mô phỏng dùng trong chatbot: OPS-OPEN-DEMO-01. Sự cố chưa xử lý phải được chuyển cho quản lý ca demo trước khi mở cửa."
+        },
+        {
+          "rank": 2,
+          "chunk_id": 903,
+          "document_id": 31,
+          "document_title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+          "page_number": 5,
+          "chunk_index": 9,
+          "semantic_score": 0.459555,
+          "final_score": 0.679555,
+          "retrieval_score": 0.677555,
+          "retrieval_query": "Mã biểu mẫu checklist mở ca là gì?",
+          "snippet": "5 III. XUẤT HÓA ĐƠN TRÊN TRÌNH DUYỆT DI ĐỘNG Sau khi nhập “Tìm kiếm” thành công trên link tìm hóa đơn hoặc quét QR-CODE. Người dùng kiểm tra thông tin hàng hóa đã khớp với bill thanh toán được cung cấp. Người dùng nhập thông tin để thực hiện xuất hóa đơn"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 904,
+          "document_id": 31,
+          "document_title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+          "page_number": 5,
+          "chunk_index": 10,
+          "semantic_score": 0.452804,
+          "final_score": 0.672804,
+          "retrieval_score": 0.669804,
+          "retrieval_query": "Mã biểu mẫu checklist mở ca là gì?",
+          "snippet": "Người dùng nhập thông tin để thực hiện xuất hóa đơn Hệ thống hiển thị hóa đơn nháp người dùng kiểm tra lại thông tin thể hiện trên hóa đơn. Để chỉnh sửa thông tin, người dùng nhấn “<”"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 922,
+          "document_id": 35,
+          "document_title": "KFC Demo - Cẩm nang hỗ trợ nhân viên",
+          "page_number": null,
+          "chunk_index": 1,
+          "semantic_score": 0.407502,
+          "final_score": 0.627502,
+          "retrieval_score": 0.623502,
+          "retrieval_query": "Mã biểu mẫu checklist mở ca là gì?",
+          "snippet": "Mã nhóm hỗ trợ dùng để kiểm thử chatbot là EMP-SUPPORT-DEMO. Yêu cầu cần ghi rõ nội dung, đơn vị demo và thông tin liên hệ để được phản hồi."
+        },
+        {
+          "rank": 5,
+          "chunk_id": 905,
+          "document_id": 31,
+          "document_title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+          "page_number": 6,
+          "chunk_index": 11,
+          "semantic_score": 0.402704,
+          "final_score": 0.622704,
+          "retrieval_score": 0.617704,
+          "retrieval_query": "Mã biểu mẫu checklist mở ca là gì?",
+          "snippet": "6 Ở màn hình xem hóa đơn nháp khách hàng thực hiện nhấn Xuất hóa đơn, hệ thống yêu cầu xác nhận trước khi thực hiện “Hủy bỏ” để quay về màn hình xem hóa đơn nháp “Đồng ý” để thực hiện cấp số hóa đơn. Hệ thống sẽ hiển thị thông tin hóa đơn bản"
+        }
+      ]
+    },
+    {
+      "id": "kfc_employee_support_code",
+      "corpus": "kfc_demo",
+      "category": "utility",
+      "email": "people.kfc.demo@example.com",
+      "question": "Mã nhóm hỗ trợ nhân viên KFC demo là gì?",
+      "expected_document_ids": [
+        35
+      ],
+      "expected_document_titles": [
+        "KFC Demo - Cẩm nang hỗ trợ nhân viên"
+      ],
+      "expected_pages_any": [],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": null,
+        "page_reciprocal_rank": null,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": null,
+          "3": null,
+          "5": null
+        }
+      },
+      "retrieval_queries": [
+        "Mã nhóm hỗ trợ nhân viên KFC demo là gì?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 921,
+          "document_id": 35,
+          "document_title": "KFC Demo - Cẩm nang hỗ trợ nhân viên",
+          "page_number": null,
+          "chunk_index": 0,
+          "semantic_score": 0.710865,
+          "final_score": 0.710865,
+          "retrieval_score": 0.709865,
+          "retrieval_query": "Mã nhóm hỗ trợ nhân viên KFC demo là gì?",
+          "snippet": "KFC Demo - Cẩm nang hỗ trợ nhân viên DỮ LIỆU MÔ PHỎNG CHO ĐỒ ÁN. Nội dung không mô tả chính sách nhân sự thật của KFC Việt Nam. Kênh hỗ trợ trong hệ thống demo Nhân viên demo gửi yêu cầu tại cổng People Hub Demo, mục Hỗ trợ nhân viên."
+        },
+        {
+          "rank": 2,
+          "chunk_id": 922,
+          "document_id": 35,
+          "document_title": "KFC Demo - Cẩm nang hỗ trợ nhân viên",
+          "page_number": null,
+          "chunk_index": 1,
+          "semantic_score": 0.674633,
+          "final_score": 0.674633,
+          "retrieval_score": 0.672633,
+          "retrieval_query": "Mã nhóm hỗ trợ nhân viên KFC demo là gì?",
+          "snippet": "Mã nhóm hỗ trợ dùng để kiểm thử chatbot là EMP-SUPPORT-DEMO. Yêu cầu cần ghi rõ nội dung, đơn vị demo và thông tin liên hệ để được phản hồi."
+        },
+        {
+          "rank": 3,
+          "chunk_id": 916,
+          "document_id": 33,
+          "document_title": "KFC Demo - Tóm tắt tiếp nhận ứng viên nhà hàng",
+          "page_number": null,
+          "chunk_index": 1,
+          "semantic_score": 0.608573,
+          "final_score": 0.608573,
+          "retrieval_score": 0.605573,
+          "retrieval_query": "Mã nhóm hỗ trợ nhân viên KFC demo là gì?",
+          "snippet": "Bước 2: ứng viên điền thông tin ứng tuyển, gửi hồ sơ, thực hiện bài test và hoàn tất. Tài khoản dùng trên website tuyển dụng không phải là tài khoản email của ứng viên. Thông tin hỗ trợ tuyển dụng Email tuyển dụng được công bố: job@kfcvietnam.com.vn."
+        },
+        {
+          "rank": 4,
+          "chunk_id": 915,
+          "document_id": 33,
+          "document_title": "KFC Demo - Tóm tắt tiếp nhận ứng viên nhà hàng",
+          "page_number": null,
+          "chunk_index": 0,
+          "semantic_score": 0.585794,
+          "final_score": 0.585794,
+          "retrieval_score": 0.581794,
+          "retrieval_query": "Mã nhóm hỗ trợ nhân viên KFC demo là gì?",
+          "snippet": "KFC Demo - Tóm tắt tiếp nhận ứng viên nhà hàng DỮ LIỆU MÔ PHỎNG CHO ĐỒ ÁN. Đây không phải quy trình nội bộ chính thức của KFC Việt Nam. Luồng ứng tuyển được công bố Bước 1: ứng viên mở website tuyển dụng, chọn đăng nhập và tạo tài khoản nếu chưa đăng ký."
+        },
+        {
+          "rank": 5,
+          "chunk_id": 917,
+          "document_id": 33,
+          "document_title": "KFC Demo - Tóm tắt tiếp nhận ứng viên nhà hàng",
+          "page_number": null,
+          "chunk_index": 2,
+          "semantic_score": 0.488652,
+          "final_score": 0.488652,
+          "retrieval_score": 0.483652,
+          "retrieval_query": "Mã nhóm hỗ trợ nhân viên KFC demo là gì?",
+          "snippet": "Số điện thoại được công bố trên website tuyển dụng: (028) 38489828. Nguồn tham khảo Hướng dẫn ứng tuyển vị trí Nhân viên Nhà hàng KFC https://tuyendung.kfcvietnam.com.vn/huong-dan-ung-tuyen-1 Ngày truy cập: 2026-08-11"
+        }
+      ]
+    },
+    {
+      "id": "kfc_private_training_code",
+      "corpus": "kfc_demo",
+      "category": "private",
+      "email": "operations.kfc.demo@example.com",
+      "question": "Mã buổi đào tạo cá nhân của Nguyễn Minh là gì?",
+      "expected_document_ids": [
+        36
+      ],
+      "expected_document_titles": [
+        "KFC Demo - Kế hoạch đào tạo cá nhân Nguyễn Minh"
+      ],
+      "expected_pages_any": [],
+      "skipped": false,
+      "passed": true,
+      "failures": [],
+      "metrics": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "first_relevant_page_rank": null,
+        "page_reciprocal_rank": null,
+        "hit_at": {
+          "1": 1,
+          "3": 1,
+          "5": 1
+        },
+        "recall_at": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "page_hit_at": {
+          "1": null,
+          "3": null,
+          "5": null
+        }
+      },
+      "retrieval_queries": [
+        "Mã buổi đào tạo cá nhân của Nguyễn Minh là gì?"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": 924,
+          "document_id": 36,
+          "document_title": "KFC Demo - Kế hoạch đào tạo cá nhân Nguyễn Minh",
+          "page_number": null,
+          "chunk_index": 1,
+          "semantic_score": 0.391417,
+          "final_score": 0.391417,
+          "retrieval_score": 0.390417,
+          "retrieval_query": "Mã buổi đào tạo cá nhân của Nguyễn Minh là gì?",
+          "snippet": "Chủ sở hữu demo: Nguyễn Minh, phòng Vận hành nhà hàng. Mã buổi đào tạo cá nhân: KFC-DEMO-MINH-1509. Thời gian mô phỏng: 09:00 ngày 15/09/2026. Nội dung mô phỏng: sử dụng hệ thống tài liệu, bàn giao ca và xử lý yêu cầu hỗ trợ."
+        },
+        {
+          "rank": 2,
+          "chunk_id": 922,
+          "document_id": 35,
+          "document_title": "KFC Demo - Cẩm nang hỗ trợ nhân viên",
+          "page_number": null,
+          "chunk_index": 1,
+          "semantic_score": 0.384097,
+          "final_score": 0.384097,
+          "retrieval_score": 0.382097,
+          "retrieval_query": "Mã buổi đào tạo cá nhân của Nguyễn Minh là gì?",
+          "snippet": "Mã nhóm hỗ trợ dùng để kiểm thử chatbot là EMP-SUPPORT-DEMO. Yêu cầu cần ghi rõ nội dung, đơn vị demo và thông tin liên hệ để được phản hồi."
+        },
+        {
+          "rank": 3,
+          "chunk_id": 896,
+          "document_id": 31,
+          "document_title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+          "page_number": 1,
+          "chunk_index": 2,
+          "semantic_score": 0.353011,
+          "final_score": 0.353011,
+          "retrieval_score": 0.350011,
+          "retrieval_query": "Mã buổi đào tạo cá nhân của Nguyễn Minh là gì?",
+          "snippet": " Ngày mua hàng: Chọn ngày mua hàng  Tổng thanh toán: Nhập đúng tổng thanh toán của ticket  Mã kiểm tra: nhập đúng 6 ký tự chữ, số do hệ thống tự sinh"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 923,
+          "document_id": 36,
+          "document_title": "KFC Demo - Kế hoạch đào tạo cá nhân Nguyễn Minh",
+          "page_number": null,
+          "chunk_index": 0,
+          "semantic_score": 0.347728,
+          "final_score": 0.347728,
+          "retrieval_score": 0.343728,
+          "retrieval_query": "Mã buổi đào tạo cá nhân của Nguyễn Minh là gì?",
+          "snippet": "KFC Demo - Kế hoạch đào tạo cá nhân Nguyễn Minh DỮ LIỆU CÁ NHÂN HOÀN TOÀN MÔ PHỎNG CHO ĐỒ ÁN. Không liên quan đến nhân viên thật của KFC Việt Nam. Kế hoạch đào tạo Chủ sở hữu demo: Nguyễn Minh, phòng Vận hành nhà hàng."
+        },
+        {
+          "rank": 5,
+          "chunk_id": 897,
+          "document_id": 31,
+          "document_title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+          "page_number": 2,
+          "chunk_index": 3,
+          "semantic_score": 0.345297,
+          "final_score": 0.345297,
+          "retrieval_score": 0.340297,
+          "retrieval_query": "Mã buổi đào tạo cá nhân của Nguyễn Minh là gì?",
+          "snippet": "2 Cách 2: Quét mã QR-CODE Người dùng sử dụng thiết bị thông minh có hỗ trợ camera, đảm bảo kết nối internet. Thực hiện quét mã QR-CODE in trên bill thanh toán thông qua ứng dụng máy ảnh hoặc các chương trình hỗ trợ quét QR-CODE được cài trên thiết bị. Truy cập link sau khi"
+        }
+      ]
+    }
+  ]
+}

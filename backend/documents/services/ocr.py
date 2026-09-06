@@ -1,27 +1,31 @@
+from __future__ import annotations
+
 from functools import lru_cache
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from typing import TYPE_CHECKING
 
 import pymupdf
-from paddleocr import PaddleOCR
+
+if TYPE_CHECKING:
+    from paddleocr import PaddleOCR
 
 
 class OcrError(Exception):
     pass
 
+
 @lru_cache(maxsize=1)
 def get_ocr_engine() -> PaddleOCR:
+    from paddleocr import PaddleOCR
+
     return PaddleOCR(
         lang="vi",
-
         text_detection_model_name="PP-OCRv6_medium_det",
-
         text_recognition_model_name="PP-OCRv6_medium_rec",
-
         use_doc_orientation_classify=False,
         use_doc_unwarping=False,
         use_textline_orientation=False,
-
         device="cpu",
     )
 

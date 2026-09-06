@@ -212,11 +212,6 @@ def is_protected_token(token: str) -> bool:
 
 
 def is_ocr_letter_digit_noise(token: str) -> bool:
-    """
-    Một số OCR lỗi biến chữ thành số trong từ ngắn như h9c, II4nh.
-
-    Các token có dấu phân tách của số liệu/mã văn bản vẫn được bảo vệ.
-    """
     core = token_core(token)
 
     if not re.search(r"[A-Za-zÀ-ỹĐđ]", core):
@@ -249,20 +244,14 @@ def token_core(token: str) -> str:
     return match.group(1) if match else token
 
 
-def merge_phrase_with_original_edges(
-    original_tokens: list[str],
-    phrase: str,
-) -> str:
+def merge_phrase_with_original_edges( original_tokens: list[str], phrase: str,) -> str:
     leading = re.match(r"^\W*", original_tokens[0], flags=re.UNICODE).group(0)
     trailing = re.search(r"\W*$", original_tokens[-1], flags=re.UNICODE).group(0)
 
     return f"{leading}{phrase}{trailing}"
 
 
-def has_compatible_edges(
-    original_tokens: list[str],
-    phrase_tokens: list[str],
-) -> bool:
+def has_compatible_edges(original_tokens: list[str], phrase_tokens: list[str],) -> bool:
     original_first = normalize_for_match(token_core(original_tokens[0]))
     original_last = normalize_for_match(token_core(original_tokens[-1]))
     phrase_first = normalize_for_match(phrase_tokens[0])
@@ -290,31 +279,16 @@ def best_phrase_match(tokens: list[str], start: int):
     if not first:
         return None
 
-    for (
-        phrase,
-        phrase_tokens,
-        target_width,
-        target,
-        minimum_score,
-    ) in phrase_candidates_by_first().get(first, ()):
+    for (phrase, phrase_tokens, target_width, target, minimum_score,) in phrase_candidates_by_first().get(first, ()):
 
-        for width in range(
-            max(1, target_width - 1),
-            min(len(tokens) - start, target_width + 2) + 1,
-        ):
+        for width in range( max(1, target_width - 1), min(len(tokens) - start, target_width + 2) + 1,):
             window = tokens[start : start + width]
             has_letter_digit_noise = any(
                 is_ocr_letter_digit_noise(token)
                 for token in window
             )
 
-            if any(
-                is_protected_token(token)
-                and not is_ocr_letter_digit_noise(token)
-                and not (
-                    has_letter_digit_noise
-                    and is_short_numeric_ocr_noise(token)
-                )
+            if any(is_protected_token(token) and not is_ocr_letter_digit_noise(token) and not (has_letter_digit_noise and is_short_numeric_ocr_noise(token))
                 for token in window
             ):
                 continue
@@ -374,34 +348,19 @@ def correct_ocr_line(line: str) -> str:
 
 
 def normalize_money_units(text: str) -> str:
-    text = MONEY_UNIT_PATTERN.sub(
-        lambda match: f"{match.group('amount')}đ/tín chỉ",
-        text,
-    )
-    text = MONEY_PER_STUDENT_PATTERN.sub(
-        lambda match: f"{match.group('amount')}đ/sinh viên",
-        text,
-    )
+    text = MONEY_UNIT_PATTERN.sub(lambda match: f"{match.group('amount')}đ/tín chỉ", text,)
+    text = MONEY_PER_STUDENT_PATTERN.sub(lambda match: f"{match.group('amount')}đ/sinh viên", text,)
 
     return text
 
 
 def normalize_vietnamese_ocr_text(text: str) -> str:
-    """
-    Chuẩn hóa OCR tiếng Việt theo hướng bảo toàn dữ liệu quan trọng.
-
-    Hàm này chỉ sửa các cụm từ học vụ có độ khớp cao và các đơn vị tiền
-    phổ biến. Số tiền, ngày tháng, phần trăm và mã văn bản phải giữ nguyên.
-    """
     if not text:
         return ""
 
     before_values = critical_values(text)
 
-    corrected_lines = [
-        correct_ocr_line(line)
-        for line in text.splitlines()
-    ]
+    corrected_lines = [correct_ocr_line(line) for line in text.splitlines()]
     corrected_text = "\n".join(corrected_lines)
     corrected_text = normalize_money_units(corrected_text)
 

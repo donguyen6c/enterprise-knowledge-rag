@@ -14,6 +14,7 @@ from pgvector.django import CosineDistance
 
 from documents.models import Document, DocumentChunk
 from documents.permissions import accessible_documents_for_user
+from documents.services.vietnamese_corrector import normalize_for_match
 from rag.services.embeddings import embed_query
 from rag.services.intents import (
     QueryIntent,
@@ -121,16 +122,18 @@ def asks_for_amount(query: str) -> bool:
     return any(phrase in query for phrase in amount_phrases)
 
 
-def narrow_candidate_documents(
-    documents: QuerySet[Document],
-    query: str,
-) -> QuerySet[Document]:
-    """
-    Lọc tài liệu ứng viên trước khi tìm chunk.
+def document_title_matches_query_topic(title: str, query: str) -> bool:
+    requested_topic = extract_requested_major(query)
+    terms = major_search_terms(requested_topic)
 
-    Chỉ dùng bộ lọc khi database thực sự có tài liệu phù hợp,
-    tránh lọc quá chặt khiến không còn kết quả.
-    """
+    if len(terms) < 2:
+        return False
+
+    normalized_title = normalize_for_match(title)
+    return all(term in normalized_title for term in terms)
+
+
+def narrow_candidate_documents(documents: QuerySet[Document], query: str,) -> QuerySet[Document]:
     narrowed_documents = documents
     intent = classify_query_intent(query)
 
@@ -140,8 +143,6 @@ def narrow_candidate_documents(
             intent=intent,
         )
 
-    # Câu hỏi tính/mức học phí thì ưu tiên chỉ tìm trong tài liệu học phí.
-    # Những câu như "miễn giảm học phí" đi theo intent quy chế/nghiệp vụ.
     if intent == QueryIntent.GENERAL and is_tuition_query(query):
         tuition_documents = narrowed_documents.filter(
             Q(title__icontains="học phí")
@@ -151,8 +152,24 @@ def narrow_candidate_documents(
         if tuition_documents.exists():
             narrowed_documents = tuition_documents
 
-    # Phân biệt khóa 2025 với tài liệu khóa 2023/2024
-    # nhưng cùng có năm học 2025-2026.
+    title_topic_matched = False
+
+    if is_tuition_query(query):
+        title_topic_ids = [
+            document_id
+            for document_id, title in narrowed_documents.values_list(
+                "id",
+                "title",
+            )
+            if document_title_matches_query_topic(title, query)
+        ]
+
+        if title_topic_ids:
+            narrowed_documents = narrowed_documents.filter(
+                id__in=title_topic_ids,
+            )
+            title_topic_matched = True
+
     cohort_year = extract_cohort_year(query)
 
     if cohort_year:
@@ -165,7 +182,6 @@ def narrow_candidate_documents(
         if cohort_documents.exists():
             narrowed_documents = cohort_documents
 
-    # Người dùng nói rõ chương trình tiên tiến.
     if asks_for_advanced_program(query):
         advanced_documents = narrowed_documents.filter(
             title__icontains="tiên tiến",
@@ -174,7 +190,6 @@ def narrow_candidate_documents(
         if advanced_documents.exists():
             narrowed_documents = advanced_documents
 
-    # Người dùng nói rõ chương trình chất lượng cao.
     if asks_for_high_quality_program(query):
         high_quality_documents = narrowed_documents.filter(
             title__icontains="chất lượng cao",
@@ -183,7 +198,6 @@ def narrow_candidate_documents(
         if high_quality_documents.exists():
             narrowed_documents = high_quality_documents
 
-    # Người dùng nói rõ chương trình chuẩn/ĐHCQ.
     if asks_for_regular_program(query):
         regular_documents = narrowed_documents.filter(
             title__icontains="ĐHCQ",
@@ -192,7 +206,11 @@ def narrow_candidate_documents(
         if regular_documents.exists():
             narrowed_documents = regular_documents
 
-    if is_tuition_query(query) and not asks_for_specific_program(query):
+    if (
+        is_tuition_query(query)
+        and not asks_for_specific_program(query)
+        and not title_topic_matched
+    ):
         regular_documents = narrowed_documents.filter(
             title__icontains="ĐHCQ",
         )

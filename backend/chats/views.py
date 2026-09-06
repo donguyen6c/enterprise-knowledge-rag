@@ -1,4 +1,5 @@
 from django.db import transaction
+from django.db.models import Count
 from rest_framework import permissions, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError
@@ -19,14 +20,19 @@ class ChatSessionViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return (
+        queryset = (
             ChatSession.objects.filter(
                 user=self.request.user,
                 is_active=True,
             )
-            .prefetch_related("messages")
+            .annotate(message_count=Count("messages"))
             .order_by("-updated_at", "-created_at")
         )
+
+        if self.action in {"retrieve", "messages"}:
+            queryset = queryset.prefetch_related("messages")
+
+        return queryset
 
     def get_serializer_class(self):
         if self.action == "retrieve":

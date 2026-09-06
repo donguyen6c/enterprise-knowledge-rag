@@ -1,3 +1,1 @@
-from django.shortcuts import render
-
-# Create your views here.
+"""RAG HTTP endpoints are exposed through the chats application."""

@@ -5,7 +5,11 @@ from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from accounts.serializers import ( CurrentUserSerializer,CustomTokenObtainPairSerializer, LogoutSerializer,)
+from accounts.serializers import (
+    CurrentUserSerializer,
+    CustomTokenObtainPairSerializer,
+    LogoutSerializer,
+)
 
 
 class CustomTokenObtainPairView(TokenObtainPairView):

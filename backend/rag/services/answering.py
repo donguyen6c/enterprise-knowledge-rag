@@ -5,19 +5,25 @@ from langchain_core.documents import Document as LangChainDocument
 
 from documents.models import DocumentChunk
 from documents.permissions import accessible_documents_for_user
+from rag.services.academic_policies import build_academic_policy_answer
 from rag.services.intents import (
     QueryIntent,
     classify_query_intent,
 )
+from rag.services.fees import build_auxiliary_fee_answer
 from rag.services.retrieval import retrieve_relevant_chunks
 from rag.services.search import narrow_candidate_documents, normalize_query
 from rag.services.student_services import build_student_service_answer
+from rag.services.student_life import build_student_life_answer
 from rag.services.study_time import build_study_time_answer
 from rag.services.tuition import (
     extract_requested_major,
     find_tuition_match,
     is_tuition_query,
 )
+
+
+MIN_CONTEXT_SEMANTIC_SCORE = 0.50
 
 
 @dataclass
@@ -85,23 +91,16 @@ def build_citation(rank: int, document: LangChainDocument) -> dict:
     }
 
 
+def filter_answerable_documents(
+    documents: list[LangChainDocument],
+) -> list[LangChainDocument]:
+    return [document for document in documents if float(document.metadata.get("semantic_score", 0.0)) >= MIN_CONTEXT_SEMANTIC_SCORE]
+
+
 def build_tuition_page_groups(user, question: str):
-    accessible_documents = (
-        accessible_documents_for_user(user)
-        .filter(status="READY")
-        .select_related("category")
-    )
-    candidate_documents = narrow_candidate_documents(
-        documents=accessible_documents,
-        query=normalize_query(question),
-    )
-    chunks = (
-        DocumentChunk.objects.filter(
-            document__in=candidate_documents,
-        )
-        .select_related("document")
-        .order_by("document_id", "page_number", "chunk_index")
-    )
+    accessible_documents = (accessible_documents_for_user(user).filter(status="READY").select_related("category"))
+    candidate_documents = narrow_candidate_documents(documents=accessible_documents, query=normalize_query(question),)
+    chunks = (DocumentChunk.objects.filter(document__in=candidate_documents,).select_related("document").order_by("document_id", "page_number", "chunk_index"))
     page_groups = {}
 
     for chunk in chunks:
@@ -119,12 +118,7 @@ def build_tuition_page_groups(user, question: str):
     return page_groups.values()
 
 
-def build_tuition_citation(
-    *,
-    rank: int,
-    group: dict,
-    match,
-) -> dict:
+def build_tuition_citation(*, rank: int, group: dict, match,) -> dict:
     chunks = group["chunks"]
     chunk = chunks[0]
 
@@ -183,11 +177,7 @@ def build_tuition_answer(*, user, question: str) -> TuitionAnswer | None:
         return None
 
     _, group, match = best_result
-    citation = build_tuition_citation(
-        rank=1,
-        group=group,
-        match=match,
-    )
+    citation = build_tuition_citation(rank=1, group=group, match=match,)
     answer = (
         "Theo tài liệu "
         f"\"{group['document'].title}\""
@@ -195,10 +185,7 @@ def build_tuition_answer(*, user, question: str) -> TuitionAnswer | None:
         f"là {match.amount}."
     )
 
-    return TuitionAnswer(
-        answer=answer,
-        citation=citation,
-    )
+    return TuitionAnswer(answer=answer, citation=citation,)
 
 
 def merge_citations(
@@ -261,6 +248,8 @@ def build_context_answer(
         )
 
     citation = citations[0]
+    page_number = citation.get("page_number")
+    location = f", trang {page_number}" if page_number is not None else ""
     intent = classify_query_intent(question)
     excerpt = focused_excerpt(
         document=documents[0],
@@ -274,8 +263,8 @@ def build_context_answer(
     if intent == QueryIntent.POLICY:
         return (
             "Mình tra cứu theo quy chế và chỉ trả lời theo đoạn có nguồn "
-            f"trong tài liệu \"{citation['document_title']}\", "
-            f"trang {citation['page_number']}:\n\n"
+            f"trong tài liệu \"{citation['document_title']}\""
+            f"{location}:\n\n"
             f"{excerpt}"
         )
 
@@ -291,14 +280,14 @@ def build_context_answer(
             return (
                 "Mình tìm thấy hướng dẫn nghiệp vụ liên quan trong tài liệu "
                 f"\"{citation['document_title']}\""
-                f", trang {citation['page_number']}:\n\n"
+                f"{location}:\n\n"
                 f"{steps}"
             )
 
         return (
             "Mình tìm thấy hướng dẫn nghiệp vụ liên quan trong tài liệu "
             f"\"{citation['document_title']}\""
-            f", trang {citation['page_number']}:\n\n"
+            f"{location}:\n\n"
             f"{excerpt}"
         )
 
@@ -306,14 +295,14 @@ def build_context_answer(
         return (
             "Mình tìm thấy thông tin tiện ích liên quan trong tài liệu "
             f"\"{citation['document_title']}\""
-            f", trang {citation['page_number']}:\n\n"
+            f"{location}:\n\n"
             f"{excerpt}"
         )
 
     return (
         "Mình tìm thấy thông tin liên quan nhất trong tài liệu "
         f"\"{citation['document_title']}\""
-        f", trang {citation['page_number']}:\n\n"
+        f"{location}:\n\n"
         f"{excerpt}"
     )
 
@@ -385,16 +374,43 @@ def focus_terms(question: str, intent: QueryIntent) -> list[str]:
             ]
         )
 
+    terms.extend(generic_question_phrases(question))
     return terms
 
 
-def focused_excerpt(
-    *,
-    document: LangChainDocument,
-    question: str,
-    intent: QueryIntent,
-    window: int = 900,
-) -> str:
+def generic_question_phrases(question: str) -> list[str]:
+    tokens = re.findall(r"[\wÀ-ỹ]+", question, flags=re.UNICODE)
+    trailing_question_words = {
+        "bao",
+        "gì",
+        "là",
+        "nào",
+        "nhiêu",
+        "sao",
+        "thế",
+    }
+
+    while tokens and tokens[-1].lower() in trailing_question_words:
+        tokens.pop()
+
+    phrases = []
+    seen = set()
+
+    for size in range(min(4, len(tokens)), 1, -1):
+        for start in range(len(tokens) - size + 1):
+            phrase = " ".join(tokens[start:start + size])
+            normalized_phrase = phrase.casefold()
+
+            if normalized_phrase in seen:
+                continue
+
+            phrases.append(phrase)
+            seen.add(normalized_phrase)
+
+    return phrases
+
+
+def focused_excerpt(*, document: LangChainDocument, question: str, intent: QueryIntent, window: int = 900,) -> str:
     source = " ".join(document.page_content.split())
     chunk_content = " ".join(document.metadata.get("chunk_content", "").split())
     candidates = [source]
@@ -402,8 +418,8 @@ def focused_excerpt(
     if chunk_content and chunk_content != source:
         candidates.insert(0, chunk_content)
 
-    for candidate in candidates:
-        for term in focus_terms(question, intent):
+    for term in focus_terms(question, intent):
+        for candidate in candidates:
             index = candidate.lower().find(term.lower())
 
             if index < 0:
@@ -455,27 +471,14 @@ def extract_procedure_lines(excerpt: str) -> list[str]:
     return lines
 
 
-def answer_question(
-    *,
-    user,
-    question: str,
-    limit: int = 5,
-    conversation_history=None,
-) -> RagResult:
-    retrieval_result = retrieve_relevant_chunks(
-        user=user,
-        question=question,
-        limit=limit,
-        conversation_history=conversation_history,
-    )
+def answer_question(*, user, question: str, limit: int = 5, conversation_history=None,) -> RagResult:
+    retrieval_result = retrieve_relevant_chunks(user=user, question=question, limit=limit, conversation_history=conversation_history,)
     documents = [
         chunk_to_langchain_document(chunk)
         for chunk in retrieval_result.chunks
     ]
-    citations = [
-        build_citation(rank, document)
-        for rank, document in enumerate(documents, start=1)
-    ]
+    documents = filter_answerable_documents(documents)
+    citations = [build_citation(rank, document) for rank, document in enumerate(documents, start=1)]
     study_time_answer = build_study_time_answer(
         user=user,
         question=question,
@@ -484,29 +487,47 @@ def answer_question(
         user=user,
         question=question,
     )
+    auxiliary_fee_answer = build_auxiliary_fee_answer(
+        user=user,
+        question=question,
+    )
     tuition_answer = build_tuition_answer(
+        user=user,
+        question=question,
+    )
+    academic_policy_answer = build_academic_policy_answer(
+        user=user,
+        question=question,
+    )
+    student_life_answer = build_student_life_answer(
         user=user,
         question=question,
     )
 
     if study_time_answer is not None:
         answer = study_time_answer.answer
-        citations = merge_primary_citations(
-            primary_citations=study_time_answer.citations,
-            retrieval_citations=citations,
-        )
+        citations = study_time_answer.citations
     elif student_service_answer is not None:
         answer = student_service_answer.answer
-        citations = merge_primary_citations(
-            primary_citations=student_service_answer.citations,
-            retrieval_citations=citations,
-        )
+        if student_service_answer.merge_retrieval_citations:
+            citations = merge_primary_citations(
+                primary_citations=student_service_answer.citations,
+                retrieval_citations=citations,
+            )
+        else:
+            citations = student_service_answer.citations
+    elif student_life_answer is not None:
+        answer = student_life_answer.answer
+        citations = student_life_answer.citations
+    elif auxiliary_fee_answer is not None:
+        answer = auxiliary_fee_answer.answer
+        citations = auxiliary_fee_answer.citations
     elif tuition_answer is not None:
         answer = tuition_answer.answer
-        citations = merge_citations(
-            tuition_citation=tuition_answer.citation,
-            retrieval_citations=citations,
-        )
+        citations = [tuition_answer.citation]
+    elif academic_policy_answer is not None:
+        answer = academic_policy_answer.answer
+        citations = academic_policy_answer.citations
     else:
         answer = build_context_answer(
             documents=documents,
@@ -514,8 +535,4 @@ def answer_question(
             question=question,
         )
 
-    return RagResult(
-        answer=answer,
-        citations=citations,
-        retrieval_queries=retrieval_result.queries,
-    )
+    return RagResult(answer=answer, citations=citations, retrieval_queries=retrieval_result.queries,)

@@ -1,3 +1,1 @@
-from django.test import TestCase
-
-# Create your tests here.
+"""Organization invariants are covered by account and document access tests."""

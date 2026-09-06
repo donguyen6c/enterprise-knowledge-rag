@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import ( Document, DocumentCategory, DocumentPermission, DocumentChunk)
+from documents.services.media_paths import normalize_document_file_path
 
 class DocumentPermissionInline(admin.TabularInline):
     model = DocumentPermission
@@ -56,6 +57,20 @@ class DocumentAdmin(admin.ModelAdmin):
         "updated_at",
     )
     inlines = [DocumentPermissionInline]
+
+    def save_model(self, request, obj, form, change):
+        uploaded_file = form.cleaned_data.get("file")
+
+        if "file" in form.changed_data and uploaded_file:
+            obj.original_filename = uploaded_file.name
+            obj.file_size = uploaded_file.size
+
+        super().save_model(request, obj, form, change)
+        normalize_document_file_path(
+            obj,
+            apply=True,
+            replace_target="file" in form.changed_data,
+        )
 
 
 @admin.register(DocumentPermission)

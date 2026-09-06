@@ -1,0 +1,63 @@
+<mxfile host="app.diagrams.net" modified="2026-08-30T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="core-schema" name="UML Core Schema">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="user" value="&lt;div style='font-weight:bold;text-align:center;font-size:16px'&gt;User&lt;/div&gt;&lt;hr&gt;&lt;div&gt;- id: UUID (PK)&lt;br&gt;- email: string (UQ)&lt;br&gt;- username: string (UQ)&lt;br&gt;- password_hash: string&lt;br&gt;- first_name: string&lt;br&gt;- last_name: string&lt;br&gt;- avatar_url: string&lt;br&gt;- is_active: boolean&lt;br&gt;- is_verified: boolean&lt;br&gt;- last_login: timestamp&lt;br&gt;- created_at: timestamp&lt;br&gt;- updated_at: timestamp&lt;/div&gt;&lt;hr&gt;&lt;div&gt;+ login(password): bool&lt;br&gt;+ verify_email(): void&lt;br&gt;+ update_profile(): void&lt;/div&gt;" style="shape=swimlane;html=1;rounded=1;whiteSpace=wrap;container=1;collapsible=0;horizontal=1;fillColor=#DDEBF7;swimlaneFillColor=#DDEBF7;strokeColor=#5B9BD5;fontColor=#1F4E79;" vertex="1" parent="1">
+          <mxGeometry x="50" y="100" width="300" height="430" as="geometry"/>
+        </mxCell>
+        <mxCell id="org" value="&lt;div style='font-weight:bold;text-align:center;font-size:16px'&gt;Organization&lt;/div&gt;&lt;hr&gt;&lt;div&gt;- id: UUID (PK)&lt;br&gt;- name: string (UQ)&lt;br&gt;- slug: string (UQ)&lt;br&gt;- description: text&lt;br&gt;- logo_url: string&lt;br&gt;- is_active: boolean&lt;br&gt;- created_by: UUID (FK)&lt;br&gt;- created_at: timestamp&lt;br&gt;- updated_at: timestamp&lt;/div&gt;&lt;hr&gt;&lt;div&gt;+ add_member(user): void&lt;br&gt;+ remove_member(user): void&lt;/div&gt;" style="shape=swimlane;html=1;rounded=1;whiteSpace=wrap;container=1;collapsible=0;horizontal=1;fillColor=#D9EAD3;swimlaneFillColor=#D9EAD3;strokeColor=#70AD47;fontColor=#27632A;" vertex="1" parent="1">
+          <mxGeometry x="410" y="100" width="320" height="390" as="geometry"/>
+        </mxCell>
+        <mxCell id="role" value="&lt;div style='font-weight:bold;text-align:center;font-size:16px'&gt;Role&lt;/div&gt;&lt;hr&gt;&lt;div&gt;- id: UUID (PK)&lt;br&gt;- name: string (UQ)&lt;br&gt;- description: text&lt;br&gt;- org_id: UUID (FK)&lt;br&gt;- is_default: boolean&lt;br&gt;- created_at: timestamp&lt;br&gt;- updated_at: timestamp&lt;/div&gt;&lt;hr&gt;&lt;div&gt;+ assign_permission(): void&lt;/div&gt;" style="shape=swimlane;html=1;rounded=1;whiteSpace=wrap;container=1;collapsible=0;horizontal=1;fillColor=#FCE4D6;swimlaneFillColor=#FCE4D6;strokeColor=#ED7D31;fontColor=#7F4E12;" vertex="1" parent="1">
+          <mxGeometry x="810" y="100" width="290" height="330" as="geometry"/>
+        </mxCell>
+        <mxCell id="permission" value="&lt;div style='font-weight:bold;text-align:center;font-size:16px'&gt;Permission&lt;/div&gt;&lt;hr&gt;&lt;div&gt;- id: UUID (PK)&lt;br&gt;- name: string (UQ)&lt;br&gt;- description: text&lt;br&gt;- resource: string&lt;br&gt;- action: string&lt;br&gt;- created_at: timestamp&lt;br&gt;- updated_at: timestamp&lt;/div&gt;&lt;hr&gt;&lt;div&gt;+ check_permission(): bool&lt;/div&gt;" style="shape=swimlane;html=1;rounded=1;whiteSpace=wrap;container=1;collapsible=0;horizontal=1;fillColor=#F4CCCC;swimlaneFillColor=#F4CCCC;strokeColor=#C55A7D;fontColor=#8B2F52;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="100" width="300" height="330" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="document" value="&lt;div style='font-weight:bold;text-align:center;font-size:16px'&gt;Document&lt;/div&gt;&lt;hr&gt;&lt;div&gt;- id: UUID (PK)&lt;br&gt;- title: string&lt;br&gt;- content: text&lt;br&gt;- org_id: UUID (FK)&lt;br&gt;- created_by: UUID (FK)&lt;br&gt;- file_url: string&lt;br&gt;- file_type: string&lt;br&gt;- file_size: integer&lt;br&gt;- version: integer&lt;br&gt;- is_archived: boolean&lt;br&gt;- created_at: timestamp&lt;br&gt;- updated_at: timestamp&lt;/div&gt;&lt;hr&gt;&lt;div&gt;+ upload(): void&lt;br&gt;+ archive(): void&lt;/div&gt;" style="shape=swimlane;html=1;rounded=1;whiteSpace=wrap;container=1;collapsible=0;horizontal=1;fillColor=#E2F0D9;swimlaneFillColor=#E2F0D9;strokeColor=#70AD47;fontColor=#386641;" vertex="1" parent="1">
+          <mxGeometry x="50" y="650" width="330" height="420" as="geometry"/>
+        </mxCell>
+        <mxCell id="chat" value="&lt;div style='font-weight:bold;text-align:center;font-size:16px'&gt;Chat&lt;/div&gt;&lt;hr&gt;&lt;div&gt;- id: UUID (PK)&lt;br&gt;- title: string&lt;br&gt;- description: text&lt;br&gt;- org_id: UUID (FK)&lt;br&gt;- created_by: UUID (FK)&lt;br&gt;- is_archived: boolean&lt;br&gt;- created_at: timestamp&lt;br&gt;- updated_at: timestamp&lt;/div&gt;&lt;hr&gt;&lt;div&gt;+ add_message(msg): void&lt;br&gt;+ archive(): void&lt;/div&gt;" style="shape=swimlane;html=1;rounded=1;whiteSpace=wrap;container=1;collapsible=0;horizontal=1;fillColor=#FCE4D6;swimlaneFillColor=#FCE4D6;strokeColor=#C55A3D;fontColor=#7F3D24;" vertex="1" parent="1">
+          <mxGeometry x="470" y="650" width="310" height="390" as="geometry"/>
+        </mxCell>
+        <mxCell id="message" value="&lt;div style='font-weight:bold;text-align:center;font-size:16px'&gt;Message&lt;/div&gt;&lt;hr&gt;&lt;div&gt;- id: UUID (PK)&lt;br&gt;- chat_id: UUID (FK)&lt;br&gt;- sender_id: UUID (FK)&lt;br&gt;- content: text&lt;br&gt;- message_type: string&lt;br&gt;- is_edited: boolean&lt;br&gt;- edited_at: timestamp&lt;br&gt;- is_deleted: boolean&lt;br&gt;- created_at: timestamp&lt;br&gt;- updated_at: timestamp&lt;/div&gt;&lt;hr&gt;&lt;div&gt;+ edit(new_content): void&lt;br&gt;+ delete(): void&lt;/div&gt;" style="shape=swimlane;html=1;rounded=1;whiteSpace=wrap;container=1;collapsible=0;horizontal=1;fillColor=#E4DFEC;swimlaneFillColor=#E4DFEC;strokeColor=#8064A2;fontColor=#4B3B78;" vertex="1" parent="1">
+          <mxGeometry x="870" y="650" width="330" height="420" as="geometry"/>
+        </mxCell>
+        <mxCell id="group" value="&lt;div style='font-weight:bold;text-align:center;font-size:16px'&gt;Group&lt;/div&gt;&lt;hr&gt;&lt;div&gt;- id: UUID (PK)&lt;br&gt;- name: string (UQ)&lt;br&gt;- description: text&lt;br&gt;- org_id: UUID (FK)&lt;br&gt;- created_by: UUID (FK)&lt;br&gt;- created_at: timestamp&lt;br&gt;- updated_at: timestamp&lt;/div&gt;&lt;hr&gt;&lt;div&gt;+ add_member(user): void&lt;/div&gt;" style="shape=swimlane;html=1;rounded=1;whiteSpace=wrap;container=1;collapsible=0;horizontal=1;fillColor=#E7E6E6;swimlaneFillColor=#E7E6E6;strokeColor=#7F7F7F;fontColor=#595959;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="650" width="300" height="340" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="userrole" value="&lt;div style='font-weight:bold;text-align:center'&gt;UserRole&lt;/div&gt;&lt;hr&gt;&lt;div&gt;- user_id: UUID (FK)&lt;br&gt;- role_id: UUID (FK)&lt;/div&gt;" style="shape=swimlane;html=1;rounded=1;whiteSpace=wrap;container=1;collapsible=0;horizontal=1;fillColor=#DDEBF7;swimlaneFillColor=#DDEBF7;strokeColor=#5B9BD5;fontColor=#1F4E79;" vertex="1" parent="1">
+          <mxGeometry x="690" y="500" width="250" height="125" as="geometry"/>
+        </mxCell>
+        <mxCell id="rolepermission" value="&lt;div style='font-weight:bold;text-align:center'&gt;RolePermission&lt;/div&gt;&lt;hr&gt;&lt;div&gt;- role_id: UUID (FK)&lt;br&gt;- permission_id: UUID (FK)&lt;/div&gt;" style="shape=swimlane;html=1;rounded=1;whiteSpace=wrap;container=1;collapsible=0;horizontal=1;fillColor=#FCE4D6;swimlaneFillColor=#FCE4D6;strokeColor=#ED7D31;fontColor=#7F4E12;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="500" width="280" height="125" as="geometry"/>
+        </mxCell>
+        <mxCell id="orguserpermission" value="&lt;div style='font-weight:bold;text-align:center'&gt;OrganizationUserPermission&lt;/div&gt;&lt;hr&gt;&lt;div&gt;- org_id: UUID (FK)&lt;br&gt;- user_id: UUID (FK)&lt;br&gt;- permission_id: UUID (FK)&lt;/div&gt;" style="shape=swimlane;html=1;rounded=1;whiteSpace=wrap;container=1;collapsible=0;horizontal=1;fillColor=#D9EAD3;swimlaneFillColor=#D9EAD3;strokeColor=#70AD47;fontColor=#27632A;" vertex="1" parent="1">
+          <mxGeometry x="430" y="1100" width="360" height="125" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_user_org" value="creates / belongs to" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;" edge="1" parent="1" source="user" target="org"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_org_role" value="organizes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;" edge="1" parent="1" source="org" target="role"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_role_perm" value="has permissions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;" edge="1" parent="1" source="role" target="permission"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_user_role" value="assigns" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;" edge="1" parent="1" source="user" target="userrole"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_userrole_role" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;" edge="1" parent="1" source="userrole" target="role"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_roleperm_perm" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;" edge="1" parent="1" source="rolepermission" target="permission"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_org_doc" value="contains" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;" edge="1" parent="1" source="org" target="document"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_user_doc" value="creates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;" edge="1" parent="1" source="user" target="document"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_user_chat" value="creates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;" edge="1" parent="1" source="user" target="chat"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_chat_message" value="contains" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;" edge="1" parent="1" source="chat" target="message"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_org_group" value="hosts" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;" edge="1" parent="1" source="org" target="group"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_orguser" value="scoped permission" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=none;startArrow=none;" edge="1" parent="1" source="orguserpermission" target="permission"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="note" value="Cardinality: 1 = one, * = many | PK = Primary Key | FK = Foreign Key | UQ = Unique" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=14;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1260" width="800" height="30" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -38,6 +38,11 @@ class ChatSessionSerializer(serializers.ModelSerializer):
         ]
 
     def get_message_count(self, session):
+        annotated_count = getattr(session, "message_count", None)
+
+        if annotated_count is not None:
+            return annotated_count
+
         return session.messages.count()
 
 

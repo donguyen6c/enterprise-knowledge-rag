@@ -1,0 +1,223 @@
+{
+  "organization": {
+    "name": "KFC Việt Nam - Demo học thuật",
+    "description": "Tổ chức thứ hai dùng để minh họa RAG đa tổ chức và RBAC. Không đại diện cho hệ thống nội bộ thật của KFC Việt Nam."
+  },
+  "departments": [
+    {
+      "key": "operations",
+      "name": "Vận hành nhà hàng",
+      "description": "Phòng ban mô phỏng phụ trách hoạt động tại nhà hàng."
+    },
+    {
+      "key": "people",
+      "name": "Nhân sự và tuyển dụng",
+      "description": "Phòng ban mô phỏng phụ trách nhân sự và tuyển dụng."
+    }
+  ],
+  "users": [
+    {
+      "key": "admin",
+      "username": "kfc_demo_admin",
+      "email": "admin.kfc.demo@example.com",
+      "first_name": "Quản trị",
+      "last_name": "KFC Demo",
+      "role": "ORG_ADMIN",
+      "department_key": "people"
+    },
+    {
+      "key": "operations_employee",
+      "username": "kfc_demo_operations",
+      "email": "operations.kfc.demo@example.com",
+      "first_name": "Nguyễn",
+      "last_name": "Minh",
+      "role": "EMPLOYEE",
+      "department_key": "operations"
+    },
+    {
+      "key": "people_employee",
+      "username": "kfc_demo_people",
+      "email": "people.kfc.demo@example.com",
+      "first_name": "Trần",
+      "last_name": "An",
+      "role": "EMPLOYEE",
+      "department_key": "people"
+    }
+  ],
+  "documents": [
+    {
+      "key": "invoice_guide",
+      "title": "KFC Việt Nam - Hướng dẫn xuất hóa đơn điện tử",
+      "description": "PDF công khai chính thức hướng dẫn khách hàng xuất hóa đơn từ bill thanh toán.",
+      "category": "Thông tin công khai",
+      "visibility": "ORGANIZATION",
+      "uploader_key": "admin",
+      "source_file": "official/huong-dan-xuat-hoa-don-dien-tu-kfc.pdf",
+      "original_filename": "huong-dan-xuat-hoa-don-dien-tu-kfc.pdf",
+      "sources": [
+        {
+          "title": "Hướng dẫn xuất hóa đơn điện tử trên bill thanh toán chuỗi nhà hàng KFC Việt Nam",
+          "url": "https://hddt.kfcvietnam.com.vn/Content/Images/DEFeJJi4Poy6L6zyXn51AtsdurlnBSMnLdM6iRB8nVkB8%3D.pdf",
+          "accessed": "2026-08-11"
+        }
+      ]
+    },
+    {
+      "key": "customer_information",
+      "title": "KFC Việt Nam - Thông tin liên hệ và đặt hàng",
+      "description": "Bản tóm tắt có dẫn nguồn từ các trang công khai chính thức của KFC Việt Nam.",
+      "category": "Thông tin công khai",
+      "visibility": "ORGANIZATION",
+      "uploader_key": "admin",
+      "original_filename": "thong-tin-lien-he-va-dat-hang-kfc.docx",
+      "notice": "Nội dung được tóm tắt từ nguồn công khai, đối chiếu ngày 11/08/2026. Thông tin vận hành có thể thay đổi; người dùng cần kiểm tra lại website chính thức trước khi giao dịch.",
+      "sections": [
+        {
+          "heading": "Thông tin doanh nghiệp và liên hệ",
+          "paragraphs": [
+            "Tên đơn vị được công bố: Công ty Liên doanh TNHH KFC Việt Nam.",
+            "Địa chỉ công bố: Số 292 Bà Triệu, phường Lê Đại Hành, quận Hai Bà Trưng, Hà Nội.",
+            "Điện thoại liên hệ: (028) 38489828. Email liên hệ: lienhe@kfcvietnam.com.vn.",
+            "Hotline chăm sóc khách hàng và hỗ trợ đặt hàng: 1900 6886."
+          ]
+        },
+        {
+          "heading": "Đặt hàng và thanh toán",
+          "paragraphs": [
+            "Khách hàng có thể đặt hàng qua website, ứng dụng hoặc tổng đài theo hướng dẫn được công bố.",
+            "Giá trị tối thiểu được nêu trên chính sách hoạt động là 50.000 đồng đối với khu vực 3-4 và 80.000 đồng đối với khu vực 1-2.",
+            "Các lựa chọn thanh toán được nêu gồm thanh toán khi nhận hàng hoặc thanh toán bằng ATM, Visa, Master và ví ZaloPay.",
+            "Thời gian giao có thể thay đổi do thời tiết, tình trạng quá tải, khoảng cách hoặc nhầm lẫn địa chỉ."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Trang chủ KFC Việt Nam",
+          "url": "https://www.kfcvietnam.com.vn/",
+          "accessed": "2026-08-11"
+        },
+        {
+          "title": "Chính sách hoạt động và đặt hàng",
+          "url": "https://www.kfcvietnam.com.vn/privacy-policy",
+          "accessed": "2026-08-11"
+        }
+      ]
+    },
+    {
+      "key": "recruitment_summary",
+      "title": "KFC Demo - Tóm tắt tiếp nhận ứng viên nhà hàng",
+      "description": "Bản tóm tắt nghiệp vụ dành cho phòng Nhân sự, xây dựng từ hướng dẫn ứng tuyển công khai.",
+      "category": "Tài liệu demo nội bộ",
+      "visibility": "DEPARTMENT",
+      "uploader_key": "admin",
+      "permission": {
+        "department_key": "people"
+      },
+      "original_filename": "tom-tat-tiep-nhan-ung-vien-kfc-demo.docx",
+      "notice": "DỮ LIỆU MÔ PHỎNG CHO ĐỒ ÁN. Đây không phải quy trình nội bộ chính thức của KFC Việt Nam.",
+      "sections": [
+        {
+          "heading": "Luồng ứng tuyển được công bố",
+          "paragraphs": [
+            "Bước 1: ứng viên mở website tuyển dụng, chọn đăng nhập và tạo tài khoản nếu chưa đăng ký.",
+            "Bước 2: ứng viên điền thông tin ứng tuyển, gửi hồ sơ, thực hiện bài test và hoàn tất.",
+            "Tài khoản dùng trên website tuyển dụng không phải là tài khoản email của ứng viên."
+          ]
+        },
+        {
+          "heading": "Thông tin hỗ trợ tuyển dụng",
+          "paragraphs": [
+            "Email tuyển dụng được công bố: job@kfcvietnam.com.vn.",
+            "Số điện thoại được công bố trên website tuyển dụng: (028) 38489828."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hướng dẫn ứng tuyển vị trí Nhân viên Nhà hàng KFC",
+          "url": "https://tuyendung.kfcvietnam.com.vn/huong-dan-ung-tuyen-1",
+          "accessed": "2026-08-11"
+        }
+      ]
+    },
+    {
+      "key": "opening_checklist",
+      "title": "KFC Demo - Checklist mở ca nhà hàng",
+      "description": "Tài liệu mô phỏng chỉ dành cho phòng Vận hành nhà hàng.",
+      "category": "Tài liệu demo nội bộ",
+      "visibility": "DEPARTMENT",
+      "uploader_key": "admin",
+      "permission": {
+        "department_key": "operations"
+      },
+      "original_filename": "checklist-mo-ca-nha-hang-kfc-demo.docx",
+      "notice": "DỮ LIỆU MÔ PHỎNG CHO ĐỒ ÁN. Nội dung không đại diện cho checklist vận hành thật của KFC Việt Nam.",
+      "sections": [
+        {
+          "heading": "Trước khi đón khách",
+          "paragraphs": [
+            "Xác nhận nhân sự có mặt và phân công khu vực làm việc cho ca demo.",
+            "Kiểm tra tình trạng vệ sinh khu vực phục vụ, quầy nhận món và lối đi.",
+            "Xác nhận thiết bị demo đã sẵn sàng và ghi nhận bất thường vào sổ bàn giao."
+          ]
+        },
+        {
+          "heading": "Bàn giao đầu ca",
+          "paragraphs": [
+            "Người phụ trách đọc ghi chú của ca trước và xác nhận các việc còn tồn đọng.",
+            "Mã biểu mẫu mô phỏng dùng trong chatbot: OPS-OPEN-DEMO-01.",
+            "Sự cố chưa xử lý phải được chuyển cho quản lý ca demo trước khi mở cửa."
+          ]
+        }
+      ],
+      "sources": []
+    },
+    {
+      "key": "employee_support",
+      "title": "KFC Demo - Cẩm nang hỗ trợ nhân viên",
+      "description": "Tài liệu mô phỏng dành cho tất cả tài khoản có vai trò EMPLOYEE trong tổ chức demo.",
+      "category": "Tài liệu demo nội bộ",
+      "visibility": "ROLE",
+      "uploader_key": "admin",
+      "permission": {
+        "role": "EMPLOYEE"
+      },
+      "original_filename": "cam-nang-ho-tro-nhan-vien-kfc-demo.docx",
+      "notice": "DỮ LIỆU MÔ PHỎNG CHO ĐỒ ÁN. Nội dung không mô tả chính sách nhân sự thật của KFC Việt Nam.",
+      "sections": [
+        {
+          "heading": "Kênh hỗ trợ trong hệ thống demo",
+          "paragraphs": [
+            "Nhân viên demo gửi yêu cầu tại cổng People Hub Demo, mục Hỗ trợ nhân viên.",
+            "Mã nhóm hỗ trợ dùng để kiểm thử chatbot là EMP-SUPPORT-DEMO.",
+            "Yêu cầu cần ghi rõ nội dung, đơn vị demo và thông tin liên hệ để được phản hồi."
+          ]
+        }
+      ],
+      "sources": []
+    },
+    {
+      "key": "private_training_plan",
+      "title": "KFC Demo - Kế hoạch đào tạo cá nhân Nguyễn Minh",
+      "description": "Tài liệu PRIVATE mô phỏng, chỉ chủ sở hữu được xem.",
+      "category": "Tài liệu demo nội bộ",
+      "visibility": "PRIVATE",
+      "uploader_key": "operations_employee",
+      "original_filename": "ke-hoach-dao-tao-nguyen-minh-kfc-demo.docx",
+      "notice": "DỮ LIỆU CÁ NHÂN HOÀN TOÀN MÔ PHỎNG CHO ĐỒ ÁN. Không liên quan đến nhân viên thật của KFC Việt Nam.",
+      "sections": [
+        {
+          "heading": "Kế hoạch đào tạo",
+          "paragraphs": [
+            "Chủ sở hữu demo: Nguyễn Minh, phòng Vận hành nhà hàng.",
+            "Mã buổi đào tạo cá nhân: KFC-DEMO-MINH-1509.",
+            "Thời gian mô phỏng: 09:00 ngày 15/09/2026.",
+            "Nội dung mô phỏng: sử dụng hệ thống tài liệu, bàn giao ca và xử lý yêu cầu hỗ trợ."
+          ]
+        }
+      ],
+      "sources": []
+    }
+  ]
+}
