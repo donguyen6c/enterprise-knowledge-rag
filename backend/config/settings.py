@@ -70,12 +70,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Third-party
     "rest_framework",
     "pgvector.django",
     "rest_framework_simplejwt.token_blacklist",
 
-    # Local apps
     "accounts",
     "organizations",
     "documents",

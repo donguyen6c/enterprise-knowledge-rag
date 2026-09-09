@@ -1,43 +1,8 @@
 "use client";
 
-import {
-  BookOpen,
-  Bot,
-  FileText,
-  LogOut,
-  MessageSquarePlus,
-  LoaderCircle,
-  Play,
-  RefreshCw,
-  RotateCcw,
-  Search,
-  Send,
-  UserRound
-} from "lucide-react";
-import {
-  FormEvent,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from "react";
-import {
-  askQuestion,
-  ChatMessage,
-  ChatSession,
-  Citation,
-  DocumentChunkItem,
-  DocumentItem,
-  fetchDocumentChunks,
-  fetchDocuments,
-  fetchSession,
-  fetchSessions,
-  login,
-  logoutSession,
-  queueDocumentProcessing,
-  refreshAccessToken,
-  User
+import {BookOpen, Bot, FileText, LogOut, MessageSquarePlus, LoaderCircle, Play, RefreshCw, RotateCcw, Search, Send, UserRound} from "lucide-react";
+import {FormEvent, useCallback, useEffect, useMemo, useRef, useState} from "react";
+import {askQuestion, ChatMessage, ChatSession, Citation, DocumentChunkItem, DocumentItem, fetchDocumentChunks, fetchDocuments, fetchSession, fetchSessions, login, logoutSession, queueDocumentProcessing, refreshAccessToken, User
 } from "@/lib/api";
 
 const AUTH_KEY = "ekr.auth";
@@ -171,11 +136,7 @@ function StatusBadge({ status }: { status: DocumentItem["status"] }) {
   );
 }
 
-function DocumentManager({
-  documents,
-  filteredDocuments,
-  chunks,
-  selectedDocument,
+function DocumentManager({documents, filteredDocuments, chunks, selectedDocument,
   documentSearch,
   documentError,
   loadingDocuments,
