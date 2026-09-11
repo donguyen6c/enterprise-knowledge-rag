@@ -13,19 +13,11 @@ from accounts.serializers import (
 
 
 class CustomTokenObtainPairView(TokenObtainPairView):
-    """
-    POST email + password để nhận access và refresh token.
-    """
-
     serializer_class = CustomTokenObtainPairSerializer
     permission_classes = [permissions.AllowAny]
 
 
 class CurrentUserView(APIView):
-    """
-    Trả về thông tin của user đang đăng nhập.
-    """
-
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
@@ -34,10 +26,6 @@ class CurrentUserView(APIView):
 
 
 class LogoutView(APIView):
-    """
-    Blacklist refresh token để không thể dùng lại sau khi logout.
-    """
-
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):

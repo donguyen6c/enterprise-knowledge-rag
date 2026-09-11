@@ -6,11 +6,7 @@ export const metadata: Metadata = {
   description: "Internal knowledge chatbot"
 };
 
-export default function RootLayout({
-  children
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children}: Readonly<{ children: React.ReactNode;}>) {
   return (
     <html lang="vi">
       <body>{children}</body>

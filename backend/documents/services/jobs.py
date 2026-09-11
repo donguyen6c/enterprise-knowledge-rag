@@ -24,11 +24,7 @@ def claim_next_document() -> Document | None:
     with transaction.atomic():
         document = (
             Document.objects.select_for_update(skip_locked=True)
-            .filter(
-                status=Document.Status.UPLOADED,
-                is_active=True,
-                organization__is_active=True,
-            )
+            .filter(status=Document.Status.UPLOADED, is_active=True, organization__is_active=True,)
             .order_by("updated_at", "id")
             .first()
         )
@@ -38,8 +34,6 @@ def claim_next_document() -> Document | None:
 
         document.status = Document.Status.PROCESSING
         document.error_message = ""
-        document.save(
-            update_fields=["status", "error_message", "updated_at"]
-        )
+        document.save(update_fields=["status", "error_message", "updated_at"])
 
     return document

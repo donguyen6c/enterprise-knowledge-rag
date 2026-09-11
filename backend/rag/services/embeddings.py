@@ -4,12 +4,16 @@ from functools import lru_cache
 import os
 from typing import TYPE_CHECKING
 
-import numpy as np
+from sentence_transformers import SentenceTransformer
 
+from transformers import AutoTokenizer
+import numpy as np
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 if TYPE_CHECKING:
     from langchain_text_splitters import RecursiveCharacterTextSplitter
     from sentence_transformers import SentenceTransformer
     from transformers import PreTrainedTokenizerBase
+
 
 
 MODEL_NAME = (
@@ -18,8 +22,6 @@ MODEL_NAME = (
 )
 EMBEDDING_DIMENSIONS = 384
 
-# Model chỉ nhận tối đa 128 subword tokens. Chunk mới chừa chỗ cho tiêu đề
-# tài liệu và section được ghép vào trước khi tạo embedding.
 DOCUMENT_CHUNK_TOKEN_LIMIT = 96
 DOCUMENT_CHUNK_TOKEN_OVERLAP = 16
 EMBEDDING_WINDOW_TOKEN_LIMIT = 120
@@ -35,7 +37,6 @@ def local_files_only() -> bool:
 
 @lru_cache(maxsize=1)
 def get_embedding_tokenizer() -> PreTrainedTokenizerBase:
-    from transformers import AutoTokenizer
 
     return AutoTokenizer.from_pretrained(
         MODEL_NAME,
@@ -45,8 +46,6 @@ def get_embedding_tokenizer() -> PreTrainedTokenizerBase:
 
 @lru_cache(maxsize=1)
 def get_embedding_model() -> SentenceTransformer:
-    """Tải model một lần trong mỗi Python process."""
-    from sentence_transformers import SentenceTransformer
 
     return SentenceTransformer(
         MODEL_NAME,
@@ -71,7 +70,6 @@ def embedding_token_count(text: str) -> int:
 
 @lru_cache(maxsize=1)
 def get_embedding_window_splitter() -> RecursiveCharacterTextSplitter:
-    from langchain_text_splitters import RecursiveCharacterTextSplitter
 
     return RecursiveCharacterTextSplitter(
         chunk_size=EMBEDDING_WINDOW_TOKEN_LIMIT,
@@ -97,10 +95,7 @@ def split_text_for_embedding(text: str) -> list[str]:
     ]
 
 
-def _mean_pool_embeddings(
-    vectors: np.ndarray,
-    indexes: list[int],
-) -> list[float]:
+def _mean_pool_embeddings( vectors: np.ndarray, indexes: list[int],) -> list[float]:
     pooled = vectors[indexes].mean(axis=0)
     norm = np.linalg.norm(pooled)
 
@@ -111,13 +106,6 @@ def _mean_pool_embeddings(
 
 
 def embed_documents(texts: list[str]) -> list[list[float]]:
-    """
-    Tạo một vector cho mỗi văn bản.
-
-    Các chunk cũ dài hơn giới hạn model được chia thành nhiều cửa sổ bằng
-    LangChain. Vector cửa sổ được lấy trung bình rồi chuẩn hóa, tránh việc
-    SentenceTransformer âm thầm bỏ phần cuối văn bản.
-    """
     if not texts:
         return []
 

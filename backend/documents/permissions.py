@@ -6,11 +6,6 @@ from documents.models import Document
 
 
 class IsDocumentManagerOrReadOnly(BasePermission):
-    """
-    Employee chỉ được đọc.
-    ORG_ADMIN và SYSTEM_ADMIN được thêm, sửa, xóa.
-    """
-
     def has_permission(self, request, view):
         if not request.user.is_authenticated:
             return False
@@ -21,17 +16,10 @@ class IsDocumentManagerOrReadOnly(BasePermission):
         if request.user.role == UserRole.SYSTEM_ADMIN:
             return True
 
-        return (
-            request.user.role == UserRole.ORG_ADMIN
-            and request.user.organization_id is not None
-            and request.user.organization.is_active
-        )
+        return request.user.role == UserRole.ORG_ADMIN and request.user.organization_id is not None and request.user.organization.is_active
 
 
 class CanModifyDocument(BasePermission):
-    """
-    Kiểm tra quyền sửa/xóa trên từng document.
-    """
 
     def has_object_permission(self, request, view, document):
         user = request.user
@@ -45,30 +33,14 @@ class CanModifyDocument(BasePermission):
         if user.role != UserRole.ORG_ADMIN:
             return False
 
-        return (
-            user.organization_id == document.organization_id
-            and document.organization.is_active
-        )
+        return user.organization_id == document.organization_id and document.organization.is_active
 
 
 def accessible_documents_for_user(user):
-    """
-    QuerySet duy nhất dùng cho Document API, Semantic Search và RAG.
 
-    Quan trọng: phải lọc quyền trước khi retrieval.
-    """
-
-    queryset = (
-        Document.objects.select_related(
-            "organization",
-            "category",
-            "uploaded_by",
-        )
+    queryset = (Document.objects.select_related("organization", "category", "uploaded_by",)
         .prefetch_related("permissions")
-        .filter(
-            is_active=True,
-            organization__is_active=True,
-        )
+        .filter(is_active=True,organization__is_active=True,)
     )
 
     if not user.is_authenticated:
@@ -80,9 +52,7 @@ def accessible_documents_for_user(user):
     if user.organization_id is None:
         return queryset.none()
 
-    organization_queryset = queryset.filter(
-        organization_id=user.organization_id
-    )
+    organization_queryset = queryset.filter(organization_id=user.organization_id)
 
     if user.role == UserRole.ORG_ADMIN:
         return organization_queryset.filter(
@@ -92,20 +62,12 @@ def accessible_documents_for_user(user):
 
     access_filter = (
         Q(visibility=Document.Visibility.ORGANIZATION)
-        | Q(
-            visibility=Document.Visibility.PRIVATE,
-            uploaded_by_id=user.id,
-        )
-        | Q(
-            visibility=Document.Visibility.ROLE,
-            permissions__role=user.role,
-            permissions__can_view=True,
-        )
+        | Q( visibility=Document.Visibility.PRIVATE, uploaded_by_id=user.id,)
+        | Q(visibility=Document.Visibility.ROLE, permissions__role=user.role, permissions__can_view=True,)
     )
 
     if user.department_id is not None:
-        access_filter |= Q(
-            visibility=Document.Visibility.DEPARTMENT,
+        access_filter |= Q(visibility=Document.Visibility.DEPARTMENT,
             permissions__department_id=user.department_id,
             permissions__can_view=True,
         )
@@ -124,10 +86,7 @@ def user_can_download_document(user, document):
         return False
 
     if user.role == UserRole.ORG_ADMIN:
-        return (
-            document.visibility != Document.Visibility.PRIVATE
-            or document.uploaded_by_id == user.id
-        )
+        return document.visibility != Document.Visibility.PRIVATE or document.uploaded_by_id == user.id
 
     if document.visibility == Document.Visibility.ORGANIZATION:
         return True
@@ -136,20 +95,12 @@ def user_can_download_document(user, document):
         return document.uploaded_by_id == user.id
 
     if document.visibility == Document.Visibility.ROLE:
-        return document.permissions.filter(
-            role=user.role,
-            can_view=True,
-            can_download=True,
-        ).exists()
+        return document.permissions.filter(role=user.role, can_view=True, can_download=True,).exists()
 
     if document.visibility == Document.Visibility.DEPARTMENT:
         if user.department_id is None:
             return False
 
-        return document.permissions.filter(
-            department_id=user.department_id,
-            can_view=True,
-            can_download=True,
-        ).exists()
+        return document.permissions.filter(department_id=user.department_id, can_view=True, can_download=True,).exists()
 
     return False

@@ -6,13 +6,7 @@ from chats.models import ChatMessage, ChatSession
 class ChatMessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ChatMessage
-        fields = [
-            "id",
-            "role",
-            "content",
-            "metadata",
-            "created_at",
-        ]
+        fields = ["id", "role", "content", "metadata", "created_at",]
         read_only_fields = fields
 
 
@@ -21,21 +15,8 @@ class ChatSessionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ChatSession
-        fields = [
-            "id",
-            "title",
-            "is_active",
-            "message_count",
-            "created_at",
-            "updated_at",
-        ]
-        read_only_fields = [
-            "id",
-            "is_active",
-            "message_count",
-            "created_at",
-            "updated_at",
-        ]
+        fields = ["id", "title", "is_active", "message_count", "created_at", "updated_at",]
+        read_only_fields = ["id", "is_active", "message_count", "created_at", "updated_at",]
 
     def get_message_count(self, session):
         annotated_count = getattr(session, "message_count", None)
@@ -54,17 +35,6 @@ class ChatSessionDetailSerializer(ChatSessionSerializer):
 
 
 class AskSerializer(serializers.Serializer):
-    question = serializers.CharField(
-        max_length=2000,
-        trim_whitespace=True,
-    )
-    session_id = serializers.IntegerField(
-        required=False,
-        min_value=1,
-    )
-    limit = serializers.IntegerField(
-        required=False,
-        default=5,
-        min_value=1,
-        max_value=10,
-    )
+    question = serializers.CharField(max_length=2000, trim_whitespace=True,)
+    session_id = serializers.IntegerField(required=False, min_value=1,)
+    limit = serializers.IntegerField(required=False, default=5, min_value=1, max_value=10,)

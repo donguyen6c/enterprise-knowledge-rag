@@ -13,14 +13,8 @@ from organizations.models import Organization
 
 
 class DocumentCategorySerializer(serializers.ModelSerializer):
-    organization = serializers.PrimaryKeyRelatedField(
-        queryset=Organization.objects.filter(is_active=True),
-        required=False,
-    )
-    organization_name = serializers.CharField(
-        source="organization.name",
-        read_only=True,
-    )
+    organization = serializers.PrimaryKeyRelatedField(queryset=Organization.objects.filter(is_active=True), required=False,)
+    organization_name = serializers.CharField(source="organization.name", read_only=True,)
 
     class Meta:
         model = DocumentCategory
@@ -61,10 +55,7 @@ class DocumentCategorySerializer(serializers.ModelSerializer):
 
 
 class DocumentPermissionSerializer(serializers.ModelSerializer):
-    department_name = serializers.CharField(
-        source="department.name",
-        read_only=True,
-    )
+    department_name = serializers.CharField(source="department.name", read_only=True,)
 
     class Meta:
         model = DocumentPermission
@@ -79,25 +70,12 @@ class DocumentPermissionSerializer(serializers.ModelSerializer):
 
 
 class DocumentSerializer(serializers.ModelSerializer):
-    organization = serializers.PrimaryKeyRelatedField(
-        queryset=Organization.objects.filter(is_active=True),
-        required=False,
-    )
-    organization_name = serializers.CharField(
-        source="organization.name",
-        read_only=True,
-    )
-    category_name = serializers.CharField(
-        source="category.name",
-        read_only=True,
-    )
-    uploaded_by_email = serializers.EmailField(
-        source="uploaded_by.email",
-        read_only=True,
-    )
+    organization = serializers.PrimaryKeyRelatedField(queryset=Organization.objects.filter(is_active=True), required=False,)
+    organization_name = serializers.CharField(source="organization.name", read_only=True,)
+    category_name = serializers.CharField(source="category.name", read_only=True,)
+    uploaded_by_email = serializers.EmailField(source="uploaded_by.email", read_only=True,)
     permissions = DocumentPermissionSerializer(many=True, read_only=True)
 
-    # Không trả URL /media/ trực tiếp; tải file luôn đi qua endpoint có RBAC.
     file = serializers.FileField(write_only=True, required=False)
     download_url = serializers.SerializerMethodField()
     chunk_count = serializers.SerializerMethodField()
@@ -168,9 +146,7 @@ class DocumentSerializer(serializers.ModelSerializer):
         max_size = 20 * 1024 * 1024
 
         if uploaded_file.size > max_size:
-            raise serializers.ValidationError(
-                "Dung lượng file không được vượt quá 20 MB."
-            )
+            raise serializers.ValidationError("Dung lượng file không được vượt quá 20 MB.")
 
         return uploaded_file
 
@@ -239,10 +215,7 @@ class DocumentSerializer(serializers.ModelSerializer):
 
 
 class DocumentChunkSerializer(serializers.ModelSerializer):
-    document_title = serializers.CharField(
-        source="document.title",
-        read_only=True,
-    )
+    document_title = serializers.CharField(source="document.title", read_only=True,)
     has_embedding = serializers.SerializerMethodField()
 
     class Meta:

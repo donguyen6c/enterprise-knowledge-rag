@@ -47,12 +47,6 @@ def render_pdf_page_to_image(
 
 
 def extract_text_from_ocr_result(result) -> str:
-    """
-    Chuẩn hóa kết quả PaddleOCR thành text.
-
-    PaddleOCR 3.x có thể thay đổi cấu trúc result tùy pipeline,
-    nên hàm này hỗ trợ một số dạng phổ biến.
-    """
     lines: list[str] = []
 
     if result is None:

@@ -7,6 +7,7 @@ from rag.services.embeddings import (
     DOCUMENT_CHUNK_TOKEN_OVERLAP,
     embedding_token_count,
 )
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
 @dataclass
@@ -29,12 +30,9 @@ def estimate_token_count(text: str) -> int:
     return max(1, embedding_token_count(text))
 
 
-def split_long_text(
-    text: str,
-    max_tokens: int = DOCUMENT_CHUNK_TOKEN_LIMIT,
-    overlap_tokens: int = DOCUMENT_CHUNK_TOKEN_OVERLAP,
+def split_long_text(text: str, max_tokens: int = DOCUMENT_CHUNK_TOKEN_LIMIT, overlap_tokens: int = DOCUMENT_CHUNK_TOKEN_OVERLAP,
 ) -> list[str]:
-    from langchain_text_splitters import RecursiveCharacterTextSplitter
+
 
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=max_tokens,
@@ -50,11 +48,7 @@ def split_long_text(
     ]
 
 
-def section_blocks(
-    content: str,
-    current_section: str,
-) -> tuple[list[tuple[str, str]], str]:
-    """Nhóm đoạn theo heading để section metadata không bị gán lệch."""
+def section_blocks(content: str, current_section: str,) -> tuple[list[tuple[str, str]], str]:
     blocks: list[tuple[str, str]] = []
     buffer: list[str] = []
 
@@ -79,10 +73,7 @@ def section_blocks(
     return blocks, current_section
 
 
-def chunk_pages(
-    pages: list[ExtractedPage],
-    max_tokens: int = DOCUMENT_CHUNK_TOKEN_LIMIT,
-    overlap_tokens: int = DOCUMENT_CHUNK_TOKEN_OVERLAP,
+def chunk_pages(pages: list[ExtractedPage], max_tokens: int = DOCUMENT_CHUNK_TOKEN_LIMIT, overlap_tokens: int = DOCUMENT_CHUNK_TOKEN_OVERLAP,
 ) -> list[TextChunk]:
     chunks: list[TextChunk] = []
     current_section = ""

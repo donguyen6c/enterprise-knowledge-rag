@@ -53,10 +53,7 @@ class ChatSessionViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=["get"], url_path="messages")
     def messages(self, request, pk=None):
         session = self.get_object()
-        serializer = ChatMessageSerializer(
-            session.messages.all(),
-            many=True,
-        )
+        serializer = ChatMessageSerializer(session.messages.all(),many=True,)
 
         return Response(serializer.data)
 
@@ -124,12 +121,7 @@ class AskView(APIView):
         )
 
     @staticmethod
-    def _get_or_create_session(
-        *,
-        user,
-        question: str,
-        session_id: int | None,
-    ) -> ChatSession:
+    def _get_or_create_session(*, user, question: str, session_id: int | None,) -> ChatSession:
         if session_id is None:
             title = question[:80]
 
