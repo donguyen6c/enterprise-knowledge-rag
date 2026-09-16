@@ -9,6 +9,48 @@ export type User = {
   department_id: number | null;
 };
 
+export type Organization = {
+  id: number;
+  name: string;
+  description: string;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+};
+
+export type AdminUser = User & {
+  organization: number | null;
+  organization_name: string | null;
+  department: number | null;
+  department_name: string | null;
+  is_active: boolean;
+  date_joined: string;
+};
+
+export type AdminUserPayload = {
+  username: string;
+  email: string;
+  password: string;
+  first_name: string;
+  last_name: string;
+  role?: "SYSTEM_ADMIN" | "ORG_ADMIN" | "EMPLOYEE";
+  organization?: number | null;
+};
+
+export type AdminOrganizationPayload = {
+  name: string;
+  description: string;
+};
+
+export type RegisterPayload = {
+  username: string;
+  email: string;
+  password: string;
+  first_name: string;
+  last_name: string;
+  organization: number;
+};
+
 export type AuthPayload = {
   access: string;
   refresh: string;
@@ -96,6 +138,14 @@ export type DocumentChunkItem = {
   created_at: string;
 };
 
+export type DocumentUploadPayload = {
+  file: File;
+  title: string;
+  description: string;
+  visibility: DocumentItem["visibility"];
+  organization?: number;
+};
+
 const API_BASE = "/backend";
 
 function withTrailingSlash(path: string) {
@@ -150,6 +200,20 @@ export function login(email: string, password: string) {
     method: "POST",
     body: JSON.stringify({ email, password })
   });
+}
+
+export function fetchActiveOrganizations() {
+  return request<Organization[]>("/api/auth/organizations/");
+}
+
+export function registerAccount(payload: RegisterPayload) {
+  return request<{ id: number; email: string; username: string; role: string; organization: number | null }>(
+    "/api/auth/register/",
+    {
+      method: "POST",
+      body: JSON.stringify(payload)
+    }
+  );
 }
 
 export function refreshAccessToken(refresh: string) {
@@ -212,6 +276,127 @@ export function queueDocumentProcessing(token: string, documentId: number) {
   return request<DocumentItem>(
     `/api/documents/${documentId}/process/`,
     { method: "POST" },
+    token
+  );
+}
+
+export async function uploadDocument(
+  token: string,
+  payload: DocumentUploadPayload
+) {
+  const formData = new FormData();
+  formData.set("file", payload.file);
+  formData.set("title", payload.title);
+  formData.set("description", payload.description);
+  formData.set("visibility", payload.visibility);
+
+  if (payload.organization) {
+    formData.set("organization", String(payload.organization));
+  }
+
+  const response = await fetch(`${API_BASE}${withTrailingSlash("/api/documents/")}`, {
+    method: "POST",
+    headers: {Authorization: `Bearer ${token}`},
+    body: formData
+  });
+
+  if (!response.ok) {
+    let message = `Request failed with status ${response.status}`;
+
+    try {
+      const error = (await response.json()) as {detail?: string};
+      message = error.detail || JSON.stringify(error);
+    } catch {
+      // Keep the default message when response is not JSON.
+    }
+
+    throw new Error(message);
+  }
+
+  return (await response.json()) as DocumentItem;
+}
+
+export async function downloadDocument(token: string, documentId: number) {
+  const response = await fetch(
+    `${API_BASE}${withTrailingSlash(`/api/documents/${documentId}/download/`)}`,
+    {headers: {Authorization: `Bearer ${token}`}}
+  );
+
+  if (!response.ok) {
+    let message = `Request failed with status ${response.status}`;
+
+    try {
+      const error = (await response.json()) as {detail?: string};
+      message = error.detail || JSON.stringify(error);
+    } catch {
+      // Keep the default message when response is not JSON.
+    }
+
+    throw new Error(message);
+  }
+
+  return response.blob();
+}
+
+export function fetchAdminUsers(token: string) {
+  return request<AdminUser[]>("/api/auth/admin/users/", {}, token);
+}
+
+export function createAdminUser(token: string, payload: AdminUserPayload) {
+  return request<AdminUser>(
+    "/api/auth/admin/users/",
+    {
+      method: "POST",
+      body: JSON.stringify(payload)
+    },
+    token
+  );
+}
+
+export function updateAdminUser(
+  token: string,
+  userId: number,
+  payload: Partial<AdminUserPayload> & {is_active?: boolean}
+) {
+  return request<AdminUser>(
+    `/api/auth/admin/users/${userId}/`,
+    {
+      method: "PATCH",
+      body: JSON.stringify(payload)
+    },
+    token
+  );
+}
+
+export function fetchAdminOrganizations(token: string) {
+  return request<Organization[]>("/api/auth/admin/organizations/", {}, token);
+}
+
+export function createAdminOrganization(
+  token: string,
+  payload: AdminOrganizationPayload
+) {
+  return request<Organization>(
+    "/api/auth/admin/organizations/",
+    {
+      method: "POST",
+      body: JSON.stringify(payload)
+    },
+    token
+  );
+}
+
+export function updateAdminOrganization(
+  token: string,
+  organizationId: number,
+  payload: Partial<AdminOrganizationPayload> & {is_active?: boolean}
+) {
+  return request<Organization>(
+    `/api/auth/admin/organizations/${organizationId}/`,
+    {
+      method: "PATCH",
+      body: JSON.stringify(payload)
+    },
     token
   );
 }

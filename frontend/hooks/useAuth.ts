@@ -1,12 +1,15 @@
 import {useCallback, useEffect, useState} from "react";
-import {login as loginRequest, logoutSession, refreshAccessToken} from "@/lib/api";
+import {login as loginRequest, logoutSession, refreshAccessToken, registerAccount} from "@/lib/api";
 import {accessTokenExpiresAt, clearStoredAuth, readStoredAuth, writeStoredAuth} from "@/lib/auth-storage";
+import {RegisterPayload} from "@/lib/api";
 import {StoredAuth} from "@/types/auth";
 
 export function useAuth() {
   const [auth, setAuth] = useState<StoredAuth | null>(null);
   const [loginError, setLoginError] = useState("");
   const [loginLoading, setLoginLoading] = useState(false);
+  const [registerError, setRegisterError] = useState("");
+  const [registerLoading, setRegisterLoading] = useState(false);
 
   useEffect(() => {
     setAuth(readStoredAuth());
@@ -43,6 +46,21 @@ export function useAuth() {
     }
   }, []);
 
+  const register = useCallback(async (payload: RegisterPayload) => {
+    setRegisterError("");
+    setRegisterLoading(true);
+
+    try {
+      await registerAccount(payload);
+      return true;
+    } catch (error) {
+      setRegisterError(error instanceof Error ? error.message : "Đăng ký thất bại.");
+      return false;
+    } finally {
+      setRegisterLoading(false);
+    }
+  }, []);
+
   useEffect(() => {
     if (!auth) {
       return;
@@ -75,5 +93,15 @@ export function useAuth() {
     return () => window.clearTimeout(timer);
   }, [auth, logout]);
 
-  return {auth, clearAuthState, login, loginError, loginLoading, logout};
+  return {
+    auth,
+    clearAuthState,
+    login,
+    loginError,
+    loginLoading,
+    logout,
+    register,
+    registerError,
+    registerLoading,
+  };
 }

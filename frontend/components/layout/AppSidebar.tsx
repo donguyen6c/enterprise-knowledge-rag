@@ -1,14 +1,16 @@
-import {Bot, FileText, LogOut, MessageSquarePlus, UserRound} from "lucide-react";
+import {Bot, FileText, LogOut, MessageSquarePlus, Settings, UserRound} from "lucide-react";
 import {ChatSession, DocumentItem} from "@/lib/api";
 import {LoadingLine} from "@/components/common/LoadingLine";
 
 type AppSidebarProps = {
   activeSessionId: number | null;
-  activeView: "chat" | "documents";
+  activeView: "chat" | "documents" | "admin";
+  canAccessAdmin: boolean;
   documents: DocumentItem[];
   loadingSessions: boolean;
   onLogout: () => Promise<void>;
   onNewChat: () => void;
+  onOpenAdmin: () => void;
   onOpenDocuments: () => void;
   onOpenSession: (id: number) => Promise<void>;
   onSelectChat: () => void;
@@ -21,10 +23,12 @@ type AppSidebarProps = {
 export function AppSidebar({
   activeSessionId,
   activeView,
+  canAccessAdmin,
   documents,
   loadingSessions,
   onLogout,
   onNewChat,
+  onOpenAdmin,
   onOpenDocuments,
   onOpenSession,
   onSelectChat,
@@ -54,7 +58,7 @@ export function AppSidebar({
         </button>
       </div>
 
-      <div className="sidebar-tabs">
+      <div className={`sidebar-tabs ${canAccessAdmin ? "admin-enabled" : ""}`}>
         <button
           className={activeView === "chat" ? "active" : ""}
           onClick={onSelectChat}
@@ -71,6 +75,16 @@ export function AppSidebar({
           <FileText size={16} />
           Tài liệu
         </button>
+        {canAccessAdmin ? (
+          <button
+            className={activeView === "admin" ? "active" : ""}
+            onClick={onOpenAdmin}
+            type="button"
+          >
+            <Settings size={16} />
+            Admin
+          </button>
+        ) : null}
       </div>
 
       {activeView === "chat" ? (
@@ -93,7 +107,7 @@ export function AppSidebar({
             ))
           )}
         </div>
-      ) : (
+      ) : activeView === "documents" ? (
         <div className="sidebar-summary">
           <div>
             <span>Tài liệu truy cập được</span>
@@ -106,6 +120,17 @@ export function AppSidebar({
           <div>
             <span>Chunks đang chọn</span>
             <strong>{selectedDocument?.chunk_count || 0}</strong>
+          </div>
+        </div>
+      ) : (
+        <div className="sidebar-summary">
+          <div>
+            <span>Phạm vi quản trị</span>
+            <strong>Admin</strong>
+          </div>
+          <div>
+            <span>Quyền truy cập</span>
+            <strong>{canAccessAdmin ? "Đã cấp" : "Không có"}</strong>
           </div>
         </div>
       )}

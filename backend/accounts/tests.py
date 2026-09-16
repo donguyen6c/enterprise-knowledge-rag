@@ -64,3 +64,44 @@ class AuthenticationTests(APITestCase):
 
         with self.assertRaises(ValidationError):
             user.full_clean()
+
+    def test_register_creates_user_with_default_employee_role(self):
+        organization = Organization.objects.create(name="Organization A")
+
+        response = self.client.post(
+            "/api/auth/register/",
+            {
+                "username": "new-user",
+                "email": "new-user@example.com",
+                "password": "test-password",
+                "first_name": "New",
+                "last_name": "User",
+                "organization": organization.id,
+            },
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertTrue(User.objects.filter(email="new-user@example.com").exists())
+
+        created_user = User.objects.get(email="new-user@example.com")
+        self.assertEqual(created_user.organization_id, organization.id)
+        self.assertEqual(created_user.role, UserRole.EMPLOYEE)
+
+    def test_register_rejects_inactive_organization(self):
+        organization = Organization.objects.create(name="Inactive Org", is_active=False)
+
+        response = self.client.post(
+            "/api/auth/register/",
+            {
+                "username": "inactive-org-user",
+                "email": "inactive-org-user@example.com",
+                "password": "test-password",
+                "first_name": "Inactive",
+                "last_name": "User",
+                "organization": organization.id,
+            },
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)

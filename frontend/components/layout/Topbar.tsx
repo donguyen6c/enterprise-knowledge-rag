@@ -1,7 +1,7 @@
-import {BookOpen, FileText} from "lucide-react";
+import {BookOpen, FileText, ShieldCheck} from "lucide-react";
 
 type TopbarProps = {
-  activeView: "chat" | "documents";
+  activeView: "chat" | "documents" | "admin";
   documentCount: number;
   readyDocumentCount: number;
   role: string;
@@ -16,22 +16,39 @@ export function Topbar({
   title
 }: TopbarProps) {
   const isDocumentView = activeView === "documents";
+  const isAdminView = activeView === "admin";
 
   return (
     <header className="topbar">
       <div>
         <h1>
-          {isDocumentView ? "Kho tài liệu" : title || "Chat tri thức nội bộ"}
+          {isAdminView
+            ? "Quản trị hệ thống"
+            : isDocumentView
+              ? "Kho tài liệu"
+              : title || "Chat tri thức nội bộ"}
         </h1>
         <p>
-          {isDocumentView
+          {isAdminView
+            ? "System Admin / Organization Admin"
+            : isDocumentView
             ? `${documentCount} tài liệu · ${readyDocumentCount} sẵn sàng`
             : role}
         </p>
       </div>
       <div className="status-pill">
-        {isDocumentView ? <FileText size={15} /> : <BookOpen size={15} />}
-        {isDocumentView ? "Pipeline tài liệu" : "RBAC + Semantic Search"}
+        {isAdminView ? (
+          <ShieldCheck size={15} />
+        ) : isDocumentView ? (
+          <FileText size={15} />
+        ) : (
+          <BookOpen size={15} />
+        )}
+        {isAdminView
+          ? "Role-protected Admin"
+          : isDocumentView
+            ? "Pipeline tài liệu"
+            : "RBAC + Semantic Search"}
       </div>
     </header>
   );

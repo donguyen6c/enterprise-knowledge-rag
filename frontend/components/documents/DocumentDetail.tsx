@@ -1,4 +1,4 @@
-import {LoaderCircle, Play, RotateCcw} from "lucide-react";
+import {Download, LoaderCircle, Play, RotateCcw} from "lucide-react";
 import {DocumentChunkItem, DocumentItem} from "@/lib/api";
 import {ErrorBox} from "@/components/common/ErrorBox";
 import {EmptyState} from "@/components/common/EmptyState";
@@ -11,7 +11,9 @@ type DocumentDetailProps = {
   chunks: DocumentChunkItem[];
   document?: DocumentItem;
   documentError: string;
+  downloadingDocumentId: number | null;
   loadingChunks: boolean;
+  onDownload: (document: DocumentItem) => Promise<void>;
   onProcess: (id: number) => Promise<void>;
   processingDocumentId: number | null;
 };
@@ -21,7 +23,9 @@ export function DocumentDetail({
   chunks,
   document,
   documentError,
+  downloadingDocumentId,
   loadingChunks,
+  onDownload,
   onProcess,
   processingDocumentId
 }: DocumentDetailProps) {
@@ -48,6 +52,17 @@ export function DocumentDetail({
 
         <div className="document-detail-actions">
           <StatusBadge status={document.status} />
+          {document.download_url ? (
+            <button
+              className="text-button document-action"
+              disabled={downloadingDocumentId === document.id}
+              onClick={() => void onDownload(document)}
+              type="button"
+            >
+              <Download size={15} />
+              {downloadingDocumentId === document.id ? "Đang tải" : "Tải file"}
+            </button>
+          ) : null}
           {canManageDocuments && document.status !== "ARCHIVED" ? (
             <button
               className="text-button document-action"

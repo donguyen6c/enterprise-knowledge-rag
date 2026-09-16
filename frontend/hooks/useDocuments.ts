@@ -2,12 +2,21 @@ import {useCallback, useEffect, useMemo, useState} from "react";
 import {
   DocumentChunkItem,
   DocumentItem,
+  DocumentUploadPayload,
+  downloadDocument,
+  fetchActiveOrganizations,
   fetchDocumentChunks,
   fetchDocuments,
-  queueDocumentProcessing
+  Organization,
+  queueDocumentProcessing,
+  uploadDocument
 } from "@/lib/api";
 
-export function useDocuments(token: string | null, activeView: "chat" | "documents") {
+export function useDocuments(
+  token: string | null,
+  activeView: "chat" | "documents" | "admin",
+  role?: string
+) {
   const [documents, setDocuments] = useState<DocumentItem[]>([]);
   const [selectedDocumentId, setSelectedDocumentId] = useState<number | null>(null);
   const [documentChunks, setDocumentChunks] = useState<DocumentChunkItem[]>([]);
@@ -16,6 +25,9 @@ export function useDocuments(token: string | null, activeView: "chat" | "documen
   const [loadingChunks, setLoadingChunks] = useState(false);
   const [processingDocumentId, setProcessingDocumentId] = useState<number | null>(null);
   const [documentError, setDocumentError] = useState("");
+  const [availableOrganizations, setAvailableOrganizations] = useState<Organization[]>([]);
+  const [uploadingDocument, setUploadingDocument] = useState(false);
+  const [downloadingDocumentId, setDownloadingDocumentId] = useState<number | null>(null);
 
   const selectedDocument = useMemo(
     () => documents.find((document) => document.id === selectedDocumentId),
@@ -131,6 +143,80 @@ export function useDocuments(token: string | null, activeView: "chat" | "documen
     }
   }, [processingDocumentId, token]);
 
+  const loadAvailableOrganizations = useCallback(async () => {
+    if (role !== "SYSTEM_ADMIN") {
+      setAvailableOrganizations([]);
+      return;
+    }
+
+    try {
+      setAvailableOrganizations(await fetchActiveOrganizations());
+    } catch {
+      // Uploading will surface a useful error if the organization list is unavailable.
+    }
+  }, [role]);
+
+  const uploadNewDocument = useCallback(
+    async (payload: DocumentUploadPayload) => {
+      if (!token || uploadingDocument) {
+        return false;
+      }
+
+      setUploadingDocument(true);
+      setDocumentError("");
+
+      try {
+        const document = await uploadDocument(token, payload);
+        setDocuments((current) => [document, ...current]);
+        setSelectedDocumentId(document.id);
+        setDocumentChunks([]);
+        return true;
+      } catch (error) {
+        setDocumentError(
+          error instanceof Error ? error.message : "Không thể tải tài liệu lên."
+        );
+        return false;
+      } finally {
+        setUploadingDocument(false);
+      }
+    },
+    [token, uploadingDocument]
+  );
+
+  const downloadSelectedDocument = useCallback(
+    async (document: DocumentItem) => {
+      if (!token || downloadingDocumentId !== null) {
+        return;
+      }
+
+      setDownloadingDocumentId(document.id);
+      setDocumentError("");
+
+      try {
+        const file = await downloadDocument(token, document.id);
+        const objectUrl = window.URL.createObjectURL(file);
+        const anchor = window.document.createElement("a");
+        anchor.href = objectUrl;
+        anchor.download = document.original_filename || document.title;
+        anchor.click();
+        window.URL.revokeObjectURL(objectUrl);
+      } catch (error) {
+        setDocumentError(
+          error instanceof Error ? error.message : "Không thể tải tài liệu xuống."
+        );
+      } finally {
+        setDownloadingDocumentId(null);
+      }
+    },
+    [downloadingDocumentId, token]
+  );
+
+  useEffect(() => {
+    if (activeView === "documents") {
+      void loadAvailableOrganizations();
+    }
+  }, [activeView, loadAvailableOrganizations]);
+
   useEffect(() => {
     if (!token || activeView !== "documents" || !hasPendingDocuments) {
       return;
@@ -177,17 +263,22 @@ export function useDocuments(token: string | null, activeView: "chat" | "documen
     documentError,
     documentSearch,
     documents,
+    availableOrganizations,
+    downloadingDocumentId,
     filteredDocuments,
     hasPendingDocuments,
     loadingChunks,
     loadingDocuments,
     loadDocuments,
+    downloadSelectedDocument,
     openDocument,
     processDocument,
     processingDocumentId,
     readyDocumentCount,
     selectedDocument,
     selectedDocumentId,
-    setDocumentSearch
+    setDocumentSearch,
+    uploadNewDocument,
+    uploadingDocument
   };
 }

@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Dashboard Wireframe</title>
+    <style>
+      :root {
+        --ink: #202020;
+        --paper: #ffffff;
+        --shade: #f2f2f2;
+        --line: #8d8d8d;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: #ffffff;
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .board {
+        width: min(1540px, calc(100% - 10px));
+        margin: 5px auto;
+        border: 1px solid var(--ink);
+        background: var(--paper);
+      }
+
+      .board-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--ink);
+      }
+
+      h1, h2, h3, p { margin: 0; }
+
+      h1 { font-size: 16px; }
+      h2 { font-size: 15px; }
+      h3 { font-size: 13px; }
+
+      .board-header p,
+      .note,
+      .caption { margin-top: 4px; font-size: 10px; color: #5f6368; }
+
+      .legend { display: flex; flex-wrap: wrap; gap: 8px; }
+
+      .tag, .pill, .button {
+        display: inline-block;
+        border: 1px solid #4c4c4c;
+        padding: 5px 8px;
+        font-size: 10px;
+        background: white;
+      }
+
+      .tag { background: var(--shade); }
+
+      .wireframe-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        padding: 12px;
+        background: #fafafa;
+      }
+
+      .screen {
+        overflow: hidden;
+        border: 1px solid var(--ink);
+        background: white;
+      }
+
+      .screen-label {
+        padding: 8px 10px;
+        border-bottom: 1px solid var(--ink);
+        background: #f3f3f3;
+        color: var(--ink);
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .app {
+        display: grid;
+        min-height: 590px;
+        grid-template-columns: 138px minmax(0, 1fr);
+      }
+
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        border-right: 1px solid var(--ink);
+        padding: 10px;
+      }
+
+      .brand {
+        padding-bottom: 12px;
+        border-bottom: 1px solid #d0d0d0;
+        font-size: 11px;
+        font-weight: bold;
+      }
+
+      .nav { display: grid; gap: 7px; }
+
+      .nav-item {
+        border: 1px solid #b9b9b9;
+        padding: 8px 6px;
+        font-size: 11px;
+      }
+
+      .nav-item.active { border-color: var(--ink); background: #ececec; font-weight: bold; }
+      .nav-spacer { flex: 1; }
+
+      .sidebar-user {
+        border-top: 1px solid #d0d0d0;
+        padding-top: 10px;
+        font-size: 10px;
+      }
+
+      .content { background: #fbfbf8; }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        border-bottom: 1px solid var(--ink);
+        padding: 10px 12px;
+      }
+
+      .topbar strong { display: block; font-size: 13px; }
+      .topbar span { font-size: 10px; }
+
+      .content-body { padding: 15px; }
+
+      .title-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+
+      .metrics { display: grid; gap: 10px; margin-bottom: 14px; }
+      .metrics.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .metrics.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+      .metric, .card {
+        border: 1px solid #9e9e9e;
+        background: white;
+      }
+
+      .metric { min-height: 62px; padding: 9px; }
+      .metric span { display: block; font-size: 10px; }
+      .metric strong { display: block; margin-top: 10px; font-size: 15px; }
+
+      .card { margin-top: 12px; padding: 11px; }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+      .form-grid .wide { grid-column: 1 / -1; }
+
+      .field-label { display: block; margin-bottom: 4px; font-size: 9px; }
+      .input { height: 28px; border: 1px solid #b6b6b6; background: #fbfbfb; }
+      .select { height: 28px; border: 1px solid #666; padding: 7px; font-size: 10px; background: white; }
+
+      .primary { margin-top: 10px; width: 100%; border: 1px solid var(--ink); background: #f4f4f4; color: var(--ink); padding: 8px; font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; }
+
+      table { width: 100%; border-collapse: collapse; font-size: 9px; }
+      th, td { border-top: 1px solid var(--line); padding: 8px 4px; text-align: left; vertical-align: middle; }
+      th { border-top: 1px solid var(--ink); background: #f2f2f2; font-size: 8px; }
+      td small { display: block; margin-top: 2px; color: #555; }
+
+      .status { border: 1px solid var(--ink); padding: 3px 5px; font-size: 8px; white-space: nowrap; }
+
+      .annotation {
+        margin: 0 12px 12px;
+        border: 1px solid #9e9e9e;
+        padding: 12px;
+        font-size: 11px;
+      }
+
+      .annotation ul { margin: 8px 0 0; padding-left: 18px; }
+      .annotation li { margin: 5px 0; }
+
+      @media (max-width: 980px) {
+        .wireframe-grid { grid-template-columns: 1fr; }
+      }
+
+      @media (max-width: 620px) {
+        .board { width: calc(100% - 20px); margin: 10px auto; }
+        .board-header { align-items: flex-start; flex-direction: column; }
+        .app { grid-template-columns: 112px minmax(0, 1fr); }
+        .metrics.three { grid-template-columns: 1fr; }
+        .metrics.two, .form-grid { grid-template-columns: 1fr; }
+        .form-grid .wide { grid-column: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="board">
+      <header class="board-header">
+        <div>
+          <h1>PHÁC THẢO - ADMIN DASHBOARD</h1>
+          <p>Chỉ duyệt bố cục, chưa phải giao diện production.</p>
+        </div>
+        <div class="legend">
+          <span class="tag">[ card ]</span>
+          <span class="tag">[ input ]</span>
+          <span class="tag">[ select role ]</span>
+        </div>
+      </header>
+
+      <section class="wireframe-grid">
+        <article class="screen">
+          <div class="screen-label">A. ORGANIZATION ADMIN</div>
+          <div class="app">
+            <aside class="sidebar">
+              <div class="brand">ENTERPRISE<br />KNOWLEDGE RAG</div>
+              <nav class="nav">
+                <div class="nav-item">[ ] Chat</div>
+                <div class="nav-item">[ ] Tài liệu</div>
+                <div class="nav-item active">[ ] Admin</div>
+              </nav>
+              <div class="nav-spacer"></div>
+              <div class="sidebar-user">admin@org.vn<br /><br />[ Đăng xuất ]</div>
+            </aside>
+
+            <section class="content">
+              <header class="topbar">
+                <div><strong>Quản trị hệ thống</strong><span>Organization Admin</span></div>
+                <span class="pill">[ refresh ]</span>
+              </header>
+              <div class="content-body">
+                <div class="title-row">
+                  <div><h2>Quản lý tổ chức</h2><p class="caption">Tài khoản thuộc tổ chức hiện tại</p></div>
+                  <span class="pill">ORG ADMIN</span>
+                </div>
+
+                <div class="metrics two">
+                  <div class="metric"><span>Tài khoản hoạt động</span><strong>4 / 4</strong></div>
+                  <div class="metric"><span>Vai trò hiện tại</span><strong>ORG ADMIN</strong></div>
+                </div>
+
+                <section class="card">
+                  <div class="card-header"><h3>+ Tạo người dùng</h3><span class="caption">Role: Employee / Org Admin</span></div>
+                  <div class="form-grid">
+                    <div><span class="field-label">Họ</span><div class="input"></div></div>
+                    <div><span class="field-label">Tên</span><div class="input"></div></div>
+                    <div class="wide"><span class="field-label">Email</span><div class="input"></div></div>
+                    <div><span class="field-label">Mật khẩu</span><div class="input"></div></div>
+                    <div><span class="field-label">Vai trò</span><div class="select">Employee v</div></div>
+                  </div>
+                  <button class="primary">TẠO TÀI KHOẢN</button>
+                </section>
+
+                <section class="card">
+                  <div class="card-header"><h3>Danh sách người dùng</h3><span class="pill">4 accounts</span></div>
+                  <table>
+                    <thead><tr><th>NGƯỜI DÙNG</th><th>VAI TRÒ</th><th>TRẠNG THÁI</th></tr></thead>
+                    <tbody>
+                      <tr><td>Nguyễn Minh<small>minh@org.vn</small></td><td><div class="select">Employee v</div></td><td><span class="status">Hoạt động</span></td></tr>
+                      <tr><td>Trần An<small>an@org.vn</small></td><td><div class="select">Org Admin v</div></td><td><span class="status">Hoạt động</span></td></tr>
+                    </tbody>
+                  </table>
+                </section>
+              </div>
+            </section>
+          </div>
+        </article>
+
+        <article class="screen">
+          <div class="screen-label">B. SYSTEM ADMIN</div>
+          <div class="app">
+            <aside class="sidebar">
+              <div class="brand">ENTERPRISE<br />KNOWLEDGE RAG</div>
+              <nav class="nav">
+                <div class="nav-item">[ ] Chat</div>
+                <div class="nav-item">[ ] Tài liệu</div>
+                <div class="nav-item active">[ ] Admin</div>
+              </nav>
+              <div class="nav-spacer"></div>
+              <div class="sidebar-user">system@ekr.vn<br /><br />[ Đăng xuất ]</div>
+            </aside>
+
+            <section class="content">
+              <header class="topbar">
+                <div><strong>Quản trị hệ thống</strong><span>System Admin</span></div>
+                <span class="pill">[ refresh ]</span>
+              </header>
+              <div class="content-body">
+                <div class="title-row">
+                  <div><h2>Quản lý toàn hệ thống</h2><p class="caption">Users, roles và organizations</p></div>
+                  <span class="pill">SYSTEM ADMIN</span>
+                </div>
+
+                <div class="metrics three">
+                  <div class="metric"><span>Tài khoản</span><strong>28</strong></div>
+                  <div class="metric"><span>Organizations</span><strong>05</strong></div>
+                  <div class="metric"><span>Documents</span><strong>130</strong></div>
+                </div>
+
+                <section class="card">
+                  <div class="card-header"><h3>+ Tạo user / organization</h3><span class="caption">2 form cùng hàng</span></div>
+                  <div class="form-grid">
+                    <div><span class="field-label">Thông tin user</span><div class="input"></div></div>
+                    <div><span class="field-label">Tổ chức</span><div class="select">Chọn tổ chức v</div></div>
+                    <div><span class="field-label">Role</span><div class="select">Employee v</div></div>
+                    <div><span class="field-label">Tạo organization</span><div class="input"></div></div>
+                  </div>
+                  <button class="primary">LƯU THAY ĐỔI</button>
+                </section>
+
+                <section class="card">
+                  <div class="card-header"><h3>Danh sách toàn hệ thống</h3><span class="pill">28 users</span></div>
+                  <table>
+                    <thead><tr><th>USER</th><th>ROLE</th><th>ORG</th><th>STATUS</th></tr></thead>
+                    <tbody>
+                      <tr><td>System Owner</td><td><div class="select">System Admin v</div></td><td>--</td><td><span class="status">Hoạt động</span></td></tr>
+                      <tr><td>Org Manager</td><td><div class="select">Org Admin v</div></td><td>KFC VN</td><td><span class="status">Hoạt động</span></td></tr>
+                    </tbody>
+                  </table>
+                </section>
+              </div>
+            </section>
+          </div>
+        </article>
+      </section>
+
+      <aside class="annotation">
+        <strong>Ghi chú duyệt layout</strong>
+        <ul>
+          <li>Admin luôn ở hàng riêng trong sidebar, sau Chat và Tài liệu.</li>
+          <li>Organization Admin: chỉ 2 metric, 1 form tạo user full-width, bảng users của tổ chức.</li>
+          <li>System Admin: 3 metric, quản lý user/role/organization toàn hệ thống.</li>
+          <li>Đổi role trực tiếp tại bảng; không cho đổi role của chính tài khoản đang đăng nhập.</li>
+        </ul>
+      </aside>
+    </main>
+  </body>
+</html>

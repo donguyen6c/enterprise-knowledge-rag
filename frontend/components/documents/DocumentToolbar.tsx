@@ -1,25 +1,38 @@
 import {RefreshCw, Search} from "lucide-react";
 
+import {DocumentUploadForm} from "@/components/documents/DocumentUploadForm";
+import {DocumentUploadPayload, Organization} from "@/lib/api";
+
 type DocumentToolbarProps = {
   documentCount: number;
+  canManageDocuments: boolean;
   failedCount: number;
+  isSystemAdmin: boolean;
   loading: boolean;
   onRefresh: () => Promise<void>;
   onSearchChange: (value: string) => void;
+  onUpload: (payload: DocumentUploadPayload) => Promise<boolean>;
+  organizations: Organization[];
   pendingCount: number;
   readyCount: number;
   search: string;
+  uploading: boolean;
 };
 
 export function DocumentToolbar({
   documentCount,
+  canManageDocuments,
   failedCount,
+  isSystemAdmin,
   loading,
   onRefresh,
   onSearchChange,
+  onUpload,
+  organizations,
   pendingCount,
   readyCount,
-  search
+  search,
+  uploading
 }: DocumentToolbarProps) {
   return (
     <div className="documents-toolbar">
@@ -49,6 +62,15 @@ export function DocumentToolbar({
       >
         <RefreshCw size={17} />
       </button>
+
+      {canManageDocuments ? (
+        <DocumentUploadForm
+          isSystemAdmin={isSystemAdmin}
+          onUpload={onUpload}
+          organizations={organizations}
+          uploading={uploading}
+        />
+      ) : null}
     </div>
   );
 }

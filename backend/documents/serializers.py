@@ -9,6 +9,7 @@ from documents.models import (
     DocumentChunk,
     DocumentPermission,
 )
+from documents.permissions import user_can_download_document
 from organizations.models import Organization
 
 
@@ -122,7 +123,7 @@ class DocumentSerializer(serializers.ModelSerializer):
     def get_download_url(self, document):
         request = self.context.get("request")
 
-        if request is None:
+        if request is None or not user_can_download_document(request.user, document):
             return None
 
         return request.build_absolute_uri(

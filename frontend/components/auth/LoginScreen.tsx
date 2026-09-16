@@ -5,10 +5,12 @@ import {ErrorBox} from "@/components/common/ErrorBox";
 type LoginScreenProps = {
   error: string;
   loading: boolean;
+  successMessage?: string;
   onLogin: (email: string, password: string) => Promise<void>;
+  onSwitchToRegister: () => void;
 };
 
-export function LoginScreen({error, loading, onLogin}: LoginScreenProps) {
+export function LoginScreen({error, loading, successMessage, onLogin, onSwitchToRegister}: LoginScreenProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -50,9 +52,19 @@ export function LoginScreen({error, loading, onLogin}: LoginScreenProps) {
           </div>
 
           {error ? <ErrorBox message={error} /> : null}
+          {successMessage ? <div className="success-box">{successMessage}</div> : null}
 
           <button className="primary-button" disabled={loading} type="submit">
             {loading ? "Đang đăng nhập" : "Đăng nhập"}
+          </button>
+
+          <button
+            className="text-button"
+            disabled={loading}
+            type="button"
+            onClick={onSwitchToRegister}
+          >
+            Chưa có tài khoản? Đăng ký
           </button>
         </div>
       </form>
